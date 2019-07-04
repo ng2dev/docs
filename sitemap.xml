@@ -5,5 +5,6 @@
 <url> <loc>http://docs.iov.one/users</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> <xhtml:link rel="alternate" hreflang="en" href="http://docs.iov.one/en/users" /> </url>
 <url> <loc>http://docs.iov.one/docs/doc1</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://docs.iov.one/docs/doc1" /> </url>
 <url> <loc>http://docs.iov.one/docs/doc2</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://docs.iov.one/docs/doc2" /> </url>
-<url> <loc>http://docs.iov.one/docs/transaction</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://docs.iov.one/docs/transaction" /> </url>
+<url> <loc>http://docs.iov.one/docs/intro</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://docs.iov.one/docs/intro" /> </url>
+<url> <loc>http://docs.iov.one/docs/weave/weave-api-spec/weave-transaction-spec</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://docs.iov.one/docs/weave/weave-api-spec/weave-transaction-spec" /> </url>
 </urlset>
