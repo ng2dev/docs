@@ -81,7 +81,7 @@ After following the steps in <a href="transaction.md">Weave transactions</a>, cr
 </ul>
 <p>After this arbitrary bytes put together, this is then prehashed with <strong>sha512</strong> before fed into
 the public key signing/verification step. This step is applied in order to guarantee signing could be done by a ledger.</p>
-<p>After having the hashed transaction and signed with the wallet's <strong>ed25519</strong> private key, you have your <strong>Signed transaction</strong> at your will.</p>
+<p>After having the hashed transaction and signed with the wallet's <strong>ed25519</strong> private key, you have your <strong>signed transaction</strong> at your will.</p>
 <p>Weave signing algorithm basic representation:</p>
 <pre><code class="hljs">chainID = <span class="hljs-string">"bns-hugnet"</span>
 versionAsHex = 0, 0xCA, 0xFE, 0
@@ -97,6 +97,6 @@ inSig = append(chainIDBytes, versionAsBytes, nonceBytes, serializedTx)
 
 midSig = sha512(inSig)
 
-signature= wallet.ed25519.<span class="hljs-keyword">private</span>.sign(midSig)
+signature = wallet.ed25519.<span class="hljs-keyword">private</span>.sign(midSig)
 </code></pre>
 </span></div></article></div><div class="docLastUpdate"><em>Last updated on 2019-7-5 by orkunkl</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/weave/weave-api-spec/weave-transaction-spec"><span class="arrow-prev">← </span><span>Weave transactions</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#authentication-and-authorization">Authentication and Authorization</a></li><li><a href="#signing-transactions">Signing transactions</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/favicon.ico" alt="IOV" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/docs/en/doc2.html">Guides (or other categories)</a><a href="/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://t.me/internetofvalues">Telegram</a><a href="https://twitter.com/iov_official" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="https://github.com/iov-one">GitHub</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2019 IOV</section></footer></div></body></html>
