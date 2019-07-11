@@ -4,6 +4,7 @@
 <url> <loc>http://docs.iov.one/index</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> <xhtml:link rel="alternate" hreflang="en" href="http://docs.iov.one/en/index" /> </url>
 <url> <loc>http://docs.iov.one/users</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> <xhtml:link rel="alternate" hreflang="en" href="http://docs.iov.one/en/users" /> </url>
 <url> <loc>http://docs.iov.one/docs/intro</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://docs.iov.one/docs/intro" /> </url>
+<url> <loc>http://docs.iov.one/docs/validator/rewards</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://docs.iov.one/docs/validator/rewards" /> </url>
 <url> <loc>http://docs.iov.one/docs/validator/setup</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://docs.iov.one/docs/validator/setup" /> </url>
 <url> <loc>http://docs.iov.one/docs/validator/troubleshooter</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://docs.iov.one/docs/validator/troubleshooter" /> </url>
 <url> <loc>http://docs.iov.one/docs/validator/faq</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://docs.iov.one/docs/validator/faq" /> </url>
