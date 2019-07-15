@@ -61,7 +61,7 @@
 <p>IOV does not recommend using docker in production; however, it can be used to start building your validator's quality score on our testnet if you so choose.</p>
 </blockquote>
 <h2><a class="anchor" aria-hidden="true" id="systemd-for-running-a-sentry-node-or-validator"></a><a href="#systemd-for-running-a-sentry-node-or-validator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Systemd for running a sentry node or validator</h2>
-<p>This document assumes that docker is up and running on your system and user <code>iov</code> in groups <code>iov</code> and <code>docker</code> exists.  You should be able to copy-and-paste the following commands into a terminal and end up with a running node.  You'll have to do this procedure on at least two machines to implement a sentry node architecture.</p>
+<p>This document assumes that <code>docker</code>, <code>jq</code>, and <code>which</code> are installed on your system, and user <code>iov</code> in groups <code>iov</code> and <code>docker</code> exists.  You should be able to copy-and-paste the following commands into a terminal and end up with a running node.  You'll have to do this procedure on at least two machines to implement a sentry node architecture.</p>
 <pre><code class="hljs css language-sh">sudo su <span class="hljs-comment"># make life easier for the next ~100 lines</span>
 
 <span class="hljs-built_in">cd</span> /etc/systemd/system
@@ -99,7 +99,7 @@ IOV_UID=$(id iov -u)
 __EOF_IOVNS_ENV__
 
 <span class="hljs-comment"># create iovns.service</span>
-cat &lt;&lt;<span class="hljs-string">'__EOF_IOVNS_SERVICE__'</span> &gt; iovns.service
+DOCKER=$(<span class="hljs-built_in">which</span> docker) &amp;&amp; cat &lt;&lt;<span class="hljs-string">'__EOF_IOVNS_SERVICE__'</span> | sed <span class="hljs-string">'s@__DOCKER__@'</span><span class="hljs-string">"<span class="hljs-variable">$DOCKER</span>"</span><span class="hljs-string">'@g'</span> &gt; iovns.service
 [Unit]
 Description=IOV Name Service
 After=network-online.target
@@ -110,7 +110,7 @@ Type=simple
 User=iov
 Group=iov
 EnvironmentFile=/etc/systemd/system/iovns.env
-ExecStart=docker run <span class="hljs-variable">$DOCKER_IOVNS_OPTS</span> \
+ExecStart=__DOCKER__ run <span class="hljs-variable">$DOCKER_IOVNS_OPTS</span> \
    --cidfile=<span class="hljs-variable">${DIR_WORK}</span>/<span class="hljs-variable">${FILE_CID_IOVNS}</span> \
    --<span class="hljs-built_in">read</span>-only \
    --user=<span class="hljs-variable">${IOV_UID}</span>:<span class="hljs-variable">${IOV_GID}</span> \
@@ -120,7 +120,7 @@ ExecStart=docker run <span class="hljs-variable">$DOCKER_IOVNS_OPTS</span> \
       start \
       -<span class="hljs-built_in">bind</span>=<span class="hljs-string">"unix://<span class="hljs-variable">${DIR_TM}</span>/<span class="hljs-variable">${SOCK_TM}</span>"</span> \
       <span class="hljs-variable">$IMAGE_IOVNS_OPTS</span>
-ExecStop=sh -c <span class="hljs-string">"docker stop <span class="hljs-variable">$(cat ${DIR_WORK}/${FILE_CID_IOVNS})</span>"</span>
+ExecStop=sh -c <span class="hljs-string">"__DOCKER__ stop <span class="hljs-variable">$(cat ${DIR_WORK}/${FILE_CID_IOVNS})</span>"</span>
 ExecStopPost=rm -fv <span class="hljs-variable">${DIR_WORK}</span>/<span class="hljs-variable">${FILE_CID_IOVNS}</span>
 <span class="hljs-comment">#Restart=on-failure</span>
 <span class="hljs-comment">#RestartSec=3</span>
@@ -133,7 +133,7 @@ WantedBy=multi-user.target
 __EOF_IOVNS_SERVICE__
 
 <span class="hljs-comment"># create iovns-tm.service</span>
-cat &lt;&lt;<span class="hljs-string">'__EOF_IOVNS_TM_SERVICE__'</span> &gt; iovns-tm.service
+DOCKER=$(<span class="hljs-built_in">which</span> docker) &amp;&amp; cat &lt;&lt;<span class="hljs-string">'__EOF_IOVNS_TM_SERVICE__'</span> | sed <span class="hljs-string">'s@__DOCKER__@'</span><span class="hljs-string">"<span class="hljs-variable">$DOCKER</span>"</span><span class="hljs-string">'@g'</span> &gt; iovns-tm.service
 [Unit]
 Description=Tendermint <span class="hljs-keyword">for</span> IOV Name Service
 After=iovns.service
@@ -144,7 +144,7 @@ Type=simple
 User=iov
 Group=iov
 EnvironmentFile=/etc/systemd/system/iovns.env
-ExecStart=docker run <span class="hljs-string">"<span class="hljs-variable">$DOCKER_TM_OPTS</span>"</span> \
+ExecStart=__DOCKER__ run <span class="hljs-string">"<span class="hljs-variable">$DOCKER_TM_OPTS</span>"</span> \
    --cidfile=<span class="hljs-variable">${DIR_WORK}</span>/<span class="hljs-variable">${FILE_CID_TM}</span> \
    --<span class="hljs-built_in">read</span>-only \
    --user=<span class="hljs-variable">${IOV_UID}</span>:<span class="hljs-variable">${IOV_GID}</span> \
@@ -152,7 +152,7 @@ ExecStart=docker run <span class="hljs-string">"<span class="hljs-variable">$DOC
    <span class="hljs-variable">${IMAGE_TM}</span> node \
       --proxy_app=<span class="hljs-string">"unix://<span class="hljs-variable">${DIR_TM}</span>/<span class="hljs-variable">${SOCK_TM}</span>"</span> \
       <span class="hljs-variable">$IMAGE_TM_OPTS</span>
-ExecStop=sh -c <span class="hljs-string">"docker stop <span class="hljs-variable">$(cat ${DIR_WORK}/${FILE_CID_TM})</span>"</span>
+ExecStop=sh -c <span class="hljs-string">"__DOCKER__ stop <span class="hljs-variable">$(cat ${DIR_WORK}/${FILE_CID_TM})</span>"</span>
 ExecStopPost=rm -fv <span class="hljs-variable">${DIR_WORK}</span>/<span class="hljs-variable">${FILE_CID_TM}</span>
 <span class="hljs-comment">#Restart=on-failure</span>
 <span class="hljs-comment">#RestartSec=3</span>
@@ -233,7 +233,7 @@ systemctl start iovns-tm.service
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="light-up-the-validator"></a><a href="#light-up-the-validator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Light-up the validator</h2>
 <p>Once your sentry nodes and validator are sync'ed then the final step to becoming a validator is to submit your validator's pub_key to IOV.  <strong>On your validator node</strong>, execute <code>curl --silent --fail http://localhost:16657/status | jq -r .result.validator_info.pub_key.value</code> and reply with the resulting 44 character pub_key to the ticket that was issued to you when you applied for the validator program.  (There's no <code>create-validator</code> command like in Cosmos; validators are added via governance, which is just IOV on the testnet, for the moment.)</p>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2019-7-13 by Dave Puchyr</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/validator/rewards"><span class="arrow-prev">← </span><span>Rewards</span></a><a class="docs-next button" href="/docs/validator/troubleshooter"><span>Troubleshooter</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#systemd-for-running-a-sentry-node-or-validator">Systemd for running a sentry node or validator</a></li><li><a href="#point-the-nodes-at-each-other">Point the nodes at each other</a><ul class="toc-headings"><li><a href="#sentry-node-configuration">Sentry node configuration</a></li><li><a href="#validator-configuration">Validator configuration</a></li></ul></li><li><a href="#light-up-the-validator">Light-up the validator</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/docs/en/doc2.html">Guides (or other categories)</a><a href="/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://t.me/internetofvalues">Telegram</a><a href="https://twitter.com/iov_official" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="https://github.com/iov-one">GitHub</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2019 IOV</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2019-7-15 by Dave Puchyr</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/validator/rewards"><span class="arrow-prev">← </span><span>Rewards</span></a><a class="docs-next button" href="/docs/validator/troubleshooter"><span>Troubleshooter</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#systemd-for-running-a-sentry-node-or-validator">Systemd for running a sentry node or validator</a></li><li><a href="#point-the-nodes-at-each-other">Point the nodes at each other</a><ul class="toc-headings"><li><a href="#sentry-node-configuration">Sentry node configuration</a></li><li><a href="#validator-configuration">Validator configuration</a></li></ul></li><li><a href="#light-up-the-validator">Light-up the validator</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/docs/en/doc2.html">Guides (or other categories)</a><a href="/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://t.me/internetofvalues">Telegram</a><a href="https://twitter.com/iov_official" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="https://github.com/iov-one">GitHub</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2019 IOV</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;
