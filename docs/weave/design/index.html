@@ -1,0 +1,1944 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>weave/design/index · </title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Protocol Documentation {#title}"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="weave/design/index · "/><meta property="og:type" content="website"/><meta property="og:url" content="http://docs.iov.one/"/><meta property="og:description" content="Protocol Documentation {#title}"/><meta property="og:image" content="http://docs.iov.one/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="http://docs.iov.one/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo.png" alt=""/><h2 class="headerTitleWithLogo"></h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/intro" target="_self">Docs</a></li><li class=""><a href="/help" target="_self">Help</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">weave/design/index</h1></header><article><div><span><h1><a class="anchor" aria-hidden="true" id="protocol-documentation-title"></a><a href="#protocol-documentation-title" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Protocol Documentation {#title}</h1>
+<h2><a class="anchor" aria-hidden="true" id="table-of-contents"></a><a href="#table-of-contents" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Table of Contents</h2>
+<ul>
+<li><a href="#app%2fresults.proto">app/results.proto</a>
+<ul>
+<li><a href="#app.ResultSet">MResultSet</a></li>
+</ul></li>
+<li><a href="#cmd%2fbnsd%2fapp%2fcodec.proto">cmd/bnsd/app/codec.proto</a>
+<ul>
+<li><a href="#bnsd.CronTask">MCronTask</a></li>
+<li><a href="#bnsd.ExecuteBatchMsg">MExecuteBatchMsg</a></li>
+<li><a href="#bnsd.ExecuteBatchMsg.Union">MExecuteBatchMsg.Union</a></li>
+<li><a href="#bnsd.ExecuteProposalBatchMsg">MExecuteProposalBatchMsg</a></li>
+<li><a href="#bnsd.ExecuteProposalBatchMsg.Union">MExecuteProposalBatchMsg.Union</a></li>
+<li><a href="#bnsd.ProposalOptions">MProposalOptions</a></li>
+<li><a href="#bnsd.Tx">MTx</a></li>
+</ul></li>
+<li><a href="#cmd%2fbnsd%2fx%2fusername%2fcodec.proto">cmd/bnsd/x/username/codec.proto</a>
+<ul>
+<li><a href="#username.BlockchainAddress">MBlockchainAddress</a></li>
+<li><a href="#username.ChangeTokenTargetsMsg">MChangeTokenTargetsMsg</a></li>
+<li><a href="#username.RegisterTokenMsg">MRegisterTokenMsg</a></li>
+<li><a href="#username.Token">MToken</a></li>
+<li><a href="#username.TransferTokenMsg">MTransferTokenMsg</a></li>
+</ul></li>
+<li><a href="#codec.proto">codec.proto</a>
+<ul>
+<li><a href="#weave.Metadata">MMetadata</a></li>
+<li><a href="#weave.PubKey">MPubKey</a></li>
+<li><a href="#weave.ValidatorUpdate">MValidatorUpdate</a></li>
+<li><a href="#weave.ValidatorUpdates">MValidatorUpdates</a></li>
+</ul></li>
+<li><a href="#coin%2fcodec.proto">coin/codec.proto</a>
+<ul>
+<li><a href="#coin.Coin">MCoin</a></li>
+</ul></li>
+<li><a href="#crypto%2fmodels.proto">crypto/models.proto</a>
+<ul>
+<li><a href="#crypto.PrivateKey">MPrivateKey</a></li>
+<li><a href="#crypto.PublicKey">MPublicKey</a></li>
+<li><a href="#crypto.Signature">MSignature</a></li>
+</ul></li>
+<li><a href="#migration%2fcodec.proto">migration/codec.proto</a>
+<ul>
+<li><a href="#migration.Configuration">MConfiguration</a></li>
+<li><a href="#migration.Schema">MSchema</a></li>
+<li><a href="#migration.UpgradeSchemaMsg">MUpgradeSchemaMsg</a></li>
+</ul></li>
+<li><a href="#orm%2fcodec.proto">orm/codec.proto</a>
+<ul>
+<li><a href="#orm.Counter">MCounter</a></li>
+<li><a href="#orm.MultiRef">MMultiRef</a></li>
+<li><a href="#orm.VersionedIDRef">MVersionedIDRef</a></li>
+</ul></li>
+<li><a href="#x%2faswap%2fcodec.proto">x/aswap/codec.proto</a>
+<ul>
+<li><a href="#aswap.CreateMsg">MCreateMsg</a></li>
+<li><a href="#aswap.ReleaseMsg">MReleaseMsg</a></li>
+<li><a href="#aswap.ReturnMsg">MReturnMsg</a></li>
+<li><a href="#aswap.Swap">MSwap</a></li>
+</ul></li>
+<li><a href="#x%2fbatch%2fcodec.proto">x/batch/codec.proto</a>
+<ul>
+<li><a href="#batch.ByteArrayList">MByteArrayList</a></li>
+</ul></li>
+<li><a href="#x%2fcash%2fcodec.proto">x/cash/codec.proto</a>
+<ul>
+<li><a href="#cash.Configuration">MConfiguration</a></li>
+<li><a href="#cash.FeeInfo">MFeeInfo</a></li>
+<li><a href="#cash.SendMsg">MSendMsg</a></li>
+<li><a href="#cash.Set">MSet</a></li>
+<li><a href="#cash.UpdateConfigurationMsg">MUpdateConfigurationMsg</a></li>
+</ul></li>
+<li><a href="#x%2fcron%2fcodec.proto">x/cron/codec.proto</a>
+<ul>
+<li><a href="#cron.TaskResult">MTaskResult</a></li>
+</ul></li>
+<li><a href="#x%2fcurrency%2fcodec.proto">x/currency/codec.proto</a>
+<ul>
+<li><a href="#currency.CreateMsg">MCreateMsg</a></li>
+<li><a href="#currency.TokenInfo">MTokenInfo</a></li>
+</ul></li>
+<li><a href="#x%2fdistribution%2fcodec.proto">x/distribution/codec.proto</a>
+<ul>
+<li><a href="#distribution.CreateMsg">MCreateMsg</a></li>
+<li><a href="#distribution.Destination">MDestination</a></li>
+<li><a href="#distribution.DistributeMsg">MDistributeMsg</a></li>
+<li><a href="#distribution.ResetMsg">MResetMsg</a></li>
+<li><a href="#distribution.Revenue">MRevenue</a></li>
+</ul></li>
+<li><a href="#x%2fescrow%2fcodec.proto">x/escrow/codec.proto</a>
+<ul>
+<li><a href="#escrow.CreateMsg">MCreateMsg</a></li>
+<li><a href="#escrow.Escrow">MEscrow</a></li>
+<li><a href="#escrow.ReleaseMsg">MReleaseMsg</a></li>
+<li><a href="#escrow.ReturnMsg">MReturnMsg</a></li>
+<li><a href="#escrow.UpdatePartiesMsg">MUpdatePartiesMsg</a></li>
+</ul></li>
+<li><a href="#x%2fgov%2fcodec.proto">x/gov/codec.proto</a>
+<ul>
+<li><a href="#gov.CreateProposalMsg">MCreateProposalMsg</a></li>
+<li><a href="#gov.CreateTextResolutionMsg">MCreateTextResolutionMsg</a></li>
+<li><a href="#gov.DeleteProposalMsg">MDeleteProposalMsg</a></li>
+<li><a href="#gov.ElectionRule">MElectionRule</a></li>
+<li><a href="#gov.Elector">MElector</a></li>
+<li><a href="#gov.Electorate">MElectorate</a></li>
+<li><a href="#gov.Fraction">MFraction</a></li>
+<li><a href="#gov.Proposal">MProposal</a></li>
+<li><a href="#gov.Resolution">MResolution</a></li>
+<li><a href="#gov.TallyMsg">MTallyMsg</a></li>
+<li><a href="#gov.TallyResult">MTallyResult</a></li>
+<li><a href="#gov.UpdateElectionRuleMsg">MUpdateElectionRuleMsg</a></li>
+<li><a href="#gov.UpdateElectorateMsg">MUpdateElectorateMsg</a></li>
+<li><a href="#gov.Vote">MVote</a></li>
+<li><a href="#gov.VoteMsg">MVoteMsg</a></li>
+<li><a href="#gov.Proposal.ExecutorResult">EProposal.ExecutorResult</a></li>
+<li><a href="#gov.Proposal.Result">EProposal.Result</a></li>
+<li><a href="#gov.Proposal.Status">EProposal.Status</a></li>
+<li><a href="#gov.VoteOption">EVoteOption</a></li>
+</ul></li>
+<li><a href="#x%2fgov%2fsample_test.proto">x/gov/sample_test.proto</a>
+<ul>
+<li><a href="#gov.ProposalOptions">MProposalOptions</a></li>
+</ul></li>
+<li><a href="#x%2fmsgfee%2fcodec.proto">x/msgfee/codec.proto</a>
+<ul>
+<li><a href="#msgfee.MsgFee">MMsgFee</a></li>
+</ul></li>
+<li><a href="#x%2fmultisig%2fcodec.proto">x/multisig/codec.proto</a>
+<ul>
+<li><a href="#multisig.Contract">MContract</a></li>
+<li><a href="#multisig.CreateMsg">MCreateMsg</a></li>
+<li><a href="#multisig.Participant">MParticipant</a></li>
+<li><a href="#multisig.UpdateMsg">MUpdateMsg</a></li>
+</ul></li>
+<li><a href="#x%2fpaychan%2fcodec.proto">x/paychan/codec.proto</a>
+<ul>
+<li><a href="#paychan.CloseMsg">MCloseMsg</a></li>
+<li><a href="#paychan.CreateMsg">MCreateMsg</a></li>
+<li><a href="#paychan.Payment">MPayment</a></li>
+<li><a href="#paychan.PaymentChannel">MPaymentChannel</a></li>
+<li><a href="#paychan.TransferMsg">MTransferMsg</a></li>
+</ul></li>
+<li><a href="#x%2fsigs%2fcodec.proto">x/sigs/codec.proto</a>
+<ul>
+<li><a href="#sigs.BumpSequenceMsg">MBumpSequenceMsg</a></li>
+<li><a href="#sigs.StdSignature">MStdSignature</a></li>
+<li><a href="#sigs.UserData">MUserData</a></li>
+</ul></li>
+<li><a href="#x%2fvalidators%2fcodec.proto">x/validators/codec.proto</a>
+<ul>
+<li><a href="#validators.Accounts">MAccounts</a></li>
+<li><a href="#validators.ApplyDiffMsg">MApplyDiffMsg</a></li>
+</ul></li>
+<li><a href="#scalar-value-types">Scalar Value Types</a></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="app-resultsproto-app-resultsproto"></a><a href="#app-resultsproto-app-resultsproto" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>app/results.proto {#app/results.proto}</h2>
+<p><a href="#title">Top</a></p>
+<h3><a class="anchor" aria-hidden="true" id="resultset-appresultset"></a><a href="#resultset-appresultset" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ResultSet {#app.ResultSet}</h3>
+<p>ResultSet contains a list of keys or values</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>results</p>
+<p><a href="#bytes">bytes</a></p>
+<p>repeated</p>
+<h2><a class="anchor" aria-hidden="true" id="cmd-bnsd-app-codecproto-cmd-bnsd-app-codecproto"></a><a href="#cmd-bnsd-app-codecproto-cmd-bnsd-app-codecproto" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>cmd/bnsd/app/codec.proto {#cmd/bnsd/app/codec.proto}</h2>
+<p><a href="#title">Top</a></p>
+<h3><a class="anchor" aria-hidden="true" id="crontask-bnsdcrontask"></a><a href="#crontask-bnsdcrontask" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CronTask {#bnsd.CronTask}</h3>
+<p>CronTask is a format used by the CronMarshaler to marshal and unmarshal
+cron</p>
+<p>task.</p>
+<p>When there is a gap in message sequence numbers - that most likely means
+some</p>
+<p>old fields got deprecated. This is done to maintain binary
+compatibility.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>authenticators</p>
+<p><a href="#bytes">bytes</a></p>
+<p>repeated</p>
+<p>Authenticators contains a list of conditions that authenticate execution
+of this task. This is one of the main differences between the CronTask
+and Tx entities. CronTask is created interanlly and does not have to be
+signed. Because we use the same handlers as for the Tx to process a cron
+task, we must provide authentication method. This attribute contains all
+authentication conditions required for execution, that will be inserted
+into the context.</p>
+<p>escrow_release_msg</p>
+<p><a href="#escrow.ReleaseMsg">escrow.ReleaseMsg</a></p>
+<p>escrow_return_msg</p>
+<p><a href="#escrow.ReturnMsg">escrow.ReturnMsg</a></p>
+<p>distribution_distribute_msg</p>
+<p><a href="#distribution.DistributeMsg">distribution.DistributeMsg</a></p>
+<p>aswap_release_msg</p>
+<p><a href="#aswap.ReleaseMsg">aswap.ReleaseMsg</a></p>
+<p>gov_tally_msg</p>
+<p><a href="#gov.TallyMsg">gov.TallyMsg</a></p>
+<h3><a class="anchor" aria-hidden="true" id="executebatchmsg-bnsdexecutebatchmsg"></a><a href="#executebatchmsg-bnsdexecutebatchmsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ExecuteBatchMsg {#bnsd.ExecuteBatchMsg}</h3>
+<p>ExecuteBatchMsg encapsulates multiple messages to support batch
+transaction</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>messages</p>
+<p><a href="#bnsd.ExecuteBatchMsg.Union">ExecuteBatchMsg.Union</a></p>
+<p>repeated</p>
+<h3><a class="anchor" aria-hidden="true" id="executebatchmsgunion-bnsdexecutebatchmsgunion"></a><a href="#executebatchmsgunion-bnsdexecutebatchmsgunion" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ExecuteBatchMsg.Union {#bnsd.ExecuteBatchMsg.Union}</h3>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>cash_send_msg</p>
+<p><a href="#cash.SendMsg">cash.SendMsg</a></p>
+<p>escrow_create_msg</p>
+<p><a href="#escrow.CreateMsg">escrow.CreateMsg</a></p>
+<p>escrow_release_msg</p>
+<p><a href="#escrow.ReleaseMsg">escrow.ReleaseMsg</a></p>
+<p>escrow_return_msg</p>
+<p><a href="#escrow.ReturnMsg">escrow.ReturnMsg</a></p>
+<p>escrow_update_parties_msg</p>
+<p><a href="#escrow.UpdatePartiesMsg">escrow.UpdatePartiesMsg</a></p>
+<p>multisig_create_msg</p>
+<p><a href="#multisig.CreateMsg">multisig.CreateMsg</a></p>
+<p>multisig_update_msg</p>
+<p><a href="#multisig.UpdateMsg">multisig.UpdateMsg</a></p>
+<p>validators_apply_diff_msg</p>
+<p><a href="#validators.ApplyDiffMsg">validators.ApplyDiffMsg</a></p>
+<p>currency_create_msg</p>
+<p><a href="#currency.CreateMsg">currency.CreateMsg</a></p>
+<p>username_register_token_msg</p>
+<p><a href="#username.RegisterTokenMsg">username.RegisterTokenMsg</a></p>
+<p>No recursive batches!</p>
+<p>username_transfer_token_msg</p>
+<p><a href="#username.TransferTokenMsg">username.TransferTokenMsg</a></p>
+<p>username_change_token_targets_msg</p>
+<p><a href="#username.ChangeTokenTargetsMsg">username.ChangeTokenTargetsMsg</a></p>
+<p>distribution_create_msg</p>
+<p><a href="#distribution.CreateMsg">distribution.CreateMsg</a></p>
+<p>distribution_msg</p>
+<p><a href="#distribution.DistributeMsg">distribution.DistributeMsg</a></p>
+<p>distribution_reset_msg</p>
+<p><a href="#distribution.ResetMsg">distribution.ResetMsg</a></p>
+<p>upgrade schema is important enough, it should be a solo action aswap and
+gov don't make much sense as part of a batch (no vote buying)</p>
+<h3><a class="anchor" aria-hidden="true" id="executeproposalbatchmsg-bnsdexecuteproposalbatchmsg"></a><a href="#executeproposalbatchmsg-bnsdexecuteproposalbatchmsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ExecuteProposalBatchMsg {#bnsd.ExecuteProposalBatchMsg}</h3>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>messages</p>
+<p><a href="#bnsd.ExecuteProposalBatchMsg.Union">ExecuteProposalBatchMsg.Union</a></p>
+<p>repeated</p>
+<h3><a class="anchor" aria-hidden="true" id="executeproposalbatchmsgunion-bnsdexecuteproposalbatchmsgunion"></a><a href="#executeproposalbatchmsgunion-bnsdexecuteproposalbatchmsgunion" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ExecuteProposalBatchMsg.Union {#bnsd.ExecuteProposalBatchMsg.Union}</h3>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>send_msg</p>
+<p><a href="#cash.SendMsg">cash.SendMsg</a></p>
+<p>escrow_release_msg</p>
+<p><a href="#escrow.ReleaseMsg">escrow.ReleaseMsg</a></p>
+<p>update_escrow_parties_msg</p>
+<p><a href="#escrow.UpdatePartiesMsg">escrow.UpdatePartiesMsg</a></p>
+<p>multisig_update_msg</p>
+<p><a href="#multisig.UpdateMsg">multisig.UpdateMsg</a></p>
+<p>validators_apply_diff_msg</p>
+<p><a href="#validators.ApplyDiffMsg">validators.ApplyDiffMsg</a></p>
+<p>username_register_token_msg</p>
+<p><a href="#username.RegisterTokenMsg">username.RegisterTokenMsg</a></p>
+<p>no recursive batches</p>
+<p>username_transfer_token_msg</p>
+<p><a href="#username.TransferTokenMsg">username.TransferTokenMsg</a></p>
+<p>username_change_token_targets_msg</p>
+<p><a href="#username.ChangeTokenTargetsMsg">username.ChangeTokenTargetsMsg</a></p>
+<p>distribution_create_msg</p>
+<p><a href="#distribution.CreateMsg">distribution.CreateMsg</a></p>
+<p>distribution_msg</p>
+<p><a href="#distribution.DistributeMsg">distribution.DistributeMsg</a></p>
+<p>distribution_reset_msg</p>
+<p><a href="#distribution.ResetMsg">distribution.ResetMsg</a></p>
+<p>gov_update_electorate_msg</p>
+<p><a href="#gov.UpdateElectorateMsg">gov.UpdateElectorateMsg</a></p>
+<p>don't allow UpgradeSchema as part of a batch, as effects are too
+confusing</p>
+<p>gov_update_election_rule_msg</p>
+<p><a href="#gov.UpdateElectionRuleMsg">gov.UpdateElectionRuleMsg</a></p>
+<p>gov_create_text_resolution_msg</p>
+<p><a href="#gov.CreateTextResolutionMsg">gov.CreateTextResolutionMsg</a></p>
+<h3><a class="anchor" aria-hidden="true" id="proposaloptions-bnsdproposaloptions"></a><a href="#proposaloptions-bnsdproposaloptions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ProposalOptions {#bnsd.ProposalOptions}</h3>
+<p>ProposalOptions are possible items that can be enacted by a governance
+vote</p>
+<p>Trimmed down somewhat arbitrary to what is believed to be reasonable</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>cash_send_msg</p>
+<p><a href="#cash.SendMsg">cash.SendMsg</a></p>
+<p>escrow_release_msg</p>
+<p><a href="#escrow.ReleaseMsg">escrow.ReleaseMsg</a></p>
+<p>update_escrow_parties_msg</p>
+<p><a href="#escrow.UpdatePartiesMsg">escrow.UpdatePartiesMsg</a></p>
+<p>multisig_update_msg</p>
+<p><a href="#multisig.UpdateMsg">multisig.UpdateMsg</a></p>
+<p>validators_apply_diff_msg</p>
+<p><a href="#validators.ApplyDiffMsg">validators.ApplyDiffMsg</a></p>
+<p>currency_create_msg</p>
+<p><a href="#currency.CreateMsg">currency.CreateMsg</a></p>
+<p>execute_proposal_batch_msg</p>
+<p><a href="#bnsd.ExecuteProposalBatchMsg">ExecuteProposalBatchMsg</a></p>
+<p>username_register_token_msg</p>
+<p><a href="#username.RegisterTokenMsg">username.RegisterTokenMsg</a></p>
+<p>username_transfer_token_msg</p>
+<p><a href="#username.TransferTokenMsg">username.TransferTokenMsg</a></p>
+<p>username_change_token_targets_msg</p>
+<p><a href="#username.ChangeTokenTargetsMsg">username.ChangeTokenTargetsMsg</a></p>
+<p>distribution_create_msg</p>
+<p><a href="#distribution.CreateMsg">distribution.CreateMsg</a></p>
+<p>distribution_msg</p>
+<p><a href="#distribution.DistributeMsg">distribution.DistributeMsg</a></p>
+<p>distribution_reset_msg</p>
+<p><a href="#distribution.ResetMsg">distribution.ResetMsg</a></p>
+<p>migration_upgrade_schema_msg</p>
+<p><a href="#migration.UpgradeSchemaMsg">migration.UpgradeSchemaMsg</a></p>
+<p>gov_update_electorate_msg</p>
+<p><a href="#gov.UpdateElectorateMsg">gov.UpdateElectorateMsg</a></p>
+<p>gov_update_election_rule_msg</p>
+<p><a href="#gov.UpdateElectionRuleMsg">gov.UpdateElectionRuleMsg</a></p>
+<p>gov_create_text_resolution_msg</p>
+<p><a href="#gov.CreateTextResolutionMsg">gov.CreateTextResolutionMsg</a></p>
+<h3><a class="anchor" aria-hidden="true" id="tx-bnsdtx"></a><a href="#tx-bnsdtx" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tx {#bnsd.Tx}</h3>
+<p>Tx contains the message.</p>
+<p>When extending Tx, follow the rules:</p>
+<ul>
+<li><p>range 1-50 is reserved for middlewares,</p></li>
+<li><p>range 51-inf is reserved for different message types,</p></li>
+<li><p>keep the same numbers for the same message types in both bnsd and
+other</p></li>
+</ul>
+<p>applications. For example, FeeInfo field is used by both and indexed at</p>
+<p>first position. Skip unused fields (leave index unused or comment out
+for</p>
+<p>clarity).</p>
+<p>When there is a gap in message sequence numbers - that most likely means
+some</p>
+<p>old fields got deprecated. This is done to maintain binary
+compatibility.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>fees</p>
+<p><a href="#cash.FeeInfo">cash.FeeInfo</a></p>
+<p>signatures</p>
+<p><a href="#sigs.StdSignature">sigs.StdSignature</a></p>
+<p>repeated</p>
+<p>multisig</p>
+<p><a href="#bytes">bytes</a></p>
+<p>repeated</p>
+<p>ID of a multisig contract.</p>
+<p>cash_send_msg</p>
+<p><a href="#cash.SendMsg">cash.SendMsg</a></p>
+<p>escrow_create_msg</p>
+<p><a href="#escrow.CreateMsg">escrow.CreateMsg</a></p>
+<p>escrow_release_msg</p>
+<p><a href="#escrow.ReleaseMsg">escrow.ReleaseMsg</a></p>
+<p>escrow_return_msg</p>
+<p><a href="#escrow.ReturnMsg">escrow.ReturnMsg</a></p>
+<p>escrow_update_parties_msg</p>
+<p><a href="#escrow.UpdatePartiesMsg">escrow.UpdatePartiesMsg</a></p>
+<p>multisig_create_msg</p>
+<p><a href="#multisig.CreateMsg">multisig.CreateMsg</a></p>
+<p>multisig_update_msg</p>
+<p><a href="#multisig.UpdateMsg">multisig.UpdateMsg</a></p>
+<p>validators_apply_diff_msg</p>
+<p><a href="#validators.ApplyDiffMsg">validators.ApplyDiffMsg</a></p>
+<p>currency_create_msg</p>
+<p><a href="#currency.CreateMsg">currency.CreateMsg</a></p>
+<p>execute_batch_msg</p>
+<p><a href="#bnsd.ExecuteBatchMsg">ExecuteBatchMsg</a></p>
+<p>username_register_token_msg</p>
+<p><a href="#username.RegisterTokenMsg">username.RegisterTokenMsg</a></p>
+<p>username_transfer_token_msg</p>
+<p><a href="#username.TransferTokenMsg">username.TransferTokenMsg</a></p>
+<p>username_change_token_targets_msg</p>
+<p><a href="#username.ChangeTokenTargetsMsg">username.ChangeTokenTargetsMsg</a></p>
+<p>distribution_create_msg</p>
+<p><a href="#distribution.CreateMsg">distribution.CreateMsg</a></p>
+<p>distribution_msg</p>
+<p><a href="#distribution.DistributeMsg">distribution.DistributeMsg</a></p>
+<p>distribution_reset_msg</p>
+<p><a href="#distribution.ResetMsg">distribution.ResetMsg</a></p>
+<p>migration_upgrade_schema_msg</p>
+<p><a href="#migration.UpgradeSchemaMsg">migration.UpgradeSchemaMsg</a></p>
+<p>aswap_create_msg</p>
+<p><a href="#aswap.CreateMsg">aswap.CreateMsg</a></p>
+<p>aswap_release_msg</p>
+<p><a href="#aswap.ReleaseMsg">aswap.ReleaseMsg</a></p>
+<p>aswap_return_msg</p>
+<p><a href="#aswap.ReturnMsg">aswap.ReturnMsg</a></p>
+<p>gov_create_proposal_msg</p>
+<p><a href="#gov.CreateProposalMsg">gov.CreateProposalMsg</a></p>
+<p>gov_delete_proposal_msg</p>
+<p><a href="#gov.DeleteProposalMsg">gov.DeleteProposalMsg</a></p>
+<p>gov_vote_msg</p>
+<p><a href="#gov.VoteMsg">gov.VoteMsg</a></p>
+<p>gov_update_electorate_msg</p>
+<p><a href="#gov.UpdateElectorateMsg">gov.UpdateElectorateMsg</a></p>
+<p>Tally is executed via cron only. gov.TallyMsg gov_tally_msg = 76;</p>
+<p>gov_update_election_rule_msg</p>
+<p><a href="#gov.UpdateElectionRuleMsg">gov.UpdateElectionRuleMsg</a></p>
+<p>79 is reserved (see ProposalOptions: TextResolutionMsg)</p>
+<h2><a class="anchor" aria-hidden="true" id="cmd-bnsd-x-username-codecproto-cmd-bnsd-x-username-codecproto"></a><a href="#cmd-bnsd-x-username-codecproto-cmd-bnsd-x-username-codecproto" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>cmd/bnsd/x/username/codec.proto {#cmd/bnsd/x/username/codec.proto}</h2>
+<p><a href="#title">Top</a></p>
+<h3><a class="anchor" aria-hidden="true" id="blockchainaddress-usernameblockchainaddress"></a><a href="#blockchainaddress-usernameblockchainaddress" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>BlockchainAddress {#username.BlockchainAddress}</h3>
+<p>BlockchainAddress represents a blochain address. This structure clubs
+together</p>
+<p>blokchain ID together with an address on that network. It is used to
+point</p>
+<p>to an address on any blockchain network.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>blockchain_id</p>
+<p><a href="#string">string</a></p>
+<p>An arbitrary blockchain ID.</p>
+<p>address</p>
+<p><a href="#string">string</a></p>
+<p>An address on the specified blockchain network. Address is not a
+weave.Address as we cannot know what is the format of an address on the
+chain that this token instance links to. Because we do not know the
+rules to validate an address for any blockchain ID, this is an arbitrary
+bulk of data. It is more convinient to always use encoded representation
+of each address and store it as a string. Using bytes while compact is
+not as comfortable to use.</p>
+<h3><a class="anchor" aria-hidden="true" id="changetokentargetsmsg-usernamechangetokentargetsmsg"></a><a href="#changetokentargetsmsg-usernamechangetokentargetsmsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ChangeTokenTargetsMsg {#username.ChangeTokenTargetsMsg}</h3>
+<p>ChangeTokenTargetsMsg is a request to change the address that this token</p>
+<p>points to. Only the owner of a token can request this operation.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>username</p>
+<p><a href="#string">string</a></p>
+<p>Username is the unique name of the token, for example alice*iov</p>
+<p>new_targets</p>
+<p><a href="#username.BlockchainAddress">BlockchainAddress</a></p>
+<p>repeated</p>
+<p>New targets is a list of blockchain addresses that this token should
+point to after the change. Old list is overwritten with what is
+provided.</p>
+<h3><a class="anchor" aria-hidden="true" id="registertokenmsg-usernameregistertokenmsg"></a><a href="#registertokenmsg-usernameregistertokenmsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RegisterTokenMsg {#username.RegisterTokenMsg}</h3>
+<p>RegisterTokenMsg is creating a new username token. The owner is always
+set</p>
+<p>to the main signer.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>username</p>
+<p><a href="#string">string</a></p>
+<p>Username is the unique name of the token, for example alice*iov</p>
+<p>targets</p>
+<p><a href="#username.BlockchainAddress">BlockchainAddress</a></p>
+<p>repeated</p>
+<p>Targets is a blockchain address list that this token should point to.</p>
+<h3><a class="anchor" aria-hidden="true" id="token-usernametoken"></a><a href="#token-usernametoken" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Token {#username.Token}</h3>
+<p>Token model represents a username mapping to an address together with
+all</p>
+<p>metadata.</p>
+<p>Each Token model is stored using the username as the key. This guarantee</p>
+<p>that the name is unique. Username is a combination of a name and a
+domain.</p>
+<p>The format is *</p>
+<p>Each token points to a blockchain and an address on that blockchain.
+Both</p>
+<p>blockchain ID and address are an arbitrary string as we do not want to
+limit</p>
+<p>ourselves to certain patterns.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>targets</p>
+<p><a href="#username.BlockchainAddress">BlockchainAddress</a></p>
+<p>repeated</p>
+<p>Targets specifies where this username token points to. This must be at
+least one blockchain address elemenet.</p>
+<p>owner</p>
+<p><a href="#bytes">bytes</a></p>
+<p>Owner is a weave.Address that controls this token. Only the owner can
+modify a username token.</p>
+<h3><a class="anchor" aria-hidden="true" id="transfertokenmsg-usernametransfertokenmsg"></a><a href="#transfertokenmsg-usernametransfertokenmsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>TransferTokenMsg {#username.TransferTokenMsg}</h3>
+<p>TransferTokenMsg is a request to transfer an ownership of a token. The</p>
+<p>mesage must be signed by the current token owner. Acceptance of the new</p>
+<p>owner is not required in order to succeed.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>username</p>
+<p><a href="#string">string</a></p>
+<p>Username is the unique name of the token, for example alice*iov</p>
+<p>new_owner</p>
+<p><a href="#bytes">bytes</a></p>
+<p>Owner is a weave address that will owns this token after the change.</p>
+<h2><a class="anchor" aria-hidden="true" id="codecproto"></a><a href="#codecproto" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>codec.proto</h2>
+<p><a href="#title">Top</a></p>
+<h3><a class="anchor" aria-hidden="true" id="metadata-weavemetadata"></a><a href="#metadata-weavemetadata" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Metadata {#weave.Metadata}</h3>
+<p>Metadata is expected to be the first argument of every message or model.
+It</p>
+<p>contains all essential attributes.</p>
+<p>Each protobuf message should be declared with the first attribute being</p>
+<p>weave.Metadata metadata = 1;</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>schema</p>
+<p><a href="#uint32">uint32</a></p>
+<h3><a class="anchor" aria-hidden="true" id="pubkey-weavepubkey"></a><a href="#pubkey-weavepubkey" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PubKey {#weave.PubKey}</h3>
+<p>PubKey represents a validator public key.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>type</p>
+<p><a href="#string">string</a></p>
+<p>data</p>
+<p><a href="#bytes">bytes</a></p>
+<h3><a class="anchor" aria-hidden="true" id="validatorupdate-weavevalidatorupdate"></a><a href="#validatorupdate-weavevalidatorupdate" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ValidatorUpdate {#weave.ValidatorUpdate}</h3>
+<p>ValidatorUpdate represents an update to validator set.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>pub_key</p>
+<p><a href="#weave.PubKey">PubKey</a></p>
+<p>power</p>
+<p><a href="#int64">int64</a></p>
+<h3><a class="anchor" aria-hidden="true" id="validatorupdates-weavevalidatorupdates"></a><a href="#validatorupdates-weavevalidatorupdates" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ValidatorUpdates {#weave.ValidatorUpdates}</h3>
+<p>ValidatorUpdates represents latest validator state, currently used to
+validate SetValidatorMsg transactions.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>validator_updates</p>
+<p><a href="#weave.ValidatorUpdate">ValidatorUpdate</a></p>
+<p>repeated</p>
+<h2><a class="anchor" aria-hidden="true" id="coin-codecproto-coin-codecproto"></a><a href="#coin-codecproto-coin-codecproto" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>coin/codec.proto {#coin/codec.proto}</h2>
+<p><a href="#title">Top</a></p>
+<h3><a class="anchor" aria-hidden="true" id="coin-coincoin"></a><a href="#coin-coincoin" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Coin {#coin.Coin}</h3>
+<p>Coin can hold any amount between -1 billion and +1 billion</p>
+<p>at steps of 10^-9. It is a fixed-point decimal</p>
+<p>representation and uses integers to avoid rounding</p>
+<p>associated with floats.</p>
+<p>Every code has a denomination, which is just a</p>
+<p>If you want anything more complex, you should write your</p>
+<p>own type, possibly borrowing from this code.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>whole</p>
+<p><a href="#int64">int64</a></p>
+<p>Whole coins, -10^15 &lt; integer &lt; 10^15</p>
+<p>fractional</p>
+<p><a href="#int64">int64</a></p>
+<p>Billionth of coins. 0 &lt;= abs(fractional) &lt; 10^9 If fractional != 0,
+must have same sign as integer</p>
+<p>ticker</p>
+<p><a href="#string">string</a></p>
+<p>Ticker is 3-4 upper-case letters and all Coins of the same currency can
+be combined</p>
+<h2><a class="anchor" aria-hidden="true" id="crypto-modelsproto-crypto-modelsproto"></a><a href="#crypto-modelsproto-crypto-modelsproto" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>crypto/models.proto {#crypto/models.proto}</h2>
+<p><a href="#title">Top</a></p>
+<h3><a class="anchor" aria-hidden="true" id="privatekey-cryptoprivatekey"></a><a href="#privatekey-cryptoprivatekey" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PrivateKey {#crypto.PrivateKey}</h3>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>ed25519</p>
+<p><a href="#bytes">bytes</a></p>
+<h3><a class="anchor" aria-hidden="true" id="publickey-cryptopublickey"></a><a href="#publickey-cryptopublickey" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PublicKey {#crypto.PublicKey}</h3>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>ed25519</p>
+<p><a href="#bytes">bytes</a></p>
+<h3><a class="anchor" aria-hidden="true" id="signature-cryptosignature"></a><a href="#signature-cryptosignature" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Signature {#crypto.Signature}</h3>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>ed25519</p>
+<p><a href="#bytes">bytes</a></p>
+<h2><a class="anchor" aria-hidden="true" id="migration-codecproto-migration-codecproto"></a><a href="#migration-codecproto-migration-codecproto" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>migration/codec.proto {#migration/codec.proto}</h2>
+<p><a href="#title">Top</a></p>
+<h3><a class="anchor" aria-hidden="true" id="configuration-migrationconfiguration"></a><a href="#configuration-migrationconfiguration" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Configuration {#migration.Configuration}</h3>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>admin</p>
+<p><a href="#bytes">bytes</a></p>
+<p>Admin holds the address of the administrator allowed to upgrade schema
+versions. If you wish to permit more than one entity to be an admin, use
+multisig.</p>
+<h3><a class="anchor" aria-hidden="true" id="schema-migrationschema"></a><a href="#schema-migrationschema" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Schema {#migration.Schema}</h3>
+<p>Schema declares the maxiumum supported schema version for a package.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>pkg</p>
+<p><a href="#string">string</a></p>
+<p>Pkg holds the name of the package that this migration is declared for.
+For example, for extension `x/myext` package value is `myext`</p>
+<p>version</p>
+<p><a href="#uint32">uint32</a></p>
+<p>Version holds the highest supported schema version.</p>
+<h3><a class="anchor" aria-hidden="true" id="upgradeschemamsg-migrationupgradeschemamsg"></a><a href="#upgradeschemamsg-migrationupgradeschemamsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>UpgradeSchemaMsg {#migration.UpgradeSchemaMsg}</h3>
+<p>UpgradeSchemaMsg is a request to upgrade schema version of a given
+package</p>
+<p>by one version.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>pkg</p>
+<p><a href="#string">string</a></p>
+<p>Name of the package that schema version upgrade is made for.</p>
+<h2><a class="anchor" aria-hidden="true" id="orm-codecproto-orm-codecproto"></a><a href="#orm-codecproto-orm-codecproto" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>orm/codec.proto {#orm/codec.proto}</h2>
+<p><a href="#title">Top</a></p>
+<h3><a class="anchor" aria-hidden="true" id="counter-ormcounter"></a><a href="#counter-ormcounter" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Counter {#orm.Counter}</h3>
+<p>Counter could be used for sequence, but mainly just for test</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>count</p>
+<p><a href="#int64">int64</a></p>
+<h3><a class="anchor" aria-hidden="true" id="multiref-ormmultiref"></a><a href="#multiref-ormmultiref" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>MultiRef {#orm.MultiRef}</h3>
+<p>MultiRef contains a list of references to pks</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>refs</p>
+<p><a href="#bytes">bytes</a></p>
+<p>repeated</p>
+<h3><a class="anchor" aria-hidden="true" id="versionedidref-ormversionedidref"></a><a href="#versionedidref-ormversionedidref" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>VersionedIDRef {#orm.VersionedIDRef}</h3>
+<p>VersionedID is the combination of document ID and version number.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>id</p>
+<p><a href="#bytes">bytes</a></p>
+<p>Unique identifier</p>
+<p>version</p>
+<p><a href="#uint32">uint32</a></p>
+<p>Document version, starting with 1.</p>
+<h2><a class="anchor" aria-hidden="true" id="x-aswap-codecproto-x-aswap-codecproto"></a><a href="#x-aswap-codecproto-x-aswap-codecproto" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>x/aswap/codec.proto {#x/aswap/codec.proto}</h2>
+<p><a href="#title">Top</a></p>
+<h3><a class="anchor" aria-hidden="true" id="createmsg-aswapcreatemsg"></a><a href="#createmsg-aswapcreatemsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CreateMsg {#aswap.CreateMsg}</h3>
+<p>CreateMsg creates a Swap with some coins.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>source</p>
+<p><a href="#bytes">bytes</a></p>
+<p>preimage_hash</p>
+<p><a href="#bytes">bytes</a></p>
+<p>sha256 hash of preimage, 32 bytes long</p>
+<p>destination</p>
+<p><a href="#bytes">bytes</a></p>
+<p>amount</p>
+<p><a href="#coin.Coin">coin.Coin</a></p>
+<p>repeated</p>
+<p>amount may contain multiple token types</p>
+<p>timeout</p>
+<p><a href="#int64">int64</a></p>
+<p>Timeout represents wall clock time.</p>
+<p>memo</p>
+<p><a href="#string">string</a></p>
+<p>max length 128 character</p>
+<h3><a class="anchor" aria-hidden="true" id="releasemsg-aswapreleasemsg"></a><a href="#releasemsg-aswapreleasemsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ReleaseMsg {#aswap.ReleaseMsg}</h3>
+<p>ReleaseMsg releases the tokens to the destination.</p>
+<p>This operation is authorized by preimage, which is sent raw and then
+hashed on the backend.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>swap_id</p>
+<p><a href="#bytes">bytes</a></p>
+<p>swap_id to release</p>
+<p>preimage</p>
+<p><a href="#bytes">bytes</a></p>
+<p>raw preimage to unlock swap, also helpful to retrieve the swap by it's
+hashed version must be exactly 32 bytes long</p>
+<h3><a class="anchor" aria-hidden="true" id="returnmsg-aswapreturnmsg"></a><a href="#returnmsg-aswapreturnmsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ReturnMsg {#aswap.ReturnMsg}</h3>
+<p>ReturnMsg releases the tokens to the source.</p>
+<p>This operation only works if the Swap is expired.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>swap_id</p>
+<p><a href="#bytes">bytes</a></p>
+<p>swap_id to return</p>
+<h3><a class="anchor" aria-hidden="true" id="swap-aswapswap"></a><a href="#swap-aswapswap" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Swap {#aswap.Swap}</h3>
+<p>Swap is designed to hold some coins for atomic swap, locked by
+preimage_hash</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>metadata is used for schema versioning support</p>
+<p>preimage_hash</p>
+<p><a href="#bytes">bytes</a></p>
+<p>sha256 hash of preimage, 32 bytes long</p>
+<p>source</p>
+<p><a href="#bytes">bytes</a></p>
+<p>source is a sender address</p>
+<p>destination</p>
+<p><a href="#bytes">bytes</a></p>
+<p>destination is an address of destination</p>
+<p>timeout</p>
+<p><a href="#int64">int64</a></p>
+<p>If unreleased before timeout, swap will return coins to source. Timeout
+represents wall clock time as read from the block header. Timeout is
+represented using POSIX time format. Expiration time is inclusive
+meaning that the swap expires as soon as the current time is equal or
+greater than timeout value. nonexpired: [created, timeout) expired:
+[timeout, infinity)</p>
+<p>memo</p>
+<p><a href="#string">string</a></p>
+<p>max length 128 characters</p>
+<p>address</p>
+<p><a href="#bytes">bytes</a></p>
+<p>Address of this entity. Set during creation and does not change.</p>
+<h2><a class="anchor" aria-hidden="true" id="x-batch-codecproto-x-batch-codecproto"></a><a href="#x-batch-codecproto-x-batch-codecproto" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>x/batch/codec.proto {#x/batch/codec.proto}</h2>
+<p><a href="#title">Top</a></p>
+<h3><a class="anchor" aria-hidden="true" id="bytearraylist-batchbytearraylist"></a><a href="#bytearraylist-batchbytearraylist" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ByteArrayList {#batch.ByteArrayList}</h3>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>elements</p>
+<p><a href="#bytes">bytes</a></p>
+<p>repeated</p>
+<h2><a class="anchor" aria-hidden="true" id="x-cash-codecproto-x-cash-codecproto"></a><a href="#x-cash-codecproto-x-cash-codecproto" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>x/cash/codec.proto {#x/cash/codec.proto}</h2>
+<p><a href="#title">Top</a></p>
+<h3><a class="anchor" aria-hidden="true" id="configuration-cashconfiguration"></a><a href="#configuration-cashconfiguration" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Configuration {#cash.Configuration}</h3>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>owner</p>
+<p><a href="#bytes">bytes</a></p>
+<p>Owner is present to implement gconf.OwnedConfig interface This defines
+the Address that is allowed to update the Configuration object and is
+needed to make use of gconf.NewUpdateConfigurationHandler</p>
+<p>collector_address</p>
+<p><a href="#bytes">bytes</a></p>
+<p>minimal_fee</p>
+<p><a href="#coin.Coin">coin.Coin</a></p>
+<h3><a class="anchor" aria-hidden="true" id="feeinfo-cashfeeinfo"></a><a href="#feeinfo-cashfeeinfo" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>FeeInfo {#cash.FeeInfo}</h3>
+<p>FeeInfo records who pays what fees to have this</p>
+<p>message processed</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>payer</p>
+<p><a href="#bytes">bytes</a></p>
+<p>fees</p>
+<p><a href="#coin.Coin">coin.Coin</a></p>
+<h3><a class="anchor" aria-hidden="true" id="sendmsg-cashsendmsg"></a><a href="#sendmsg-cashsendmsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SendMsg {#cash.SendMsg}</h3>
+<p>SendMsg is a request to move these coins from the given</p>
+<p>source to the given destination address.</p>
+<p>memo is an optional human-readable message</p>
+<p>ref is optional binary data, that can refer to another</p>
+<p>eg. tx hash</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>source</p>
+<p><a href="#bytes">bytes</a></p>
+<p>destination</p>
+<p><a href="#bytes">bytes</a></p>
+<p>amount</p>
+<p><a href="#coin.Coin">coin.Coin</a></p>
+<p>memo</p>
+<p><a href="#string">string</a></p>
+<p>max length 128 character</p>
+<p>ref</p>
+<p><a href="#bytes">bytes</a></p>
+<p>max length 64 bytes</p>
+<h3><a class="anchor" aria-hidden="true" id="set-cashset"></a><a href="#set-cashset" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Set {#cash.Set}</h3>
+<p>Set may contain Coin of many different currencies.</p>
+<p>It handles adding and subtracting sets of currencies.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>coins</p>
+<p><a href="#coin.Coin">coin.Coin</a></p>
+<p>repeated</p>
+<h3><a class="anchor" aria-hidden="true" id="updateconfigurationmsg-cashupdateconfigurationmsg"></a><a href="#updateconfigurationmsg-cashupdateconfigurationmsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>UpdateConfigurationMsg {#cash.UpdateConfigurationMsg}</h3>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>patch</p>
+<p><a href="#cash.Configuration">Configuration</a></p>
+<h2><a class="anchor" aria-hidden="true" id="x-cron-codecproto-x-cron-codecproto"></a><a href="#x-cron-codecproto-x-cron-codecproto" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>x/cron/codec.proto {#x/cron/codec.proto}</h2>
+<p><a href="#title">Top</a></p>
+<h3><a class="anchor" aria-hidden="true" id="taskresult-crontaskresult"></a><a href="#taskresult-crontaskresult" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>TaskResult {#cron.TaskResult}</h3>
+<p>TaskResult is a publicly available information about task execution
+result.</p>
+<p>It is only created for those tasks that were executed.</p>
+<p>Due to a bug in tendermint we must store this information ourselves
+instead</p>
+<p>of relying on the usual search via tag.</p>
+<p><a href="https://github.com/tendermint/tendermint/issues/3665">https://github.com/tendermint/tendermint/issues/3665</a></p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>successful</p>
+<p><a href="#bool">bool</a></p>
+<p>Successful is set to true if the task was successfully executed.</p>
+<p>info</p>
+<p><a href="#string">string</a></p>
+<p>Info contains any additinal information that might be useful to lean
+more about the task execution.</p>
+<p>exec_time</p>
+<p><a href="#int64">int64</a></p>
+<p>Exec time hold the information of when the task was executed.</p>
+<p>exec_height</p>
+<p><a href="#int64">int64</a></p>
+<p>Exec height holds the block height value at the time the task was
+executed.</p>
+<h2><a class="anchor" aria-hidden="true" id="x-currency-codecproto-x-currency-codecproto"></a><a href="#x-currency-codecproto-x-currency-codecproto" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>x/currency/codec.proto {#x/currency/codec.proto}</h2>
+<p><a href="#title">Top</a></p>
+<h3><a class="anchor" aria-hidden="true" id="createmsg-currencycreatemsg"></a><a href="#createmsg-currencycreatemsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CreateMsg {#currency.CreateMsg}</h3>
+<p>CreateMsg will register a new currency. Ticker (currency symbol) can</p>
+<p>be registered only once.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>ticker</p>
+<p><a href="#string">string</a></p>
+<p>name</p>
+<p><a href="#string">string</a></p>
+<h3><a class="anchor" aria-hidden="true" id="tokeninfo-currencytokeninfo"></a><a href="#tokeninfo-currencytokeninfo" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>TokenInfo {#currency.TokenInfo}</h3>
+<p>TokenInfo contains information about a single currency. It is used as an</p>
+<p>alternative solution to hardcoding supported currencies information.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>name</p>
+<p><a href="#string">string</a></p>
+<h2><a class="anchor" aria-hidden="true" id="x-distribution-codecproto-x-distribution-codecproto"></a><a href="#x-distribution-codecproto-x-distribution-codecproto" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>x/distribution/codec.proto {#x/distribution/codec.proto}</h2>
+<p><a href="#title">Top</a></p>
+<h3><a class="anchor" aria-hidden="true" id="createmsg-distributioncreatemsg"></a><a href="#createmsg-distributioncreatemsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CreateMsg {#distribution.CreateMsg}</h3>
+<p>CreateMsg is issuing the creation of a new revenue stream instance.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>admin</p>
+<p><a href="#bytes">bytes</a></p>
+<p>Admin key belongs to the governance entities. It can be used to transfer
+stored amount to an another account. While not enforced it is best to
+use a multisig contract here.</p>
+<p>destinations</p>
+<p><a href="#distribution.Destination">Destination</a></p>
+<p>repeated</p>
+<p>Destinations holds any number of addresses that the collected revenue is
+distributed to. Must be at least one.</p>
+<h3><a class="anchor" aria-hidden="true" id="destination-distributiondestination"></a><a href="#destination-distributiondestination" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Destination {#distribution.Destination}</h3>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>address</p>
+<p><a href="#bytes">bytes</a></p>
+<p>An address that the funds should be transferred to. This should not be
+the validator addresses, as the keys used to sign blocks should never be
+in a wallet. This can be the wallets of the admins of the validators.</p>
+<p>weight</p>
+<p><a href="#int32">int32</a></p>
+<p>Weight defines what part of the total revenue goes to this destination.
+Each destination receives part of the total revenue amount proportional
+to the weight. For example, if there are two destinations with weights 1
+and 2 accordingly, distribution will be 1/3 to the first address and 2/3
+to the second one.</p>
+<h3><a class="anchor" aria-hidden="true" id="distributemsg-distributiondistributemsg"></a><a href="#distributemsg-distributiondistributemsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>DistributeMsg {#distribution.DistributeMsg}</h3>
+<p>DistributeMsg is a request to distribute all funds collected within a
+single</p>
+<p>revenue instance. Revenue is distributed between destinations. Request
+must be</p>
+<p>signed using admin key.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>revenue_id</p>
+<p><a href="#bytes">bytes</a></p>
+<p>Revenue ID reference an ID of a revenue instance that the collected fees
+should be distributed between destinations.</p>
+<h3><a class="anchor" aria-hidden="true" id="resetmsg-distributionresetmsg"></a><a href="#resetmsg-distributionresetmsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ResetMsg {#distribution.ResetMsg}</h3>
+<p>ResetMsg change the configuration of a revenue instance.</p>
+<p>To assure destinations that they will receive money, every revenue
+update is</p>
+<p>forcing funds distribution. Before applying any change all funds stored
+by</p>
+<p>the revenue account are distributed using old configuration. Only when
+the</p>
+<p>collected revenue amount is equal to zero the change is applied.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>revenue_id</p>
+<p><a href="#bytes">bytes</a></p>
+<p>Revenue ID reference an ID of a revenue instance that is updated.</p>
+<p>destinations</p>
+<p><a href="#distribution.Destination">Destination</a></p>
+<p>repeated</p>
+<p>Destinations holds any number of addresses that the collected revenue is
+distributed to. Must be at least one.</p>
+<h3><a class="anchor" aria-hidden="true" id="revenue-distributionrevenue"></a><a href="#revenue-distributionrevenue" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Revenue {#distribution.Revenue}</h3>
+<p>Revenue represents an account with funds collected from the fees. This
+is a</p>
+<p>temporary account used for storing fees that are later distributed
+between</p>
+<p>the owners.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>admin</p>
+<p><a href="#bytes">bytes</a></p>
+<p>Admin key belongs to the governance entities. It can be used to transfer
+stored amount to an another account. While not enforced it is best to
+use a multisig contract here.</p>
+<p>destinations</p>
+<p><a href="#distribution.Destination">Destination</a></p>
+<p>repeated</p>
+<p>Destinations holds any number of addresses that the collected revenue is
+distributed to. Must be at least one.</p>
+<p>address</p>
+<p><a href="#bytes">bytes</a></p>
+<p>Address of this entity. Set during creation and does not change.</p>
+<h2><a class="anchor" aria-hidden="true" id="x-escrow-codecproto-x-escrow-codecproto"></a><a href="#x-escrow-codecproto-x-escrow-codecproto" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>x/escrow/codec.proto {#x/escrow/codec.proto}</h2>
+<p><a href="#title">Top</a></p>
+<h3><a class="anchor" aria-hidden="true" id="createmsg-escrowcreatemsg"></a><a href="#createmsg-escrowcreatemsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CreateMsg {#escrow.CreateMsg}</h3>
+<p>CreateMsg is a request to create an Escrow with some tokens.</p>
+<p>If source is not defined, it defaults to the first signer</p>
+<p>The rest must be defined</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>source</p>
+<p><a href="#bytes">bytes</a></p>
+<p>arbiter</p>
+<p><a href="#bytes">bytes</a></p>
+<p>destination</p>
+<p><a href="#bytes">bytes</a></p>
+<p>amount</p>
+<p><a href="#coin.Coin">coin.Coin</a></p>
+<p>repeated</p>
+<p>amount may contain multiple token types</p>
+<p>timeout</p>
+<p><a href="#int64">int64</a></p>
+<p>Timeout represents wall clock time.</p>
+<p>memo</p>
+<p><a href="#string">string</a></p>
+<p>max length 128 character</p>
+<h3><a class="anchor" aria-hidden="true" id="escrow-escrowescrow"></a><a href="#escrow-escrowescrow" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Escrow {#escrow.Escrow}</h3>
+<p>Escrow holds some coins.</p>
+<p>The arbiter or source can release them to the destination.</p>
+<p>The destination can return them to the source.</p>
+<p>Upon timeout, they will be returned to the source.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>source</p>
+<p><a href="#bytes">bytes</a></p>
+<p>arbiter</p>
+<p><a href="#bytes">bytes</a></p>
+<p>destination</p>
+<p><a href="#bytes">bytes</a></p>
+<p>timeout</p>
+<p><a href="#int64">int64</a></p>
+<p>If unreleased before timeout, escrow will return to source. Timeout
+represents wall clock time as read from the block header. Timeout is
+represented using POSIX time format. Expiration time is inclusive
+meaning that the escrow expires as soon as the current time is equal or
+greater than timeout value. nonexpired: [created, timeout) expired:
+[timeout, infinity)</p>
+<p>memo</p>
+<p><a href="#string">string</a></p>
+<p>max length 128 character</p>
+<p>address</p>
+<p><a href="#bytes">bytes</a></p>
+<p>Address of this entity. Set during creation and does not change.</p>
+<h3><a class="anchor" aria-hidden="true" id="releasemsg-escrowreleasemsg"></a><a href="#releasemsg-escrowreleasemsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ReleaseMsg {#escrow.ReleaseMsg}</h3>
+<p>ReleaseMsg releases the content to the destination.</p>
+<p>Must be authorized by source or arbiter.</p>
+<p>If amount not provided, defaults to entire escrow,</p>
+<p>May be a subset of the current balance.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>escrow_id</p>
+<p><a href="#bytes">bytes</a></p>
+<p>amount</p>
+<p><a href="#coin.Coin">coin.Coin</a></p>
+<p>repeated</p>
+<h3><a class="anchor" aria-hidden="true" id="returnmsg-escrowreturnmsg"></a><a href="#returnmsg-escrowreturnmsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ReturnMsg {#escrow.ReturnMsg}</h3>
+<p>ReturnMsg returns the content to the source.</p>
+<p>Must be authorized by the source or an expired timeout</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>escrow_id</p>
+<p><a href="#bytes">bytes</a></p>
+<h3><a class="anchor" aria-hidden="true" id="updatepartiesmsg-escrowupdatepartiesmsg"></a><a href="#updatepartiesmsg-escrowupdatepartiesmsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>UpdatePartiesMsg {#escrow.UpdatePartiesMsg}</h3>
+<p>UpdatePartiesMsg changes any of the parties of the escrow:</p>
+<p>source, arbiter, destination. This must be authorized by the current</p>
+<p>holder of that position (eg. only source can update source).</p>
+<p>Represents delegating responsibility</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>escrow_id</p>
+<p><a href="#bytes">bytes</a></p>
+<p>source</p>
+<p><a href="#bytes">bytes</a></p>
+<p>arbiter</p>
+<p><a href="#bytes">bytes</a></p>
+<p>destination</p>
+<p><a href="#bytes">bytes</a></p>
+<h2><a class="anchor" aria-hidden="true" id="x-gov-codecproto-x-gov-codecproto"></a><a href="#x-gov-codecproto-x-gov-codecproto" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>x/gov/codec.proto {#x/gov/codec.proto}</h2>
+<p><a href="#title">Top</a></p>
+<h3><a class="anchor" aria-hidden="true" id="createproposalmsg-govcreateproposalmsg"></a><a href="#createproposalmsg-govcreateproposalmsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CreateProposalMsg {#gov.CreateProposalMsg}</h3>
+<p>CreateProposalMsg creates a new governance proposal.</p>
+<p>Most fields control the whole election process.</p>
+<p>raw_option contains an transaction to be executed by the governance
+vote in case of success</p>
+<p>(what is being voted on)</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>title</p>
+<p><a href="#string">string</a></p>
+<p>Human readable title. Must match `^[a-zA-Z0-9 _.-]{4,128}$`</p>
+<p>raw_option</p>
+<p><a href="#bytes">bytes</a></p>
+<p>Content of the proposal. Protobuf encoded, app-specific decoded must be
+passed in handler constructor</p>
+<p>description</p>
+<p><a href="#string">string</a></p>
+<p>Human readable description with 3 to 5000 chars.</p>
+<p>election_rule_id</p>
+<p><a href="#bytes">bytes</a></p>
+<p>ElectionRuleID is a reference to the election rule</p>
+<p>start_time</p>
+<p><a href="#int64">int64</a></p>
+<p>Unix timestamp when the proposal starts. Must be in the future.</p>
+<p>author</p>
+<p><a href="#bytes">bytes</a></p>
+<p>Author is an optional field to set the address of the author with a
+proposal. The author must sign the message. When not set it will default
+to the main signer.</p>
+<h3><a class="anchor" aria-hidden="true" id="createtextresolutionmsg-govcreatetextresolutionmsg"></a><a href="#createtextresolutionmsg-govcreatetextresolutionmsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CreateTextResolutionMsg {#gov.CreateTextResolutionMsg}</h3>
+<p>TextResolutionMsg is only intended to be dispatched internally from
+election</p>
+<p>results. It adds a resolution to the list of &quot;approved&quot; resolutions,</p>
+<p>with a reference to the electorate that approved it</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>resolution</p>
+<p><a href="#string">string</a></p>
+<h3><a class="anchor" aria-hidden="true" id="deleteproposalmsg-govdeleteproposalmsg"></a><a href="#deleteproposalmsg-govdeleteproposalmsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>DeleteProposalMsg {#gov.DeleteProposalMsg}</h3>
+<p>DeleteProposalMsg deletes a governance proposal.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>proposal_id</p>
+<p><a href="#bytes">bytes</a></p>
+<p>ProposalID is the unique identifier of the proposal to delete</p>
+<h3><a class="anchor" aria-hidden="true" id="electionrule-govelectionrule"></a><a href="#electionrule-govelectionrule" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ElectionRule {#gov.ElectionRule}</h3>
+<p>Election Rule defines how an election is run. A proposal must be voted
+upon via a pre-defined ruleset.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>version</p>
+<p><a href="#uint32">uint32</a></p>
+<p>Document version.</p>
+<p>admin</p>
+<p><a href="#bytes">bytes</a></p>
+<p>Admin is the address that is allowed to modify an existing election
+rule.</p>
+<p>electorate_id</p>
+<p><a href="#bytes">bytes</a></p>
+<p>ElectorateID references the electorate using this rule (without version,
+as changing electorate changes the rule).</p>
+<p>title</p>
+<p><a href="#string">string</a></p>
+<p>Human readable title.</p>
+<p>voting_period</p>
+<p><a href="#uint32">uint32</a></p>
+<p>Duration in seconds of how long the voting period will take place.</p>
+<p>threshold</p>
+<p><a href="#gov.Fraction">Fraction</a></p>
+<p>Threshold is the fraction of either all eligible voters or in case of a
+quorum setup the fraction of all non abstained votes. To accept a
+proposal this value must be exceeded with Yes votes. The formula applied
+is: (yes * denominator) &gt; (base * numerator) with base total
+electorate weight or Yes/No votes in case of quorum set The valid range
+for the threshold value is `0.5` to `1` (inclusive) which allows any
+value between half and all of the eligible voters.</p>
+<p>quorum</p>
+<p><a href="#gov.Fraction">Fraction</a></p>
+<p>The quorum fraction of eligible voters is based on the total electorate
+weight and defines a threshold of votes that must be exceeded before the
+acceptance threshold is applied. This value requires any kind of votes
+and not only YES. The valid range for the threshold value is `0.5` to
+`1` (inclusive) which allows any value between half and all of the
+eligible voters.</p>
+<p>address</p>
+<p><a href="#bytes">bytes</a></p>
+<p>Address of this entity. Set during creation and does not change.</p>
+<h3><a class="anchor" aria-hidden="true" id="elector-govelector"></a><a href="#elector-govelector" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Elector {#gov.Elector}</h3>
+<p>Elector clubs together a address with a weight. The greater the weight</p>
+<p>the greater the power of a participant.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>address</p>
+<p><a href="#bytes">bytes</a></p>
+<p>The address of the voter.</p>
+<p>weight</p>
+<p><a href="#uint32">uint32</a></p>
+<p>Weight defines the power of the participants vote. max value is 65535
+(2^16-1).</p>
+<h3><a class="anchor" aria-hidden="true" id="electorate-govelectorate"></a><a href="#electorate-govelectorate" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Electorate {#gov.Electorate}</h3>
+<p>Electorate defines who may vote in an election. This same group can be
+used in many elections</p>
+<p>and is stored for re-use</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>version</p>
+<p><a href="#uint32">uint32</a></p>
+<p>Document version</p>
+<p>admin</p>
+<p><a href="#bytes">bytes</a></p>
+<p>Admin is the address that is allowed ot modify an existing electorate.</p>
+<p>title</p>
+<p><a href="#string">string</a></p>
+<p>Human readable title.</p>
+<p>electors</p>
+<p><a href="#gov.Elector">Elector</a></p>
+<p>repeated</p>
+<p>Elector defines a list of all signatures that are allowed to participate
+in a vote</p>
+<p>total_electorate_weight</p>
+<p><a href="#uint64">uint64</a></p>
+<p>TotalElectorateWeight is the sum of all electors weights.</p>
+<h3><a class="anchor" aria-hidden="true" id="fraction-govfraction"></a><a href="#fraction-govfraction" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Fraction {#gov.Fraction}</h3>
+<p>The Fraction type represents a numerator and denominator to enable
+higher precision thresholds in</p>
+<p>the election rules. For example:</p>
+<p>numerator: 1, denominator: 2 =&gt; &gt; 50%</p>
+<p>numerator: 2, denominator: 3 =&gt; &gt; 66.666..%</p>
+<p>numerator: 6273, denominator: 10000 =&gt; &gt; 62.73%</p>
+<p>Valid range of the fraction is 0.5 to 1.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>numerator</p>
+<p><a href="#uint32">uint32</a></p>
+<p>The top number in a fraction.</p>
+<p>denominator</p>
+<p><a href="#uint32">uint32</a></p>
+<p>The bottom number</p>
+<h3><a class="anchor" aria-hidden="true" id="proposal-govproposal"></a><a href="#proposal-govproposal" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Proposal {#gov.Proposal}</h3>
+<p>A generic proposal for an on-chain governance process.</p>
+<p>Most fields control the whole election process.</p>
+<p>raw_option contains an transaction to be executed by the governance
+vote in case of success</p>
+<p>(what is being voted on)</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>title</p>
+<p><a href="#string">string</a></p>
+<p>Human readable title.</p>
+<p>raw_option</p>
+<p><a href="#bytes">bytes</a></p>
+<p>Content of the proposal. Protobuf encoded, app-specific decoded must be
+passed in constructor</p>
+<p>description</p>
+<p><a href="#string">string</a></p>
+<p>Description of the proposal in text form.</p>
+<p>election_rule_ref</p>
+<p><a href="#orm.VersionedIDRef">orm.VersionedIDRef</a></p>
+<p>ElectionRuleRef is a reference to the election rule</p>
+<p>electorate_ref</p>
+<p><a href="#orm.VersionedIDRef">orm.VersionedIDRef</a></p>
+<p>Reference to the electorate to define the group of possible voters.</p>
+<p>voting_start_time</p>
+<p><a href="#int64">int64</a></p>
+<p>Unix timestamp of the block where the voting period starts. Header time
+of the votes must be greater than or equal to this start time.</p>
+<p>voting_end_time</p>
+<p><a href="#int64">int64</a></p>
+<p>Unix timestamp of the block where the voting period ends. Header times
+of the votes must be before this end time to be included in the
+election.</p>
+<p>submission_time</p>
+<p><a href="#int64">int64</a></p>
+<p>Unix timestamp of the block where the proposal was added to the chain.</p>
+<p>author</p>
+<p><a href="#bytes">bytes</a></p>
+<p>Address of the author who created the proposal. If not set explicit on
+creation it will default to the main signer.</p>
+<p>vote_state</p>
+<p><a href="#gov.TallyResult">TallyResult</a></p>
+<p>Result of the election. Contains intermediate tally results while voting
+period is open.</p>
+<p>status</p>
+<p><a href="#gov.Proposal.Status">Proposal.Status</a></p>
+<p>Status represents the high level position in the life cycle of the
+proposal. Initial value is Submitted.</p>
+<p>result</p>
+<p><a href="#gov.Proposal.Result">Proposal.Result</a></p>
+<p>Result is the final result based on the votes and election rule. Initial
+value is Undefined.</p>
+<p>executor_result</p>
+<p><a href="#gov.Proposal.ExecutorResult">Proposal.ExecutorResult</a></p>
+<p>Result is the final result based on the votes and election rule. Initial
+value is NotRun.</p>
+<p>tally_task_id</p>
+<p><a href="#bytes">bytes</a></p>
+<p>Tally task ID holds the ID of the asynchronous task that is scheduled to
+create the tally once the voting period is over.</p>
+<h3><a class="anchor" aria-hidden="true" id="resolution-govresolution"></a><a href="#resolution-govresolution" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resolution {#gov.Resolution}</h3>
+<p>Resolution contains TextResolution and an electorate reference.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>proposal_id</p>
+<p><a href="#bytes">bytes</a></p>
+<p>electorate_ref</p>
+<p><a href="#orm.VersionedIDRef">orm.VersionedIDRef</a></p>
+<p>resolution</p>
+<p><a href="#string">string</a></p>
+<h3><a class="anchor" aria-hidden="true" id="tallymsg-govtallymsg"></a><a href="#tallymsg-govtallymsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>TallyMsg {#gov.TallyMsg}</h3>
+<p>TallyMsg can be sent after the voting period has ended to do the final
+tally and trigger any state changes.</p>
+<p>A final tally can be execute only once. A second submission will fail
+with an invalid state error.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>proposal_id</p>
+<p><a href="#bytes">bytes</a></p>
+<p>ProposalID is UUID of the proposal to close.</p>
+<h3><a class="anchor" aria-hidden="true" id="tallyresult-govtallyresult"></a><a href="#tallyresult-govtallyresult" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>TallyResult {#gov.TallyResult}</h3>
+<p>TallyResult contains sums of the votes and all data for the final
+result.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>total_yes</p>
+<p><a href="#uint64">uint64</a></p>
+<p>TotalYes is the sum of weights of all the voters that approved the
+proposal</p>
+<p>total_no</p>
+<p><a href="#uint64">uint64</a></p>
+<p>TotalNo is the sum of weights of all the voters that rejected the
+proposal</p>
+<p>total_abstain</p>
+<p><a href="#uint64">uint64</a></p>
+<p>TotalAbstain is the sum of weights of all the voters that voted abstain</p>
+<p>total_electorate_weight</p>
+<p><a href="#uint64">uint64</a></p>
+<p>TotalElectorateWeight is the sum of all weights in the electorate.</p>
+<p>quorum</p>
+<p><a href="#gov.Fraction">Fraction</a></p>
+<p>Quorum when set is the fraction of the total electorate weight that must
+be exceeded by total votes weight.</p>
+<p>threshold</p>
+<p><a href="#gov.Fraction">Fraction</a></p>
+<p>Threshold is the fraction of Yes votes of a base value that needs to be
+exceeded to accept the proposal. The base value is either the total
+electorate weight or the sum of Yes/No weights when a quorum is defined.</p>
+<h3><a class="anchor" aria-hidden="true" id="updateelectionrulemsg-govupdateelectionrulemsg"></a><a href="#updateelectionrulemsg-govupdateelectionrulemsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>UpdateElectionRuleMsg {#gov.UpdateElectionRuleMsg}</h3>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>election_rule_id</p>
+<p><a href="#bytes">bytes</a></p>
+<p>ElectionRuleID is a reference to the election rule</p>
+<p>voting_period</p>
+<p><a href="#uint32">uint32</a></p>
+<p>Duration in seconds of how long the voting period will take place.</p>
+<p>threshold</p>
+<p><a href="#gov.Fraction">Fraction</a></p>
+<p>Threshold is the fraction of all eligible voters, not only the ones who
+voted. To accept a proposal this value must be exceeded. The formula is
+`(yes*denominator) &gt; (numerator*total_electors_weight)`. The
+valid range for the threshold value is `0.5` to `1` (inclusive)
+which allows any value between half and all of the eligible voters.</p>
+<p>quorum</p>
+<p><a href="#gov.Fraction">Fraction</a></p>
+<p>The quorum fraction of eligible voters is based on the total electorate
+weight and defines a threshold of votes that must be exceeded before the
+acceptance threshold is applied. This value requires any kind of votes
+and not only YES. The valid range for the threshold value is `0.5` to
+`1` (inclusive) which allows any value between half and all of the
+eligible voters.</p>
+<h3><a class="anchor" aria-hidden="true" id="updateelectoratemsg-govupdateelectoratemsg"></a><a href="#updateelectoratemsg-govupdateelectoratemsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>UpdateElectorateMsg {#gov.UpdateElectorateMsg}</h3>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>electorate_id</p>
+<p><a href="#bytes">bytes</a></p>
+<p>ElectorateID is the reference to the electorate that defines the group
+of possible voters.</p>
+<p>diff_electors</p>
+<p><a href="#gov.Elector">Elector</a></p>
+<p>repeated</p>
+<p>DiffElectors contains the changes that should be applied. Adding an
+address should have a positive weight, removing with weight=0.</p>
+<h3><a class="anchor" aria-hidden="true" id="vote-govvote"></a><a href="#vote-govvote" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Vote {#gov.Vote}</h3>
+<p>Vote combines the elector and their voted option to archive them.</p>
+<p>The proposalID and address is stored within the key.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>elector</p>
+<p><a href="#gov.Elector">Elector</a></p>
+<p>Elector is who voted</p>
+<p>voted</p>
+<p><a href="#gov.VoteOption">VoteOption</a></p>
+<p>VoteOption is what they voted</p>
+<h3><a class="anchor" aria-hidden="true" id="votemsg-govvotemsg"></a><a href="#votemsg-govvotemsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>VoteMsg {#gov.VoteMsg}</h3>
+<p>VoteMsg is the way to express a voice and participate in an election of
+a proposal on chain.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>proposal_id</p>
+<p><a href="#bytes">bytes</a></p>
+<p>The unique id of the proposal.</p>
+<p>voter</p>
+<p><a href="#bytes">bytes</a></p>
+<p>voter address is an optional field. When not set the main signer will be
+used as default. The voter address must be included in the electorate
+for a valid vote.</p>
+<p>selected</p>
+<p><a href="#gov.VoteOption">VoteOption</a></p>
+<p>Option for the vote. Must be Yes, No or Abstain for a valid vote.</p>
+<h3><a class="anchor" aria-hidden="true" id="proposalexecutorresult-govproposalexecutorresult"></a><a href="#proposalexecutorresult-govproposalexecutorresult" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Proposal.ExecutorResult {#gov.Proposal.ExecutorResult}</h3>
+<p>Name</p>
+<p>Number</p>
+<p>Description</p>
+<p>PROPOSAL_EXECUTOR_RESULT_INVALID</p>
+<p>0</p>
+<p>An empty value is not allowed</p>
+<p>PROPOSAL_EXECUTOR_RESULT_NOT_RUN</p>
+<p>1</p>
+<p>We have not yet run the executor</p>
+<p>PROPOSAL_EXECUTOR_RESULT_SUCCESS</p>
+<p>2</p>
+<p>The executor was successful and proposed action updated state</p>
+<p>PROPOSAL_EXECUTOR_RESULT_FAILURE</p>
+<p>3</p>
+<p>The executor returned an error and proposed action didn't update state</p>
+<h3><a class="anchor" aria-hidden="true" id="proposalresult-govproposalresult"></a><a href="#proposalresult-govproposalresult" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Proposal.Result {#gov.Proposal.Result}</h3>
+<p>Name</p>
+<p>Number</p>
+<p>Description</p>
+<p>PROPOSAL_RESULT_INVALID</p>
+<p>0</p>
+<p>An empty value is invalid and not allowed</p>
+<p>PROPOSAL_RESULT_UNDEFINED</p>
+<p>1</p>
+<p>Until a final tally has happened the status is undefined</p>
+<p>PROPOSAL_RESULT_ACCEPTED</p>
+<p>2</p>
+<p>Final result of the tally</p>
+<p>PROPOSAL_RESULT_REJECTED</p>
+<p>3</p>
+<p>Final result of the tally</p>
+<h3><a class="anchor" aria-hidden="true" id="proposalstatus-govproposalstatus"></a><a href="#proposalstatus-govproposalstatus" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Proposal.Status {#gov.Proposal.Status}</h3>
+<p>Name</p>
+<p>Number</p>
+<p>Description</p>
+<p>PROPOSAL_STATUS_INVALID</p>
+<p>0</p>
+<p>An empty value is invalid and not allowed</p>
+<p>PROPOSAL_STATUS_SUBMITTED</p>
+<p>1</p>
+<p>Initial status of a proposal when persisted.</p>
+<p>PROPOSAL_STATUS_CLOSED</p>
+<p>2</p>
+<p>Final status of a proposal when the tally was executed</p>
+<p>PROPOSAL_STATUS_WITHDRAWN</p>
+<p>3</p>
+<p>A proposal can be deleted before the voting start time by the owner.
+When this happens the final status is Withdrawn.</p>
+<h3><a class="anchor" aria-hidden="true" id="voteoption-govvoteoption"></a><a href="#voteoption-govvoteoption" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>VoteOption {#gov.VoteOption}</h3>
+<p>VoteOptions define possible values for a vote including the INVALID
+default.</p>
+<p>Name</p>
+<p>Number</p>
+<p>Description</p>
+<p>VOTE_OPTION_INVALID</p>
+<p>0</p>
+<p>VOTE_OPTION_YES</p>
+<p>1</p>
+<p>VOTE_OPTION_NO</p>
+<p>2</p>
+<p>VOTE_OPTION_ABSTAIN</p>
+<p>3</p>
+<h2><a class="anchor" aria-hidden="true" id="x-gov-sample-_testproto-x-gov-sample_testproto"></a><a href="#x-gov-sample-_testproto-x-gov-sample_testproto" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>x/gov/sample_test.proto {#x/gov/sample_test.proto}</h2>
+<p><a href="#title">Top</a></p>
+<h3><a class="anchor" aria-hidden="true" id="proposaloptions-govproposaloptions"></a><a href="#proposaloptions-govproposaloptions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ProposalOptions {#gov.ProposalOptions}</h3>
+<p>ProposalOptions is a sum type of all possible messages that</p>
+<p>may be dispatched via a governance proposal.</p>
+<p>For the test case, we only refer to package-internal messages</p>
+<p>and handlers, but an application can reference messages from any
+package.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>text</p>
+<p><a href="#gov.CreateTextResolutionMsg">CreateTextResolutionMsg</a></p>
+<p>electorate</p>
+<p><a href="#gov.UpdateElectorateMsg">UpdateElectorateMsg</a></p>
+<p>rule</p>
+<p><a href="#gov.UpdateElectionRuleMsg">UpdateElectionRuleMsg</a></p>
+<h2><a class="anchor" aria-hidden="true" id="x-msgfee-codecproto-x-msgfee-codecproto"></a><a href="#x-msgfee-codecproto-x-msgfee-codecproto" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>x/msgfee/codec.proto {#x/msgfee/codec.proto}</h2>
+<p><a href="#title">Top</a></p>
+<h3><a class="anchor" aria-hidden="true" id="msgfee-msgfeemsgfee"></a><a href="#msgfee-msgfeemsgfee" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>MsgFee {#msgfee.MsgFee}</h3>
+<p>MsgFee represents a fee for a single message that must be paid in order
+for</p>
+<p>the message to be processed.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>msg_path</p>
+<p><a href="#string">string</a></p>
+<p>fee</p>
+<p><a href="#coin.Coin">coin.Coin</a></p>
+<h2><a class="anchor" aria-hidden="true" id="x-multisig-codecproto-x-multisig-codecproto"></a><a href="#x-multisig-codecproto-x-multisig-codecproto" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>x/multisig/codec.proto {#x/multisig/codec.proto}</h2>
+<p><a href="#title">Top</a></p>
+<h3><a class="anchor" aria-hidden="true" id="contract-multisigcontract"></a><a href="#contract-multisigcontract" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Contract {#multisig.Contract}</h3>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>participants</p>
+<p><a href="#multisig.Participant">Participant</a></p>
+<p>repeated</p>
+<p>Participants defines a list of all signatures that are allowed to sign
+the contract.</p>
+<p>activation_threshold</p>
+<p><a href="#uint32">uint32</a></p>
+<p>Activation threshold defines the minimal weight value that must be
+provided from participants in order to activate the contract. Weight is
+computed as the sum of weights of all participating signatures.</p>
+<p>admin_threshold</p>
+<p><a href="#uint32">uint32</a></p>
+<p>Admin threshold defines the minimal weight value that must be provided
+from participants in order to administrate the contract. Weight is
+computed as the sum of weights of all participating signatures.</p>
+<p>address</p>
+<p><a href="#bytes">bytes</a></p>
+<p>Address of this entity. Set during creation and does not change.</p>
+<h3><a class="anchor" aria-hidden="true" id="createmsg-multisigcreatemsg"></a><a href="#createmsg-multisigcreatemsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CreateMsg {#multisig.CreateMsg}</h3>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>participants</p>
+<p><a href="#multisig.Participant">Participant</a></p>
+<p>repeated</p>
+<p>activation_threshold</p>
+<p><a href="#uint32">uint32</a></p>
+<p>admin_threshold</p>
+<p><a href="#uint32">uint32</a></p>
+<h3><a class="anchor" aria-hidden="true" id="participant-multisigparticipant"></a><a href="#participant-multisigparticipant" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Participant {#multisig.Participant}</h3>
+<p>Participant clubs together a signature with a weight. The greater the
+weight</p>
+<p>the greater the power of a signature.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>signature</p>
+<p><a href="#bytes">bytes</a></p>
+<p>weight</p>
+<p><a href="#uint32">uint32</a></p>
+<h3><a class="anchor" aria-hidden="true" id="updatemsg-multisigupdatemsg"></a><a href="#updatemsg-multisigupdatemsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>UpdateMsg {#multisig.UpdateMsg}</h3>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>contract_id</p>
+<p><a href="#bytes">bytes</a></p>
+<p>participants</p>
+<p><a href="#multisig.Participant">Participant</a></p>
+<p>repeated</p>
+<p>activation_threshold</p>
+<p><a href="#uint32">uint32</a></p>
+<p>admin_threshold</p>
+<p><a href="#uint32">uint32</a></p>
+<h2><a class="anchor" aria-hidden="true" id="x-paychan-codecproto-x-paychan-codecproto"></a><a href="#x-paychan-codecproto-x-paychan-codecproto" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>x/paychan/codec.proto {#x/paychan/codec.proto}</h2>
+<p><a href="#title">Top</a></p>
+<h3><a class="anchor" aria-hidden="true" id="closemsg-paychanclosemsg"></a><a href="#closemsg-paychanclosemsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CloseMsg {#paychan.CloseMsg}</h3>
+<p>CloseMsg close a payment channel and release remaining founds</p>
+<p>by sending them back to the source account.</p>
+<p>Destination account can close channel at any moment.</p>
+<p>Source can close channel only if the timeout was reached.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>channel_id</p>
+<p><a href="#bytes">bytes</a></p>
+<p>memo</p>
+<p><a href="#string">string</a></p>
+<p>Max length 128 character.</p>
+<h3><a class="anchor" aria-hidden="true" id="createmsg-paychancreatemsg"></a><a href="#createmsg-paychancreatemsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CreateMsg {#paychan.CreateMsg}</h3>
+<p>CreateMsg creates a new payment channel that can be used to</p>
+<p>transfer value between two parties.</p>
+<p>Total amount will be taken from the sources account and allocated for
+user</p>
+<p>in the transactions done via created payment channel.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>source</p>
+<p><a href="#bytes">bytes</a></p>
+<p>Source address (weave.Address).</p>
+<p>source_pubkey</p>
+<p><a href="#crypto.PublicKey">crypto.PublicKey</a></p>
+<p>Source public key is for validating transfer message signature.</p>
+<p>destination</p>
+<p><a href="#bytes">bytes</a></p>
+<p>Destination address (weave.Address).</p>
+<p>total</p>
+<p><a href="#coin.Coin">coin.Coin</a></p>
+<p>Maximum amount that can be transferred via this channel.</p>
+<p>timeout</p>
+<p><a href="#int64">int64</a></p>
+<p>If reached, channel can be closed by anyone.</p>
+<p>memo</p>
+<p><a href="#string">string</a></p>
+<p>Max length 128 character.</p>
+<h3><a class="anchor" aria-hidden="true" id="payment-paychanpayment"></a><a href="#payment-paychanpayment" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Payment {#paychan.Payment}</h3>
+<p>Payment is created by the source. Source should give the message to the</p>
+<p>destination, so that it can be redeemed at any time.</p>
+<p>Each Payment should be created with amount greater than the previous
+one.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>chain_id</p>
+<p><a href="#string">string</a></p>
+<p>channel_id</p>
+<p><a href="#bytes">bytes</a></p>
+<p>amount</p>
+<p><a href="#coin.Coin">coin.Coin</a></p>
+<p>memo</p>
+<p><a href="#string">string</a></p>
+<p>Max length 128 character.</p>
+<h3><a class="anchor" aria-hidden="true" id="paymentchannel-paychanpaymentchannel"></a><a href="#paymentchannel-paychanpaymentchannel" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PaymentChannel {#paychan.PaymentChannel}</h3>
+<p>PaymentChannel holds the state of a payment channel during its lifetime.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>source</p>
+<p><a href="#bytes">bytes</a></p>
+<p>Source is the source that the founds are allocated from.</p>
+<p>source_pubkey</p>
+<p><a href="#crypto.PublicKey">crypto.PublicKey</a></p>
+<p>Source public key is a key that must be used to verify signature of
+transfer message. Source creates signed transfer messages and gives them
+to the destination. Signature prevents from altering transfer message.</p>
+<p>destination</p>
+<p><a href="#bytes">bytes</a></p>
+<p>Destination is the party that receives payments through this channel</p>
+<p>total</p>
+<p><a href="#coin.Coin">coin.Coin</a></p>
+<p>Total represents a maximum value that can be transferred via this
+payment channel.</p>
+<p>timeout</p>
+<p><a href="#int64">int64</a></p>
+<p>Timeout represents wall clock time as read from the block header.
+Timeout is represented using POSIX time format. Expiration time is
+inclusive meaning that the paychan expires as soon as the current time
+is equal or greater than timeout value. nonexpired: [created, timeout)
+expired: [timeout, infinity)</p>
+<p>memo</p>
+<p><a href="#string">string</a></p>
+<p>Max length 128 character.</p>
+<p>transferred</p>
+<p><a href="#coin.Coin">coin.Coin</a></p>
+<p>Transferred represents total amount that was transferred using allocated
+(total) value. Transferred must never exceed total value.</p>
+<p>address</p>
+<p><a href="#bytes">bytes</a></p>
+<p>Address of this entity. Set during creation and does not change.</p>
+<h3><a class="anchor" aria-hidden="true" id="transfermsg-paychantransfermsg"></a><a href="#transfermsg-paychantransfermsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>TransferMsg {#paychan.TransferMsg}</h3>
+<p>TransferMsg binds Payment with a signature created using</p>
+<p>sources private key.</p>
+<p>Signature is there to ensure that payment message was not altered.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>payment</p>
+<p><a href="#paychan.Payment">Payment</a></p>
+<p>signature</p>
+<p><a href="#crypto.Signature">crypto.Signature</a></p>
+<h2><a class="anchor" aria-hidden="true" id="x-sigs-codecproto-x-sigs-codecproto"></a><a href="#x-sigs-codecproto-x-sigs-codecproto" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>x/sigs/codec.proto {#x/sigs/codec.proto}</h2>
+<p><a href="#title">Top</a></p>
+<h3><a class="anchor" aria-hidden="true" id="bumpsequencemsg-sigsbumpsequencemsg"></a><a href="#bumpsequencemsg-sigsbumpsequencemsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>BumpSequenceMsg {#sigs.BumpSequenceMsg}</h3>
+<p>BumpSequenceMsg increments a sequence counter by given amount for a user</p>
+<p>that signed the transaction.</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>increment</p>
+<p><a href="#uint32">uint32</a></p>
+<p>Increment represents the value by which a sequence value will be
+increased. Minumum value is one and maxium value must not be greater
+than 1000. Each transaction increments the sequence by one. This value
+represents the total increment value, including the default increment.</p>
+<h3><a class="anchor" aria-hidden="true" id="stdsignature-sigsstdsignature"></a><a href="#stdsignature-sigsstdsignature" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>StdSignature {#sigs.StdSignature}</h3>
+<p>StdSignature represents the signature, the identity of the signer</p>
+<p>(the Pubkey), and a sequence number to prevent replay attacks.</p>
+<p>A given signer must submit transactions with the sequence number</p>
+<p>increasing by 1 each time (starting at 0)</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>sequence</p>
+<p><a href="#int64">int64</a></p>
+<p>pubkey</p>
+<p><a href="#crypto.PublicKey">crypto.PublicKey</a></p>
+<p>signature</p>
+<p><a href="#crypto.Signature">crypto.Signature</a></p>
+<p>Removed Address, Pubkey is more powerful</p>
+<h3><a class="anchor" aria-hidden="true" id="userdata-sigsuserdata"></a><a href="#userdata-sigsuserdata" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>UserData {#sigs.UserData}</h3>
+<p>UserData just stores the data and is used for serialization.</p>
+<p>Key is the Address (PubKey.Permission().Address())</p>
+<p>Note: This should not be created from outside the module,</p>
+<p>User is the entry point you want</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>pubkey</p>
+<p><a href="#crypto.PublicKey">crypto.PublicKey</a></p>
+<p>sequence</p>
+<p><a href="#int64">int64</a></p>
+<h2><a class="anchor" aria-hidden="true" id="x-validators-codecproto-x-validators-codecproto"></a><a href="#x-validators-codecproto-x-validators-codecproto" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>x/validators/codec.proto {#x/validators/codec.proto}</h2>
+<p><a href="#title">Top</a></p>
+<h3><a class="anchor" aria-hidden="true" id="accounts-validatorsaccounts"></a><a href="#accounts-validatorsaccounts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Accounts {#validators.Accounts}</h3>
+<p>Accounts is a list of accounts allowed to update validators</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>addresses</p>
+<p><a href="#bytes">bytes</a></p>
+<p>repeated</p>
+<h3><a class="anchor" aria-hidden="true" id="applydiffmsg-validatorsapplydiffmsg"></a><a href="#applydiffmsg-validatorsapplydiffmsg" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ApplyDiffMsg {#validators.ApplyDiffMsg}</h3>
+<p>ApplyDiffMsg is designed to update validator power</p>
+<p>Field</p>
+<p>Type</p>
+<p>Label</p>
+<p>Description</p>
+<p>metadata</p>
+<p><a href="#weave.Metadata">weave.Metadata</a></p>
+<p>validator_updates</p>
+<p><a href="#weave.ValidatorUpdate">weave.ValidatorUpdate</a></p>
+<p>repeated</p>
+<h2><a class="anchor" aria-hidden="true" id="scalar-value-types"></a><a href="#scalar-value-types" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Scalar Value Types</h2>
+<p>.proto Type</p>
+<p>Notes</p>
+<p>C++ Type</p>
+<p>Java Type</p>
+<p>Python Type</p>
+<p>double</p>
+<p>double</p>
+<p>double</p>
+<p>float</p>
+<p>float</p>
+<p>float</p>
+<p>float</p>
+<p>float</p>
+<p>int32</p>
+<p>Uses variable-length encoding. Inefficient for encoding negative numbers
+– if your field is likely to have negative values, use sint32 instead.</p>
+<p>int32</p>
+<p>int</p>
+<p>int</p>
+<p>int64</p>
+<p>Uses variable-length encoding. Inefficient for encoding negative numbers
+– if your field is likely to have negative values, use sint64 instead.</p>
+<p>int64</p>
+<p>long</p>
+<p>int/long</p>
+<p>uint32</p>
+<p>Uses variable-length encoding.</p>
+<p>uint32</p>
+<p>int</p>
+<p>int/long</p>
+<p>uint64</p>
+<p>Uses variable-length encoding.</p>
+<p>uint64</p>
+<p>long</p>
+<p>int/long</p>
+<p>sint32</p>
+<p>Uses variable-length encoding. Signed int value. These more efficiently
+encode negative numbers than regular int32s.</p>
+<p>int32</p>
+<p>int</p>
+<p>int</p>
+<p>sint64</p>
+<p>Uses variable-length encoding. Signed int value. These more efficiently
+encode negative numbers than regular int64s.</p>
+<p>int64</p>
+<p>long</p>
+<p>int/long</p>
+<p>fixed32</p>
+<p>Always four bytes. More efficient than uint32 if values are often
+greater than 2^28.</p>
+<p>uint32</p>
+<p>int</p>
+<p>int</p>
+<p>fixed64</p>
+<p>Always eight bytes. More efficient than uint64 if values are often
+greater than 2^56.</p>
+<p>uint64</p>
+<p>long</p>
+<p>int/long</p>
+<p>sfixed32</p>
+<p>Always four bytes.</p>
+<p>int32</p>
+<p>int</p>
+<p>int</p>
+<p>sfixed64</p>
+<p>Always eight bytes.</p>
+<p>int64</p>
+<p>long</p>
+<p>int/long</p>
+<p>bool</p>
+<p>bool</p>
+<p>boolean</p>
+<p>boolean</p>
+<p>string</p>
+<p>A string must always contain UTF-8 encoded or 7-bit ASCII text.</p>
+<p>string</p>
+<p>String</p>
+<p>str/unicode</p>
+<p>bytes</p>
+<p>May contain any arbitrary sequence of bytes.</p>
+<p>string</p>
+<p>ByteString</p>
+<p>str</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2019-7-23 by orkunkl</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#table-of-contents">Table of Contents</a></li><li><a href="#app-resultsproto-app-resultsproto">app/results.proto {#app/results.proto}</a><ul class="toc-headings"><li><a href="#resultset-appresultset">ResultSet {#app.ResultSet}</a></li></ul></li><li><a href="#cmd-bnsd-app-codecproto-cmd-bnsd-app-codecproto">cmd/bnsd/app/codec.proto {#cmd/bnsd/app/codec.proto}</a><ul class="toc-headings"><li><a href="#crontask-bnsdcrontask">CronTask {#bnsd.CronTask}</a></li><li><a href="#executebatchmsg-bnsdexecutebatchmsg">ExecuteBatchMsg {#bnsd.ExecuteBatchMsg}</a></li><li><a href="#executebatchmsgunion-bnsdexecutebatchmsgunion">ExecuteBatchMsg.Union {#bnsd.ExecuteBatchMsg.Union}</a></li><li><a href="#executeproposalbatchmsg-bnsdexecuteproposalbatchmsg">ExecuteProposalBatchMsg {#bnsd.ExecuteProposalBatchMsg}</a></li><li><a href="#executeproposalbatchmsgunion-bnsdexecuteproposalbatchmsgunion">ExecuteProposalBatchMsg.Union {#bnsd.ExecuteProposalBatchMsg.Union}</a></li><li><a href="#proposaloptions-bnsdproposaloptions">ProposalOptions {#bnsd.ProposalOptions}</a></li><li><a href="#tx-bnsdtx">Tx {#bnsd.Tx}</a></li></ul></li><li><a href="#cmd-bnsd-x-username-codecproto-cmd-bnsd-x-username-codecproto">cmd/bnsd/x/username/codec.proto {#cmd/bnsd/x/username/codec.proto}</a><ul class="toc-headings"><li><a href="#blockchainaddress-usernameblockchainaddress">BlockchainAddress {#username.BlockchainAddress}</a></li><li><a href="#changetokentargetsmsg-usernamechangetokentargetsmsg">ChangeTokenTargetsMsg {#username.ChangeTokenTargetsMsg}</a></li><li><a href="#registertokenmsg-usernameregistertokenmsg">RegisterTokenMsg {#username.RegisterTokenMsg}</a></li><li><a href="#token-usernametoken">Token {#username.Token}</a></li><li><a href="#transfertokenmsg-usernametransfertokenmsg">TransferTokenMsg {#username.TransferTokenMsg}</a></li></ul></li><li><a href="#codecproto">codec.proto</a><ul class="toc-headings"><li><a href="#metadata-weavemetadata">Metadata {#weave.Metadata}</a></li><li><a href="#pubkey-weavepubkey">PubKey {#weave.PubKey}</a></li><li><a href="#validatorupdate-weavevalidatorupdate">ValidatorUpdate {#weave.ValidatorUpdate}</a></li><li><a href="#validatorupdates-weavevalidatorupdates">ValidatorUpdates {#weave.ValidatorUpdates}</a></li></ul></li><li><a href="#coin-codecproto-coin-codecproto">coin/codec.proto {#coin/codec.proto}</a><ul class="toc-headings"><li><a href="#coin-coincoin">Coin {#coin.Coin}</a></li></ul></li><li><a href="#crypto-modelsproto-crypto-modelsproto">crypto/models.proto {#crypto/models.proto}</a><ul class="toc-headings"><li><a href="#privatekey-cryptoprivatekey">PrivateKey {#crypto.PrivateKey}</a></li><li><a href="#publickey-cryptopublickey">PublicKey {#crypto.PublicKey}</a></li><li><a href="#signature-cryptosignature">Signature {#crypto.Signature}</a></li></ul></li><li><a href="#migration-codecproto-migration-codecproto">migration/codec.proto {#migration/codec.proto}</a><ul class="toc-headings"><li><a href="#configuration-migrationconfiguration">Configuration {#migration.Configuration}</a></li><li><a href="#schema-migrationschema">Schema {#migration.Schema}</a></li><li><a href="#upgradeschemamsg-migrationupgradeschemamsg">UpgradeSchemaMsg {#migration.UpgradeSchemaMsg}</a></li></ul></li><li><a href="#orm-codecproto-orm-codecproto">orm/codec.proto {#orm/codec.proto}</a><ul class="toc-headings"><li><a href="#counter-ormcounter">Counter {#orm.Counter}</a></li><li><a href="#multiref-ormmultiref">MultiRef {#orm.MultiRef}</a></li><li><a href="#versionedidref-ormversionedidref">VersionedIDRef {#orm.VersionedIDRef}</a></li></ul></li><li><a href="#x-aswap-codecproto-x-aswap-codecproto">x/aswap/codec.proto {#x/aswap/codec.proto}</a><ul class="toc-headings"><li><a href="#createmsg-aswapcreatemsg">CreateMsg {#aswap.CreateMsg}</a></li><li><a href="#releasemsg-aswapreleasemsg">ReleaseMsg {#aswap.ReleaseMsg}</a></li><li><a href="#returnmsg-aswapreturnmsg">ReturnMsg {#aswap.ReturnMsg}</a></li><li><a href="#swap-aswapswap">Swap {#aswap.Swap}</a></li></ul></li><li><a href="#x-batch-codecproto-x-batch-codecproto">x/batch/codec.proto {#x/batch/codec.proto}</a><ul class="toc-headings"><li><a href="#bytearraylist-batchbytearraylist">ByteArrayList {#batch.ByteArrayList}</a></li></ul></li><li><a href="#x-cash-codecproto-x-cash-codecproto">x/cash/codec.proto {#x/cash/codec.proto}</a><ul class="toc-headings"><li><a href="#configuration-cashconfiguration">Configuration {#cash.Configuration}</a></li><li><a href="#feeinfo-cashfeeinfo">FeeInfo {#cash.FeeInfo}</a></li><li><a href="#sendmsg-cashsendmsg">SendMsg {#cash.SendMsg}</a></li><li><a href="#set-cashset">Set {#cash.Set}</a></li><li><a href="#updateconfigurationmsg-cashupdateconfigurationmsg">UpdateConfigurationMsg {#cash.UpdateConfigurationMsg}</a></li></ul></li><li><a href="#x-cron-codecproto-x-cron-codecproto">x/cron/codec.proto {#x/cron/codec.proto}</a><ul class="toc-headings"><li><a href="#taskresult-crontaskresult">TaskResult {#cron.TaskResult}</a></li></ul></li><li><a href="#x-currency-codecproto-x-currency-codecproto">x/currency/codec.proto {#x/currency/codec.proto}</a><ul class="toc-headings"><li><a href="#createmsg-currencycreatemsg">CreateMsg {#currency.CreateMsg}</a></li><li><a href="#tokeninfo-currencytokeninfo">TokenInfo {#currency.TokenInfo}</a></li></ul></li><li><a href="#x-distribution-codecproto-x-distribution-codecproto">x/distribution/codec.proto {#x/distribution/codec.proto}</a><ul class="toc-headings"><li><a href="#createmsg-distributioncreatemsg">CreateMsg {#distribution.CreateMsg}</a></li><li><a href="#destination-distributiondestination">Destination {#distribution.Destination}</a></li><li><a href="#distributemsg-distributiondistributemsg">DistributeMsg {#distribution.DistributeMsg}</a></li><li><a href="#resetmsg-distributionresetmsg">ResetMsg {#distribution.ResetMsg}</a></li><li><a href="#revenue-distributionrevenue">Revenue {#distribution.Revenue}</a></li></ul></li><li><a href="#x-escrow-codecproto-x-escrow-codecproto">x/escrow/codec.proto {#x/escrow/codec.proto}</a><ul class="toc-headings"><li><a href="#createmsg-escrowcreatemsg">CreateMsg {#escrow.CreateMsg}</a></li><li><a href="#escrow-escrowescrow">Escrow {#escrow.Escrow}</a></li><li><a href="#releasemsg-escrowreleasemsg">ReleaseMsg {#escrow.ReleaseMsg}</a></li><li><a href="#returnmsg-escrowreturnmsg">ReturnMsg {#escrow.ReturnMsg}</a></li><li><a href="#updatepartiesmsg-escrowupdatepartiesmsg">UpdatePartiesMsg {#escrow.UpdatePartiesMsg}</a></li></ul></li><li><a href="#x-gov-codecproto-x-gov-codecproto">x/gov/codec.proto {#x/gov/codec.proto}</a><ul class="toc-headings"><li><a href="#createproposalmsg-govcreateproposalmsg">CreateProposalMsg {#gov.CreateProposalMsg}</a></li><li><a href="#createtextresolutionmsg-govcreatetextresolutionmsg">CreateTextResolutionMsg {#gov.CreateTextResolutionMsg}</a></li><li><a href="#deleteproposalmsg-govdeleteproposalmsg">DeleteProposalMsg {#gov.DeleteProposalMsg}</a></li><li><a href="#electionrule-govelectionrule">ElectionRule {#gov.ElectionRule}</a></li><li><a href="#elector-govelector">Elector {#gov.Elector}</a></li><li><a href="#electorate-govelectorate">Electorate {#gov.Electorate}</a></li><li><a href="#fraction-govfraction">Fraction {#gov.Fraction}</a></li><li><a href="#proposal-govproposal">Proposal {#gov.Proposal}</a></li><li><a href="#resolution-govresolution">Resolution {#gov.Resolution}</a></li><li><a href="#tallymsg-govtallymsg">TallyMsg {#gov.TallyMsg}</a></li><li><a href="#tallyresult-govtallyresult">TallyResult {#gov.TallyResult}</a></li><li><a href="#updateelectionrulemsg-govupdateelectionrulemsg">UpdateElectionRuleMsg {#gov.UpdateElectionRuleMsg}</a></li><li><a href="#updateelectoratemsg-govupdateelectoratemsg">UpdateElectorateMsg {#gov.UpdateElectorateMsg}</a></li><li><a href="#vote-govvote">Vote {#gov.Vote}</a></li><li><a href="#votemsg-govvotemsg">VoteMsg {#gov.VoteMsg}</a></li><li><a href="#proposalexecutorresult-govproposalexecutorresult">Proposal.ExecutorResult {#gov.Proposal.ExecutorResult}</a></li><li><a href="#proposalresult-govproposalresult">Proposal.Result {#gov.Proposal.Result}</a></li><li><a href="#proposalstatus-govproposalstatus">Proposal.Status {#gov.Proposal.Status}</a></li><li><a href="#voteoption-govvoteoption">VoteOption {#gov.VoteOption}</a></li></ul></li><li><a href="#x-gov-sample-_testproto-x-gov-sample_testproto">x/gov/sample_test.proto {#x/gov/sample_test.proto}</a><ul class="toc-headings"><li><a href="#proposaloptions-govproposaloptions">ProposalOptions {#gov.ProposalOptions}</a></li></ul></li><li><a href="#x-msgfee-codecproto-x-msgfee-codecproto">x/msgfee/codec.proto {#x/msgfee/codec.proto}</a><ul class="toc-headings"><li><a href="#msgfee-msgfeemsgfee">MsgFee {#msgfee.MsgFee}</a></li></ul></li><li><a href="#x-multisig-codecproto-x-multisig-codecproto">x/multisig/codec.proto {#x/multisig/codec.proto}</a><ul class="toc-headings"><li><a href="#contract-multisigcontract">Contract {#multisig.Contract}</a></li><li><a href="#createmsg-multisigcreatemsg">CreateMsg {#multisig.CreateMsg}</a></li><li><a href="#participant-multisigparticipant">Participant {#multisig.Participant}</a></li><li><a href="#updatemsg-multisigupdatemsg">UpdateMsg {#multisig.UpdateMsg}</a></li></ul></li><li><a href="#x-paychan-codecproto-x-paychan-codecproto">x/paychan/codec.proto {#x/paychan/codec.proto}</a><ul class="toc-headings"><li><a href="#closemsg-paychanclosemsg">CloseMsg {#paychan.CloseMsg}</a></li><li><a href="#createmsg-paychancreatemsg">CreateMsg {#paychan.CreateMsg}</a></li><li><a href="#payment-paychanpayment">Payment {#paychan.Payment}</a></li><li><a href="#paymentchannel-paychanpaymentchannel">PaymentChannel {#paychan.PaymentChannel}</a></li><li><a href="#transfermsg-paychantransfermsg">TransferMsg {#paychan.TransferMsg}</a></li></ul></li><li><a href="#x-sigs-codecproto-x-sigs-codecproto">x/sigs/codec.proto {#x/sigs/codec.proto}</a><ul class="toc-headings"><li><a href="#bumpsequencemsg-sigsbumpsequencemsg">BumpSequenceMsg {#sigs.BumpSequenceMsg}</a></li><li><a href="#stdsignature-sigsstdsignature">StdSignature {#sigs.StdSignature}</a></li><li><a href="#userdata-sigsuserdata">UserData {#sigs.UserData}</a></li></ul></li><li><a href="#x-validators-codecproto-x-validators-codecproto">x/validators/codec.proto {#x/validators/codec.proto}</a><ul class="toc-headings"><li><a href="#accounts-validatorsaccounts">Accounts {#validators.Accounts}</a></li><li><a href="#applydiffmsg-validatorsapplydiffmsg">ApplyDiffMsg {#validators.ApplyDiffMsg}</a></li></ul></li><li><a href="#scalar-value-types">Scalar Value Types</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/docs/en/doc2.html">Guides (or other categories)</a><a href="/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://t.me/internetofvalues">Telegram</a><a href="https://twitter.com/iov_official" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="https://github.com/iov-one">GitHub</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2019 IOV</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8dc8128a9091306e7bbd0effdaa5241a',
+                indexName: 'iov',
+                inputSelector: '#search_input_react'
+              });
+            </script></body></html>
