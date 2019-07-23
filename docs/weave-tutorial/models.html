@@ -57,7 +57,7 @@
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Models</h1></header><article><div><span><blockquote>
 <p><a href="https://github.com/iov-one/tutorial/pull/6">PR#6</a>: <em>Create models</em></p>
 </blockquote>
-<p>We defined our state in <a href="weave/tutorial/02-codec.md">codec section</a>. In order to use models in weave we have to wrap our model with some functionalities and enforce it is a <strong>morm.Model</strong></p>
+<p>We defined our state in <a href="/docs/weave-tutorial/codec">codec section</a>. In order to use models in weave we have to wrap our model with some functionalities and enforce it is a <strong>morm.Model</strong></p>
 <p>Ensure our <code>OrderBook</code> fulfills morm.Model. This is just a helper so the compiler will complain loudly here if you forget to implement a method. Guaranteeing it <em>I am trying to implement this interface</em>.</p>
 <pre><code class="hljs css language-go"><span class="hljs-keyword">var</span> _ morm.Model = (*OrderBook)(<span class="hljs-literal">nil</span>)
 </code></pre>
