@@ -56,201 +56,201 @@
             });
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Modules</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="username"></a><a href="#username" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Username</h2>
 <ul>
-<li><a href="https://github.com/iov-one/weave/blob/v0.19.0/cmd/bnsd/x/username/model.go#L73">key prefix</a>: <code>username:</code></li>
-<li><code>/usernames</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.19.0/cmd/bnsd/x/username/codec.proto#L7-L26">bnsd/x/username/username.Token</a> by <code>id</code>(8 bytes) or empty result</li>
+<li><a href="https://github.com/iov-one/weave/blob/v0.20.0/cmd/bnsd/x/username/model.go#L73">key prefix</a>: <code>username:</code></li>
+<li><code>/usernames</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.20.0/cmd/bnsd/x/username/codec.proto#L7-L26">bnsd/x/username/username.Token</a> by <code>id</code>(8 bytes) or empty result</li>
 <li><code>/usernames?prefix</code> -&gt; returns 1 or more <code>Token</code> that begin with that prefix</li>
 <li><strong>Message paths</strong>
 <ul>
-<li><code>username/register_token</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.19.0/cmd/bnsd/x/username/codec.proto#L45-L53">bnsd/x/username.RegisterTokenMsg</a></li>
-<li><code>username/transfer_token</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.19.0/cmd/bnsd/x/username/codec.proto#L55-L65">bnsd/x/username.TransferTokenMsg</a></li>
-<li><code>username/change_token_targets</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.19.0/cmd/bnsd/x/username/codec.proto#L66-L76">bnsd/x/username.ChangeTokenTargetMsg</a></li>
+<li><code>username/register_token</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.20.0/cmd/bnsd/x/username/codec.proto#L45-L53">bnsd/x/username.RegisterTokenMsg</a></li>
+<li><code>username/transfer_token</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.20.0/cmd/bnsd/x/username/codec.proto#L55-L65">bnsd/x/username.TransferTokenMsg</a></li>
+<li><code>username/change_token_targets</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.20.0/cmd/bnsd/x/username/codec.proto#L66-L76">bnsd/x/username.ChangeTokenTargetMsg</a></li>
 </ul></li>
 </ul>
 <h2><a class="anchor" aria-hidden="true" id="batch"></a><a href="#batch" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Batch</h2>
 <ul>
 <li><strong>Message paths</strong>
 <ul>
-<li><code>batch/execute_batch</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.19.0/cmd/bnsd/app/codec.proto#L68-L94">bnsd/ExecuteBatchMsg</a>, <a href="https://github.com/iov-one/weave/blob/v0.19.0/cmd/bnsd/app/codec.proto#L120-L142">bnsd/ExecuteProposalBatchMsg</a></li>
+<li><code>batch/execute_batch</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.20.0/cmd/bnsd/app/codec.proto#L68-L94">bnsd/ExecuteBatchMsg</a>, <a href="https://github.com/iov-one/weave/blob/v0.20.0/cmd/bnsd/app/codec.proto#L120-L142">bnsd/ExecuteProposalBatchMsg</a></li>
 </ul></li>
 </ul>
 <h2><a class="anchor" aria-hidden="true" id="migration"></a><a href="#migration" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Migration</h2>
 <ul>
 <li><strong>Message paths</strong>
 <ul>
-<li><code>migration/upgrade_schema</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.19.0/migration/codec.proto#L25-L32">migration.UpdateSchemaMsg</a></li>
+<li><code>migration/upgrade_schema</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.20.0/migration/codec.proto#L25-L32">migration.UpdateSchemaMsg</a></li>
 </ul></li>
 </ul>
 <h2><a class="anchor" aria-hidden="true" id="cash"></a><a href="#cash" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Cash</h2>
 <ul>
-<li><a href="https://github.com/iov-one/weave/blob/v0.19.0/x/cash/model.go#L18">key prefix</a>: <code>cash:</code></li>
-<li><code>/wallets</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/cash/codec.proto#L11-L14">x/cash.Set</a> by <code>id</code> (8 bytes) or empty result</li>
+<li><a href="https://github.com/iov-one/weave/blob/v0.20.0/x/cash/model.go#L18">key prefix</a>: <code>cash:</code></li>
+<li><code>/wallets</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/cash/codec.proto#L11-L14">x/cash.Set</a> by <code>id</code> (8 bytes) or empty result</li>
 <li><code>/wallets?prefix</code> -&gt; returns 1 or more <code>Set</code> that begin with that prefix</li>
 <li><strong>Message paths</strong>
 <ul>
-<li><code>cash/send</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/cash/codec.proto#L16-L30">x/cash.SendMsg</a></li>
-<li><code>update_configuration</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/cash/codec.proto#L48-L53">x/cash.UpdateConfigurationMsg</a></li>
+<li><code>cash/send</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/cash/codec.proto#L16-L30">x/cash.SendMsg</a></li>
+<li><code>update_configuration</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/cash/codec.proto#L48-L53">x/cash.UpdateConfigurationMsg</a></li>
 </ul></li>
 </ul>
 <h2><a class="anchor" aria-hidden="true" id="sigs"></a><a href="#sigs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Sigs</h2>
 <ul>
-<li><a href="https://github.com/iov-one/weave/blob/v0.19.0/x/sigs/model.go#L117">key prefix</a>: <code>sigs:</code></li>
-<li><code>/auth</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.19.0/spec/proto/x/sigs/codec.proto#L13-L17">x/sigs.UserData</a> by <code>id</code>(8 bytes) or empty result</li>
+<li><a href="https://github.com/iov-one/weave/blob/v0.20.0/x/sigs/model.go#L117">key prefix</a>: <code>sigs:</code></li>
+<li><code>/auth</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.20.0/spec/proto/x/sigs/codec.proto#L13-L17">x/sigs.UserData</a> by <code>id</code>(8 bytes) or empty result</li>
 <li><code>/auth?prefix</code> -&gt; returns 1 or more <code>UserData</code> that begin with that prefix</li>
 <li><strong>Message paths</strong>
 <ul>
-<li><code>sigs/bump_sequence</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/sigs/codec.proto#L30-L42">x/sigs.BumpSequenceMsg</a></li>
+<li><code>sigs/bump_sequence</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/sigs/codec.proto#L30-L42">x/sigs.BumpSequenceMsg</a></li>
 </ul></li>
 </ul>
 <h2><a class="anchor" aria-hidden="true" id="multisig"></a><a href="#multisig" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Multisig</h2>
 <ul>
-<li><a href="https://github.com/iov-one/weave/blob/v0.19.0/x/multisig/model.go#L86">key prefix</a>: <code>multisig:</code></li>
-<li><code>/contracts</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/multisig/codec.proto#L8-L21">x/multisig.Contract</a> by <code>id</code> (8 bytes) or empty result</li>
+<li><a href="https://github.com/iov-one/weave/blob/v0.20.0/x/multisig/model.go#L86">key prefix</a>: <code>multisig:</code></li>
+<li><code>/contracts</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/multisig/codec.proto#L8-L21">x/multisig.Contract</a> by <code>id</code> (8 bytes) or empty result</li>
 <li><code>/contracts?prefix</code> -&gt; returns 1 or more <code>Contract</code> that begin with that prefix</li>
 <li><strong>Message paths</strong>
 <ul>
-<li><code>multisig/create</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/multisig/codec.proto#L32-L37">x/multisig.CreateMsg</a></li>
-<li><code>multisig/update</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/multisig/codec.proto#L39-L44">x/multisig.UpdateMsg</a></li>
+<li><code>multisig/create</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/multisig/codec.proto#L32-L37">x/multisig.CreateMsg</a></li>
+<li><code>multisig/update</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/multisig/codec.proto#L39-L44">x/multisig.UpdateMsg</a></li>
 </ul></li>
 </ul>
 <h2><a class="anchor" aria-hidden="true" id="atomic-swaps"></a><a href="#atomic-swaps" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Atomic swaps</h2>
 <ul>
-<li><a href="https://github.com/iov-one/weave/blob/v0.19.0/x/aswap/model.go#L85">key prefix</a>: <code>swap:</code></li>
-<li><code>/aswaps</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/aswap/codec.proto#L9-L29">x/aswap.Swap</a> by <code>id</code> (8 bytes) or empty result</li>
-<li><code>/aswaps/source</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/aswap/codec.proto#L9-L29">x/aswap.Swap</a> by <code>source</code>(20 bytes address) as secondary index or empty result</li>
-<li><code>/aswaps/destination</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/aswap/codec.proto#L9-L29">x/aswap.Swap</a> by <code>destination</code>(20 bytes address) as secondary index or empty result</li>
-<li><code>/aswaps/preimage_hash</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/aswap/codec.proto#L9-L29">x/aswap.Swap</a> by <code>preimage_hash</code>(32 bytes sha256 hash) as secondary index or empty result</li>
+<li><a href="https://github.com/iov-one/weave/blob/v0.20.0/x/aswap/model.go#L85">key prefix</a>: <code>swap:</code></li>
+<li><code>/aswaps</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/aswap/codec.proto#L9-L29">x/aswap.Swap</a> by <code>id</code> (8 bytes) or empty result</li>
+<li><code>/aswaps/source</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/aswap/codec.proto#L9-L29">x/aswap.Swap</a> by <code>source</code>(20 bytes address) as secondary index or empty result</li>
+<li><code>/aswaps/destination</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/aswap/codec.proto#L9-L29">x/aswap.Swap</a> by <code>destination</code>(20 bytes address) as secondary index or empty result</li>
+<li><code>/aswaps/preimage_hash</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/aswap/codec.proto#L9-L29">x/aswap.Swap</a> by <code>preimage_hash</code>(32 bytes sha256 hash) as secondary index or empty result</li>
 <li><code>/aswaps?prefix</code> -&gt; returns 1 or more <code>Swap</code> that begin with that prefix</li>
 <li><strong>Message paths</strong>
 <ul>
-<li><code>aswap/create</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/aswap/codec.proto#L33-L46">x/aswap.CreateMsg</a></li>
-<li><code>aswap/release</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/aswap/codec.proto#L48-L58">x/aswap.ReleaseMsg</a></li>
-<li><code>aswap/return</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/aswap/codec.proto#L59-L66">x/aswap.ReturnMsg</a></li>
+<li><code>aswap/create</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/aswap/codec.proto#L33-L46">x/aswap.CreateMsg</a></li>
+<li><code>aswap/release</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/aswap/codec.proto#L48-L58">x/aswap.ReleaseMsg</a></li>
+<li><code>aswap/return</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/aswap/codec.proto#L59-L66">x/aswap.ReturnMsg</a></li>
 </ul></li>
 </ul>
 <h2><a class="anchor" aria-hidden="true" id="escrow"></a><a href="#escrow" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Escrow</h2>
 <ul>
-<li><a href="https://github.com/iov-one/weave/blob/v0.19.0/x/escrow/model.go#L113">key prefix</a>: <code>escrow:</code></li>
-<li><code>/escrows</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/escrow/codec.proto#L9-L28">x/escrow.Escrow</a> by <code>id</code>(8 bytes) or empty result</li>
-<li><code>/escrows/source</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/escrow/codec.proto#L9-L28">x/escrow.Escrow</a> by <code>source</code>(20 bytes address) as secondary index or empty result</li>
-<li><code>/escrows/destination</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/escrow/codec.proto#L9-L28">x/escrow.Escrow</a> by <code>destination</code>(20 bytes address) as secondary index or empty result</li>
-<li><code>/escrows/arbiter</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/escrow/codec.proto#L9-L28">x/escrow.Escrow</a> by <code>arbiter</code> (20 bytes address) as secondary index</li>
+<li><a href="https://github.com/iov-one/weave/blob/v0.20.0/x/escrow/model.go#L113">key prefix</a>: <code>escrow:</code></li>
+<li><code>/escrows</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/escrow/codec.proto#L9-L28">x/escrow.Escrow</a> by <code>id</code>(8 bytes) or empty result</li>
+<li><code>/escrows/source</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/escrow/codec.proto#L9-L28">x/escrow.Escrow</a> by <code>source</code>(20 bytes address) as secondary index or empty result</li>
+<li><code>/escrows/destination</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/escrow/codec.proto#L9-L28">x/escrow.Escrow</a> by <code>destination</code>(20 bytes address) as secondary index or empty result</li>
+<li><code>/escrows/arbiter</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/escrow/codec.proto#L9-L28">x/escrow.Escrow</a> by <code>arbiter</code> (20 bytes address) as secondary index</li>
 <li><code>/escrows?prefix</code> -&gt; returns 1 or more <code>Escrow</code> that begin with that prefix</li>
 <li><strong>Message paths</strong>
 <ul>
-<li><code>escrow/create</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/escrow/codec.proto#L31-L46">x/escrow.CreateMsg</a></li>
+<li><code>escrow/create</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/escrow/codec.proto#L31-L46">x/escrow.CreateMsg</a></li>
 </ul></li>
-<li><code>escrow/release</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/escrow/codec.proto#L48-L56">x/escrow.ReleaseMsg</a></li>
-<li><code>escrow/return</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/escrow/codec.proto#L58-L63">x/escrow.ReturnMsg</a></li>
+<li><code>escrow/release</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/escrow/codec.proto#L48-L56">x/escrow.ReleaseMsg</a></li>
+<li><code>escrow/return</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/escrow/codec.proto#L58-L63">x/escrow.ReturnMsg</a></li>
 <li><code>escrow/UpdateParties</code> -&gt; <a href="https://github65-L76">x/escrow.UpdatePartiesMsg</a></li>
 </ul>
 <h2><a class="anchor" aria-hidden="true" id="payment-channels"></a><a href="#payment-channels" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Payment channels</h2>
 <ul>
-<li><a href="https://github.com/iov-one/weave/blob/v0.19.0/x/paychan/model.go#L67">key prefix</a>: <code>paychan:</code></li>
-<li><code>/paychans</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/paychan/codec.proto#L10-L36">x/paychan.PaymentChannel</a> by <code>id</code>(8 bytes) or empty result</li>
+<li><a href="https://github.com/iov-one/weave/blob/v0.20.0/x/paychan/model.go#L67">key prefix</a>: <code>paychan:</code></li>
+<li><code>/paychans</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/paychan/codec.proto#L10-L36">x/paychan.PaymentChannel</a> by <code>id</code>(8 bytes) or empty result</li>
 <li><code>/paychans?prefix</code> -&gt; returns 1 or more <code>PaymentChannel</code> that begin with that prefix</li>
 <li><strong>Message paths</strong>
 <ul>
-<li><code>paychan/create</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/paychan/codec.proto#L40-L59">x/paychan.CreateMsg</a></li>
-<li><code>paychan/transfer</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/paychan/codec.proto#L73-L80">x/paychan.TransferMsg</a></li>
-<li><code>paychan/close</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/paychan/codec.proto#L82-L93">x/paychan.CloseMsg</a></li>
+<li><code>paychan/create</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/paychan/codec.proto#L40-L59">x/paychan.CreateMsg</a></li>
+<li><code>paychan/transfer</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/paychan/codec.proto#L73-L80">x/paychan.TransferMsg</a></li>
+<li><code>paychan/close</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/paychan/codec.proto#L82-L93">x/paychan.CloseMsg</a></li>
 </ul></li>
 </ul>
 <h2><a class="anchor" aria-hidden="true" id="distribution"></a><a href="#distribution" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Distribution</h2>
 <ul>
-<li><a href="https://github.com/iov-one/weave/blob/v0.19.0/x/distribution/model.go#L110">key prefix</a>: <code>revenue:</code></li>
-<li><code>/revenues</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/distribution/codec.proto#L8-L20">x/distribution.Revenue</a> by <code>id</code>(8 bytes) or empty result</li>
+<li><a href="https://github.com/iov-one/weave/blob/v0.20.0/x/distribution/model.go#L110">key prefix</a>: <code>revenue:</code></li>
+<li><code>/revenues</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/distribution/codec.proto#L8-L20">x/distribution.Revenue</a> by <code>id</code>(8 bytes) or empty result</li>
 <li><code>/revenues?prefix</code> -&gt; returns 1 or more <code>Revenue</code> that begin with that prefix</li>
 <li><strong>Message paths</strong>
 <ul>
-<li><code>distribution/create</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/distribution/codec.proto#L38-L48">x/distribution.CreateMsg</a></li>
-<li><code>distribution/distribute</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/distribution/codec.proto#L50-L58">x/distribution.DistributeMsg</a></li>
-<li><code>distribution/reset</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/distribution/codec.proto#L60-L72">x/distribution.ResetMsg</a></li>
+<li><code>distribution/create</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/distribution/codec.proto#L38-L48">x/distribution.CreateMsg</a></li>
+<li><code>distribution/distribute</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/distribution/codec.proto#L50-L58">x/distribution.DistributeMsg</a></li>
+<li><code>distribution/reset</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/distribution/codec.proto#L60-L72">x/distribution.ResetMsg</a></li>
 </ul></li>
 </ul>
 <h2><a class="anchor" aria-hidden="true" id="currency"></a><a href="#currency" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Currency</h2>
 <ul>
-<li><a href="https://github.com/iov-one/weave/blob/v0.19.0/x/currency/model.go#L55">key prefix</a>: <code>tokeninfo:</code></li>
-<li><code>/tokens</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/currency/codec.proto#L7-L12">x/currency.TokenInfo</a> by <code>id</code>(8 bytes) or empty result</li>
+<li><a href="https://github.com/iov-one/weave/blob/v0.20.0/x/currency/model.go#L55">key prefix</a>: <code>tokeninfo:</code></li>
+<li><code>/tokens</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/currency/codec.proto#L7-L12">x/currency.TokenInfo</a> by <code>id</code>(8 bytes) or empty result</li>
 <li><code>/tokens?prefix</code> -&gt; returns 1 or more <code>TokenInfo</code> that begin with that prefix</li>
 <li><strong>Message paths</strong>
 <ul>
-<li><code>currency/create</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/currency/codec.proto#L14-L21">x/currency.CreateMsg</a></li>
+<li><code>currency/create</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/currency/codec.proto#L14-L21">x/currency.CreateMsg</a></li>
 </ul></li>
 </ul>
 <h2><a class="anchor" aria-hidden="true" id="validators"></a><a href="#validators" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Validators</h2>
 <ul>
-<li><a href="https://github.com/iov-one/weave/blob/v0.19.0/x/validators/model.go#L16">key prefix</a>: <code>uvalid:</code></li>
-<li><code>/validators</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/validators/codec.proto#L14-L18">x/validators.Accounts</a> by <code>id</code>(8 bytes) or empty result</li>
+<li><a href="https://github.com/iov-one/weave/blob/v0.20.0/x/validators/model.go#L16">key prefix</a>: <code>uvalid:</code></li>
+<li><code>/validators</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/validators/codec.proto#L14-L18">x/validators.Accounts</a> by <code>id</code>(8 bytes) or empty result</li>
 <li><code>/validators?prefix</code> -&gt; returns 1 or more <code>Accounts</code> that begin with that prefix</li>
 <li><strong>Message paths</strong>
 <ul>
-<li><code>validators/apply_diff</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/validators/codec.proto#L8-L13">x/validators.ApplyDiffMsg</a></li>
+<li><code>validators/apply_diff</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/validators/codec.proto#L8-L13">x/validators.ApplyDiffMsg</a></li>
 </ul></li>
 </ul>
 <h2><a class="anchor" aria-hidden="true" id="anti-spam"></a><a href="#anti-spam" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Anti spam</h2>
 <ul>
-<li><a href="https://github.com/iov-one/weave/blob/v0.19.0/x/msgfee/model.go#L48">key prefix</a>: <code>msgfee:</code></li>
-<li><code>/msgfee</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/msgfee/codec.proto#L9-L16">x/msgfee.MsgFee</a> by <code>id</code>(8 bytes) or empty result</li>
+<li><a href="https://github.com/iov-one/weave/blob/v0.20.0/x/msgfee/model.go#L48">key prefix</a>: <code>msgfee:</code></li>
+<li><code>/msgfee</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/msgfee/codec.proto#L9-L16">x/msgfee.MsgFee</a> by <code>id</code>(8 bytes) or empty result</li>
 <li><code>/msgfee?prefix</code> -&gt; returns 1 or more <code>MsgFee</code> that begin with that prefix</li>
-<li><code>/minfee</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/msgfee/codec.proto#L9-L16">x/msgfee.MsgFee</a> by <code>id</code>(8 bytes) or empty result</li>
+<li><code>/minfee</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/msgfee/codec.proto#L9-L16">x/msgfee.MsgFee</a> by <code>id</code>(8 bytes) or empty result</li>
 <li><code>/minfee?prefix</code> -&gt; returns 1 or more <code>MsgFee</code> that begin with that prefix</li>
 </ul>
 <h2><a class="anchor" aria-hidden="true" id="governance"></a><a href="#governance" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Governance</h2>
 <h3><a class="anchor" aria-hidden="true" id="electorate"></a><a href="#electorate" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Electorate</h3>
 <ul>
-<li><a href="https://github.com/iov-one/weave/blob/v0.19.0/x/gov/bucket.go#L17">key prefix</a>: <code>electorate:</code></li>
-<li><code>/electorate</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/gov/codec.proto#L9-L24">x/gov.Electorate</a> by <code>id</code>(8 bytes) or empty result</li>
+<li><a href="https://github.com/iov-one/weave/blob/v0.20.0/x/gov/bucket.go#L17">key prefix</a>: <code>electorate:</code></li>
+<li><code>/electorate</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/gov/codec.proto#L9-L24">x/gov.Electorate</a> by <code>id</code>(8 bytes) or empty result</li>
 <li><code>/electorate?prefix</code> -&gt; returns 1 or more <code>Electorate</code> that begin with that prefix</li>
 <li><strong>Message paths</strong>
 <ul>
-<li><code>gov/update_electorate</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/gov/codec.proto#L249-L257">x/gov.UpdateElectorateMsg</a></li>
+<li><code>gov/update_electorate</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/gov/codec.proto#L249-L257">x/gov.UpdateElectorateMsg</a></li>
 </ul></li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" id="elector"></a><a href="#elector" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Elector</h3>
 <ul>
 <li>Elector is a multikey index of electorate</li>
-<li><a href="https://github.com/iov-one/weave/blob/v0.19.0/x/gov/bucket.go#L18">key prefix</a>: <code>elector:</code></li>
-<li><code>/electorate/elector</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/gov/codec.proto#L24-L32">x/gov.Elector</a> by <code>elector</code>(20 bytes address) or empty result</li>
+<li><a href="https://github.com/iov-one/weave/blob/v0.20.0/x/gov/bucket.go#L18">key prefix</a>: <code>elector:</code></li>
+<li><code>/electorate/elector</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/gov/codec.proto#L24-L32">x/gov.Elector</a> by <code>elector</code>(20 bytes address) or empty result</li>
 <li><code>/electorate/elector?prefix</code> -&gt; returns 1 or more <code>Elector</code> that begin with that prefix</li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" id="election-rules"></a><a href="#election-rules" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Election rules</h3>
 <ul>
-<li><a href="https://github.com/iov-one/weave/blob/v0.19.0/x/gov/bucket.go#L51">key prefix</a>: <code>electnrule:</code></li>
-<li><code>/electionRule</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/gov/codec.proto#L33-L63">x/gov.ElectionRule</a> by <code>id</code>(8 bytes) or empty result</li>
+<li><a href="https://github.com/iov-one/weave/blob/v0.20.0/x/gov/bucket.go#L51">key prefix</a>: <code>electnrule:</code></li>
+<li><code>/electionRule</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/gov/codec.proto#L33-L63">x/gov.ElectionRule</a> by <code>id</code>(8 bytes) or empty result</li>
 <li><code>/electionRules?prefix</code> -&gt; returns 1 or more <code>ElectionRule</code> that begin with that prefix</li>
 <li><strong>Message paths</strong>
 <ul>
-<li><code>gov/update_election_rule</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/gov/codec.proto#L258-L279">x/gov.UpdateElectionRuleMsg</a></li>
-<li><code>gov/create_text_resolution</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/gov/codec.proto#L241-L247">x/gov.CreateTextResolutionMsg</a></li>
+<li><code>gov/update_election_rule</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/gov/codec.proto#L258-L279">x/gov.UpdateElectionRuleMsg</a></li>
+<li><code>gov/create_text_resolution</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/gov/codec.proto#L241-L247">x/gov.CreateTextResolutionMsg</a></li>
 </ul></li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" id="proposal"></a><a href="#proposal" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Proposal</h3>
 <ul>
-<li><a href="https://github.com/iov-one/weave/blob/v0.19.0/x/gov/bucket.go#L77">key prefix</a>: <code>proposal:</code></li>
-<li><code>/proposal</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/gov/codec.proto#L78-L116">x/gov.Proposal</a> by <code>id</code>(8 bytes) or empty result</li>
+<li><a href="https://github.com/iov-one/weave/blob/v0.20.0/x/gov/bucket.go#L77">key prefix</a>: <code>proposal:</code></li>
+<li><code>/proposal</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/gov/codec.proto#L78-L116">x/gov.Proposal</a> by <code>id</code>(8 bytes) or empty result</li>
 <li><code>/proposal?prefix</code> -&gt; returns 1 or more <code>Proposal</code> that begin with that prefix</li>
 <li><strong>Message paths</strong>
 <ul>
-<li><code>gov/create_proposal</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/gov/codec.proto#L185-L205">x/gov.CreateProposalMsg</a></li>
-<li><code>gov/delete_proposal</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/gov/codec.proto#L206-L211">x/gov.DeleteProposalMsg</a></li>
+<li><code>gov/create_proposal</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/gov/codec.proto#L185-L205">x/gov.CreateProposalMsg</a></li>
+<li><code>gov/delete_proposal</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/gov/codec.proto#L206-L211">x/gov.DeleteProposalMsg</a></li>
 </ul></li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" id="vote"></a><a href="#vote" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Vote</h3>
 <ul>
-<li><a href="https://github.com/iov-one/weave/blob/v0.19.0/x/gov/bucket.go#L186">key prefix</a>: <code>vote:</code></li>
-<li><code>/vote</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/gov/codec.proto#L169-L179">x/gov.Vote</a> by <code>id</code>(8 bytes) or empty result</li>
+<li><a href="https://github.com/iov-one/weave/blob/v0.20.0/x/gov/bucket.go#L186">key prefix</a>: <code>vote:</code></li>
+<li><code>/vote</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/gov/codec.proto#L169-L179">x/gov.Vote</a> by <code>id</code>(8 bytes) or empty result</li>
 <li><code>/vote?prefix</code> -&gt; returns 1 or more <code>Vote</code> that begin with that prefix</li>
-<li><code>/vote/proposal</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/gov/codec.proto#L169-L179">x/gov.Vote</a> by <code>id</code>(8 bytes) or empty result</li>
+<li><code>/vote/proposal</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/gov/codec.proto#L169-L179">x/gov.Vote</a> by <code>id</code>(8 bytes) or empty result</li>
 <li><code>/vote/proposal?prefix</code> -&gt; returns 1 or more <code>Vote</code> that begin with that prefix
--- <code>/vote/elector</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/gov/codec.proto#L169-L179">x/gov.Vote</a> by <code>id</code>(8 bytes) or empty result</li>
+-- <code>/vote/elector</code> -&gt; returns <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/gov/codec.proto#L169-L179">x/gov.Vote</a> by <code>id</code>(8 bytes) or empty result</li>
 <li><code>/vote/elector?prefix</code> -&gt; returns 1 or more <code>Vote</code> that begin with that prefix</li>
 <li><strong>Message paths</strong>
 <ul>
-<li><code>gov/vote</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/gov/codec.proto#L221-L231">x/gov.VoteMsg</a></li>
-<li><code>gov/tally</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.19.0/x/gov/codec.proto#L233-L239">x/gov.TallyMsg</a></li>
+<li><code>gov/vote</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/gov/codec.proto#L221-L231">x/gov.VoteMsg</a></li>
+<li><code>gov/tally</code> -&gt; <a href="https://github.com/iov-one/weave/blob/v0.20.0/x/gov/codec.proto#L233-L239">x/gov.TallyMsg</a></li>
 </ul></li>
 </ul>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2019-7-26 by orkunkl</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/weave/weave-api-spec/weave-query-spec"><span class="arrow-prev">← </span><span>Querying Weave</span></a><a class="docs-next button" href="/docs/weave-tutorial/overview"><span>Overview</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#username">Username</a></li><li><a href="#batch">Batch</a></li><li><a href="#migration">Migration</a></li><li><a href="#cash">Cash</a></li><li><a href="#sigs">Sigs</a></li><li><a href="#multisig">Multisig</a></li><li><a href="#atomic-swaps">Atomic swaps</a></li><li><a href="#escrow">Escrow</a></li><li><a href="#payment-channels">Payment channels</a></li><li><a href="#distribution">Distribution</a></li><li><a href="#currency">Currency</a></li><li><a href="#validators">Validators</a></li><li><a href="#anti-spam">Anti spam</a></li><li><a href="#governance">Governance</a><ul class="toc-headings"><li><a href="#electorate">Electorate</a></li><li><a href="#elector">Elector</a></li><li><a href="#election-rules">Election rules</a></li><li><a href="#proposal">Proposal</a></li><li><a href="#vote">Vote</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/iov-name-service/validator/rewards">IOV Name Service</a><a href="/docs/weave/welcome">Weave</a></div><div><h5>Community</h5><a href="https://riot.im/app/#/room/#weave:matrix.org">Riot Chat</a><a href="https://t.me/internetofvalues">Telegram</a><a href="https://twitter.com/iov_official" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="https://github.com/iov-one">GitHub</a></div></section><section class="copyright">Copyright © 2019 IOV</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2019-7-30 by orkunkl</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/weave/weave-api-spec/weave-query-spec"><span class="arrow-prev">← </span><span>Querying Weave</span></a><a class="docs-next button" href="/docs/weave-tutorial/overview"><span>Overview</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#username">Username</a></li><li><a href="#batch">Batch</a></li><li><a href="#migration">Migration</a></li><li><a href="#cash">Cash</a></li><li><a href="#sigs">Sigs</a></li><li><a href="#multisig">Multisig</a></li><li><a href="#atomic-swaps">Atomic swaps</a></li><li><a href="#escrow">Escrow</a></li><li><a href="#payment-channels">Payment channels</a></li><li><a href="#distribution">Distribution</a></li><li><a href="#currency">Currency</a></li><li><a href="#validators">Validators</a></li><li><a href="#anti-spam">Anti spam</a></li><li><a href="#governance">Governance</a><ul class="toc-headings"><li><a href="#electorate">Electorate</a></li><li><a href="#elector">Elector</a></li><li><a href="#election-rules">Election rules</a></li><li><a href="#proposal">Proposal</a></li><li><a href="#vote">Vote</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/iov-name-service/validator/rewards">IOV Name Service</a><a href="/docs/weave/welcome">Weave</a></div><div><h5>Community</h5><a href="https://riot.im/app/#/room/#weave:matrix.org">Riot Chat</a><a href="https://t.me/internetofvalues">Telegram</a><a href="https://twitter.com/iov_official" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="https://github.com/iov-one">GitHub</a></div></section><section class="copyright">Copyright © 2019 IOV</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;
