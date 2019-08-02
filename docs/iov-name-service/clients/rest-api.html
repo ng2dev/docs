@@ -1,0 +1,208 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Rest Api · IOV Documentations</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="The other way to connect to the IOV Name Service is to run the [IOV Name Service Rest API](https://github.com/iov-one/iovns-rest-api) on the top of your full node. This is a usefull way if you want to connect to the IOV Name Service from a mobile wallet."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Rest Api · IOV Documentations"/><meta property="og:type" content="website"/><meta property="og:url" content="http://docs.iov.one/"/><meta property="og:description" content="The other way to connect to the IOV Name Service is to run the [IOV Name Service Rest API](https://github.com/iov-one/iovns-rest-api) on the top of your full node. This is a usefull way if you want to connect to the IOV Name Service from a mobile wallet."/><meta property="og:image" content="http://docs.iov.one/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="http://docs.iov.one/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo.png" alt="IOV Documentations"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="https://github.com/iov-one" target="_self">GitHub</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Clients</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Introduction<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/intro">Introduction</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">IOV Name Service<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Validator</h4><ul><li class="navListItem"><a class="navItem" href="/docs/iov-name-service/validator/rewards">Rewards</a></li><li class="navListItem"><a class="navItem" href="/docs/iov-name-service/validator/setup">Setup</a></li><li class="navListItem"><a class="navItem" href="/docs/iov-name-service/validator/troubleshooter">Troubleshooter</a></li><li class="navListItem"><a class="navItem" href="/docs/iov-name-service/validator/faq">FAQ</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Clients</h4><ul><li class="navListItem"><a class="navItem" href="/docs/iov-name-service/clients/iov-core">IOV-core</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/iov-name-service/clients/rest-api">Rest Api</a></li></ul></div></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Weave Overview<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/weave/welcome">Welcome</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Basics</h4><ul><li class="navListItem"><a class="navItem" href="/docs/weave/basics/blockchain">Blockchain</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/basics/consensus">Consensus</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/basics/authentication">Authentication</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/basics/state">State Machine</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Design</h4><ul><li class="navListItem"><a class="navItem" href="/docs/weave/design/overview">Guiding Design Principles</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/design/extension">Extension</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/design/transaction-flow">Flow of Transactions</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/design/permissions">Permissions</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/design/queries">Queries</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Configuration</h4><ul><li class="navListItem"><a class="navItem" href="/docs/weave/configuration/application">Application</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/configuration/tendermint">Tendermint</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/configuration/validators">Validators</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">API specifications</h4><ul><li class="navListItem"><a class="navItem" href="/docs/weave/weave-api-spec/address-derivation">Address Derivation</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/weave-api-spec/weave-transaction-spec">Weave Transactions</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/weave-api-spec/tx-sign-spec">Transaction Signatures</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/weave-api-spec/weave-query-spec">Querying Weave</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/weave-api-spec/modules">Modules</a></li></ul></div></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Weave Tutorial<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/weave-tutorial/overview">Overview</a></li><li class="navListItem"><a class="navItem" href="/docs/weave-tutorial/codec">Codec</a></li><li class="navListItem"><a class="navItem" href="/docs/weave-tutorial/messages">Messages</a></li><li class="navListItem"><a class="navItem" href="/docs/weave-tutorial/models">Models</a></li><li class="navListItem"><a class="navItem" href="/docs/weave-tutorial/buckets">Buckets</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Rest Api</h1></header><article><div><span><p>The other way to connect to the IOV Name Service is to run the <a href="https://github.com/iov-one/iovns-rest-api">IOV Name Service Rest API</a> on the top of your full node. This is a usefull way if you want to connect to the IOV Name Service from a mobile wallet.</p>
+<h2><a class="anchor" aria-hidden="true" id="getting-started"></a><a href="#getting-started" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Getting started</h2>
+<ul>
+<li>You need first to setup a full node. You can <a href="/docs/iov-name-service/validator/setup">check this page</a> to have all the informaiton needed.</li>
+<li>Install the IOV Name Service API Rest on your full node following the <a href="https://github.com/iov-one/iovns-rest-api">readme information</a></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="api"></a><a href="#api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>API</h2>
+<h3><a class="anchor" aria-hidden="true" id="general"></a><a href="#general" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>General</h3>
+<ul>
+<li><code>GET /</code>: returns welcome message</li>
+<li><code>GET /chain</code>: returns chain id</li>
+<li><code>GET /nodes</code>: returns tendermint and faucet urls</li>
+<li><code>GET /tokens</code>: returns list of tokens</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="block"></a><a href="#block" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Block</h3>
+<ul>
+<li><code>GET /block/latest</code>: returns latest block height</li>
+<li><code>GET /block/:height</code>: returns block header based on block height</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="username"></a><a href="#username" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Username</h3>
+<ul>
+<li><code>GET /username/:id</code>: returns user data based on username</li>
+<li><code>POST /username</code>: creates a username</li>
+<li><code>PATCH /username</code>: updates targets from specific username</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="account"></a><a href="#account" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Account</h3>
+<ul>
+<li><code>GET /account/address/:owner</code>: returns account information (addresses) based on iov address</li>
+<li><code>GET /account/address/balance/:address</code>: returns account information (balances) based on iov address</li>
+<li><code>GET /account/address/nonce/:owner</code> returns nonce based on iov address</li>
+<li><code>GET /account/pubkey/nonce/:owner</code> returns nonce based on iov public key</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="transaction"></a><a href="#transaction" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Transaction</h3>
+<ul>
+<li><code>POST /transaction</code>: creates a transaction</li>
+<li><code>GET /transaction/</code>: returns transaction information based on query parameters:
+<ul>
+<li>id=transactionId</li>
+<li>sentFromOrTo=userAddress</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="api-examples"></a><a href="#api-examples" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Api Examples</h2>
+<h3><a class="anchor" aria-hidden="true" id="new-username-example"></a><a href="#new-username-example" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>New username example</h3>
+<p>Based on:</p>
+<ul>
+<li>12 words secret account: <code>dinosaur punch surface title crack sudden motion sight airport purse shoot napkin produce design wire mouse cake color tourist cricket purity brass speak once</code></li>
+<li>username to create: <code>bns-p_test-un_x5r0dm4838*iov</code></li>
+<li>chaain id: <code>local-bns-devnet</code></li>
+<li>nonce: 0</li>
+</ul>
+<p>The following json object should be generated and send it to post username to create a new username:</p>
+<pre><code class="hljs css language-json">{
+  <span class="hljs-attr">"transaction"</span>: {
+    <span class="hljs-attr">"kind"</span>: <span class="hljs-string">"bns/register_username"</span>,
+    <span class="hljs-attr">"creator"</span>: {
+      <span class="hljs-attr">"chainId"</span>: <span class="hljs-string">"local-bns-devnet"</span>,
+      <span class="hljs-attr">"pubkey"</span>: {
+        <span class="hljs-attr">"algo"</span>: <span class="hljs-string">"ed25519"</span>,
+        <span class="hljs-attr">"data"</span>: <span class="hljs-string">"8c798d3b64dfb99aef02abecf278f3d45d6cf8ca4b235326724f22da711a22a4"</span>
+      }
+    },
+    <span class="hljs-attr">"targets"</span>: [
+      {
+        <span class="hljs-attr">"chainId"</span>: <span class="hljs-string">"local-bns-devnet"</span>,
+        <span class="hljs-attr">"address"</span>: <span class="hljs-string">"tiov1te5s9q7up7kna962xznn7sgsnp5lhhstd3mgq7"</span>
+      }
+    ],
+    <span class="hljs-attr">"username"</span>: <span class="hljs-string">"bns-p_test-un_x5r0dm4838*iov"</span>,
+    <span class="hljs-attr">"fee"</span>: {
+      <span class="hljs-attr">"tokens"</span>: {
+        <span class="hljs-attr">"quantity"</span>: <span class="hljs-string">"1000053000"</span>,
+        <span class="hljs-attr">"fractionalDigits"</span>: <span class="hljs-number">9</span>,
+        <span class="hljs-attr">"tokenTicker"</span>: <span class="hljs-string">"CASH"</span>
+      }
+    }
+  },
+  <span class="hljs-attr">"primarySignature"</span>: {
+    <span class="hljs-attr">"pubkey"</span>: {
+      <span class="hljs-attr">"algo"</span>: <span class="hljs-string">"ed25519"</span>,
+      <span class="hljs-attr">"data"</span>: <span class="hljs-string">"8c798d3b64dfb99aef02abecf278f3d45d6cf8ca4b235326724f22da711a22a4"</span>
+    },
+    <span class="hljs-attr">"nonce"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"signature"</span>: <span class="hljs-string">"32daee76f163ad24c38458b0d9ab921eadaf9fec0e7e05e37de3659251c22c3b0aabf09e17a54151d6bfe1bf12efff7dd210b50852a873757c19a468f006670c"</span>
+  },
+  <span class="hljs-attr">"otherSignatures"</span>: []
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="send-transaction-example"></a><a href="#send-transaction-example" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Send transaction example</h3>
+<p>Based on:</p>
+<ul>
+<li>12 words secret account: <code>devote figure chef merge throw swear muscle another midnight shock raven duck prefer wolf chase flight notice scout wrap hair pencil desk senior until</code></li>
+<li>recipient address: <code>tiov16mmje4vu9e580krwghg9rcpcqnek3f5fp93ffp</code></li>
+<li>chain id: <code>local-bns-devnet</code></li>
+<li>nonce: 0</li>
+</ul>
+<p>The following json object should be generated and post to transaction to transfer tokens:</p>
+<pre><code class="hljs css language-json">{
+  <span class="hljs-attr">"transaction"</span>: {
+    <span class="hljs-attr">"kind"</span>: <span class="hljs-string">"bcp/send"</span>,
+    <span class="hljs-attr">"creator"</span>: {
+      <span class="hljs-attr">"chainId"</span>: <span class="hljs-string">"local-bns-devnet"</span>,
+      <span class="hljs-attr">"pubkey"</span>: {
+        <span class="hljs-attr">"algo"</span>: <span class="hljs-string">"ed25519"</span>,
+        <span class="hljs-attr">"data"</span>: <span class="hljs-string">"a16779974533eec816585e9479f0f8e29adeca3b7edd4d1fbf5e750c079ca844"</span>
+      }
+    },
+    <span class="hljs-attr">"sender"</span>: <span class="hljs-string">"tiov1q3w5edgppc2tcd60gqkxh6gsupszgez46duwd7"</span>,
+    <span class="hljs-attr">"recipient"</span>: <span class="hljs-string">"tiov16mmje4vu9e580krwghg9rcpcqnek3f5fp93ffp"</span>,
+    <span class="hljs-attr">"memo"</span>: <span class="hljs-string">"My first payment from IOV BNS-Proxy"</span>,
+    <span class="hljs-attr">"amount"</span>: {
+      <span class="hljs-attr">"quantity"</span>: <span class="hljs-string">"1000053000"</span>,
+      <span class="hljs-attr">"fractionalDigits"</span>: <span class="hljs-number">9</span>,
+      <span class="hljs-attr">"tokenTicker"</span>: <span class="hljs-string">"CASH"</span>
+    },
+    <span class="hljs-attr">"fee"</span>: {
+      <span class="hljs-attr">"tokens"</span>: {
+        <span class="hljs-attr">"quantity"</span>: <span class="hljs-string">"10000000"</span>,
+        <span class="hljs-attr">"fractionalDigits"</span>: <span class="hljs-number">9</span>,
+        <span class="hljs-attr">"tokenTicker"</span>: <span class="hljs-string">"CASH"</span>
+      }
+    }
+  },
+  <span class="hljs-attr">"primarySignature"</span>: {
+    <span class="hljs-attr">"pubkey"</span>: {
+      <span class="hljs-attr">"algo"</span>: <span class="hljs-string">"ed25519"</span>,
+      <span class="hljs-attr">"data"</span>: <span class="hljs-string">"a16779974533eec816585e9479f0f8e29adeca3b7edd4d1fbf5e750c079ca844"</span>
+    },
+    <span class="hljs-attr">"nonce"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"signature"</span>: <span class="hljs-string">"3e8bb061f46e02e82c5a3aa736b4f1f4b6303f24db07c8d79ebd7c2fcc78818db11254e7eb0a7476cc008a1ca05e648c23712c3d9bc5e49aa51572d1ee419204"</span>
+  },
+  <span class="hljs-attr">"otherSignatures"</span>: []
+}
+</code></pre>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2019-8-2 by Antoine</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/iov-name-service/clients/iov-core"><span class="arrow-prev">← </span><span>IOV-core</span></a><a class="docs-next button" href="/docs/weave/welcome"><span>Welcome</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#getting-started">Getting started</a></li><li><a href="#api">API</a><ul class="toc-headings"><li><a href="#general">General</a></li><li><a href="#block">Block</a></li><li><a href="#username">Username</a></li><li><a href="#account">Account</a></li><li><a href="#transaction">Transaction</a></li></ul></li><li><a href="#api-examples">Api Examples</a><ul class="toc-headings"><li><a href="#new-username-example">New username example</a></li><li><a href="#send-transaction-example">Send transaction example</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/iov-name-service/validator/rewards">IOV Name Service</a><a href="/docs/weave/welcome">Weave</a></div><div><h5>Community</h5><a href="https://riot.im/app/#/room/#weave:matrix.org">Riot Chat</a><a href="https://t.me/internetofvalues">Telegram</a><a href="https://twitter.com/iov_official" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="https://github.com/iov-one">GitHub</a></div></section><section class="copyright">Copyright © 2019 IOV</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8dc8128a9091306e7bbd0effdaa5241a',
+                indexName: 'iov',
+                inputSelector: '#search_input_react'
+              });
+            </script></body></html>
