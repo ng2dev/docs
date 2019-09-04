@@ -56,10 +56,9 @@
             });
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Setup A Validator Node</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="apply-to-the-validator-program"></a><a href="#apply-to-the-validator-program" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Apply to the validator program</h2>
 <p>Before starting to setup your validator, please <a href="https://support.iov.one/hc/en-us/requests/new?ticket_form_id=360000417771" target="_blank">apply to the validator program</a> to open a channel of communication with IOV. At the end of the article, you will need to use this channel of communication to give us your pub_key so that we can upgrade your full-node to a validator.</p>
+<h2><a class="anchor" aria-hidden="true" id="familiarize-yourself-with-gitian"></a><a href="#familiarize-yourself-with-gitian" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Familiarize yourself with Gitian</h2>
+<p>Downloading and running a binary makes most sane people nervous.  <a href="https://gitian.org/" target="_blank">Gitian</a> introduces a level of trust for binary artefacts and is the distribution method chosen by IOV and other blockchains including Bitcoin and <a href="https://medium.com/tendermint/reproducible-builds-8c2eebb9a486" target="_blank">Cosmos</a>.  We'll use binaries built using gitian and systemd to drive the IOV Name Service blockchain.</p>
 <h2><a class="anchor" aria-hidden="true" id="use-systemd-for-running-a-sentry-node-or-validator"></a><a href="#use-systemd-for-running-a-sentry-node-or-validator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Use systemd for running a sentry node or validator</h2>
-<blockquote>
-<p>IOV does not recommend using docker in production; however, it can be used to start building your validator's quality score on our testnet if you so choose.</p>
-</blockquote>
 <p>This document is not for beginners.  It assumes that you know how to setup a sentry node architecture for Tendermint nodes.</p>
 <blockquote>
 <p>Hint: When upgrading from an old testnet to a new one, you can maintain your node id and validator pub_key across testnets by doing the following before performing the upgrade:</p>
@@ -69,32 +68,26 @@
 cp -av <span class="hljs-variable">${DIR_WORK}</span>/config/*_key.json ~
 <span class="hljs-built_in">exit</span>
 </code></pre>
-<p>This document assumes that <code>curl</code>, <code>docker</code>, <code>jq</code>, and <code>which</code> are installed on your system, and user <code>iov</code> in groups <code>iov</code> and <code>docker</code> exists.  You should be able to copy-and-paste the following commands into a terminal and end up with a running node.  You'll have to do this procedure on at least two machines to implement a sentry node architecture.</p>
+<p>This document assumes that <code>curl</code>, <code>expr</code>, <code>grep</code>, <code>jq</code>, and <code>wget</code> are installed on your system, and user <code>iov</code> exists.  You should be able to copy-and-paste the following commands into a terminal and end up with a running node.  You'll have to do this procedure on at least two machines to implement a sentry node architecture.</p>
 <pre><code class="hljs css language-sh">sudo su <span class="hljs-comment"># make life easier for the next ~100 lines</span>
 
 <span class="hljs-built_in">cd</span> /etc/systemd/system
 
 <span class="hljs-comment"># create an environment file for the IOV Name Service services</span>
 cat &lt;&lt;__EOF_IOVNS_ENV__ &gt; iovns.env
-<span class="hljs-comment"># directories</span>
-DIR_TM=/tendermint
+<span class="hljs-comment"># directories (without spaces to ease pain)</span>
+DIR_IOVNS=/opt/iovns/bin
 DIR_WORK=/home/iov/lovenet
 
-<span class="hljs-comment"># docker options</span>
-DOCKER_IOVNS_OPTS=<span class="hljs-string">"--rm"</span>
-DOCKER_TM_OPTS=<span class="hljs-string">"--rm -p16656:26656 -p16657:26657"</span>
-
-<span class="hljs-comment"># docker cid files</span>
-FILE_CID_IOVNS=iovns.cid
-FILE_CID_TM=iovns-tm.cid
-
 <span class="hljs-comment"># images</span>
-IMAGE_IOVNS=iov1/bnsd:v0.20.0
-IMAGE_IOVNS_OPTS=<span class="hljs-string">""</span>
-IMAGE_TM=iov1/tendermint:v0.31.5
+IMAGE_IOVNS=https://github.com/iov-one/weave/releases/download/v0.21.0/bnsd-0.21.0-linux-amd64.tar.gz
+IMAGE_IOVNS_OPTS=<span class="hljs-string">"-min_fee '0.5 IOV'"</span>
+IMAGE_TM=https://github.com/iov-one/tendermint-build/releases/download/v0.31.5-iov2/tendermint-0.31.5-linux-amd64.tar.gz
 IMAGE_TM_OPTS=<span class="hljs-string">"\
 --moniker='moniker' \
---p2p.persistent_peers='ce812b7220b91acf11b8bb91905fe20466ffbd5c@35.195.61.59:26656' \
+--p2p.laddr=tcp://0.0.0.0:16656 \
+--p2p.persistent_peers=1c5aa24f62a1e30badff37f8f673df90e3a08656@104.155.68.141:26656 \
+--rpc.laddr=tcp://0.0.0.0:16657 \
 --rpc.unsafe=false \
 "</span>
 
@@ -109,37 +102,25 @@ __EOF_IOVNS_ENV__
 chgrp iov iovns.env
 chmod g+r iovns.env
 
-<span class="hljs-comment"># deal with inconsistent systemd PATH among distributions</span>
-<span class="hljs-built_in">export</span> SKIP_ALIAS=$( [[ `<span class="hljs-built_in">which</span> 2&gt; /dev/stdout | fgrep -1 skip-alias` ]] &amp;&amp; <span class="hljs-built_in">echo</span> <span class="hljs-string">"--skip-alias"</span> || <span class="hljs-built_in">echo</span> <span class="hljs-string">""</span> )
-<span class="hljs-built_in">export</span> CAT=$(<span class="hljs-built_in">which</span> <span class="hljs-variable">$SKIP_ALIAS</span> cat)
-<span class="hljs-built_in">export</span> DOCKER=$(<span class="hljs-built_in">which</span> <span class="hljs-variable">$SKIP_ALIAS</span> docker)
-<span class="hljs-built_in">export</span> RM=$(<span class="hljs-built_in">which</span> <span class="hljs-variable">$SKIP_ALIAS</span> rm)
-<span class="hljs-built_in">export</span> SH=$(<span class="hljs-built_in">which</span> <span class="hljs-variable">$SKIP_ALIAS</span> sh)
+<span class="hljs-built_in">set</span> -o allexport ; <span class="hljs-built_in">source</span> /etc/systemd/system/iovns.env ; <span class="hljs-built_in">set</span> +o allexport <span class="hljs-comment"># pick-up env vars</span>
 
 <span class="hljs-comment"># create iovns.service</span>
-cat &lt;&lt;<span class="hljs-string">'__EOF_IOVNS_SERVICE__'</span> | sed -e <span class="hljs-string">'s@__CAT__@'</span><span class="hljs-string">"<span class="hljs-variable">$CAT</span>"</span><span class="hljs-string">'@g'</span> -e <span class="hljs-string">'s@__DOCKER__@'</span><span class="hljs-string">"<span class="hljs-variable">$DOCKER</span>"</span><span class="hljs-string">'@g'</span> -e <span class="hljs-string">'s@__RM__@'</span><span class="hljs-string">"<span class="hljs-variable">$RM</span>"</span><span class="hljs-string">'@g'</span> -e <span class="hljs-string">'s@__SH__@'</span><span class="hljs-string">"<span class="hljs-variable">$SH</span>"</span><span class="hljs-string">'@g'</span> &gt; iovns.service
+cat &lt;&lt;<span class="hljs-string">'__EOF_IOVNS_SERVICE__'</span> | sed -e <span class="hljs-string">'s@__DIR_IOVNS__@'</span><span class="hljs-string">"<span class="hljs-variable">$DIR_IOVNS</span>"</span><span class="hljs-string">'@g'</span> &gt; iovns.service
 [Unit]
 Description=IOV Name Service
 After=network-online.target
-Requires=docker.service
 
 [Service]
 Type=simple
 User=iov
 Group=iov
 EnvironmentFile=/etc/systemd/system/iovns.env
-ExecStart=__DOCKER__ run <span class="hljs-variable">$DOCKER_IOVNS_OPTS</span> \
-   --cidfile=<span class="hljs-variable">${DIR_WORK}</span>/<span class="hljs-variable">${FILE_CID_IOVNS}</span> \
-   --<span class="hljs-built_in">read</span>-only \
-   --user=<span class="hljs-variable">${IOV_UID}</span>:<span class="hljs-variable">${IOV_GID}</span> \
-   --volume=<span class="hljs-variable">${DIR_WORK}</span>:<span class="hljs-variable">${DIR_TM}</span> \
-   <span class="hljs-variable">${IMAGE_IOVNS}</span> \
-      -home=<span class="hljs-variable">${DIR_TM}</span> \
-      start \
-      -<span class="hljs-built_in">bind</span>=<span class="hljs-string">"unix://<span class="hljs-variable">${DIR_TM}</span>/<span class="hljs-variable">${SOCK_TM}</span>"</span> \
-      <span class="hljs-variable">$IMAGE_IOVNS_OPTS</span>
-ExecStop=__SH__ -c <span class="hljs-string">"__DOCKER__ stop <span class="hljs-variable">$(__CAT__ ${DIR_WORK}/${FILE_CID_IOVNS})</span>"</span>
-ExecStopPost=__RM__ -fv <span class="hljs-variable">${DIR_WORK}</span>/<span class="hljs-variable">${FILE_CID_IOVNS}</span>
+ExecStart=__DIR_IOVNS__/bnsd \
+   -home=<span class="hljs-variable">${DIR_WORK}</span> \
+   start \
+   -<span class="hljs-built_in">bind</span>=unix://<span class="hljs-variable">${DIR_WORK}</span>/<span class="hljs-variable">${SOCK_TM}</span> \
+   <span class="hljs-variable">$IMAGE_IOVNS_OPTS</span>
+LimitNOFILE=4096
 <span class="hljs-comment">#Restart=on-failure</span>
 <span class="hljs-comment">#RestartSec=3</span>
 StandardError=journal
@@ -151,27 +132,21 @@ WantedBy=multi-user.target
 __EOF_IOVNS_SERVICE__
 
 <span class="hljs-comment"># create iovns-tm.service</span>
-cat &lt;&lt;<span class="hljs-string">'__EOF_IOVNS_TM_SERVICE__'</span> | sed -e <span class="hljs-string">'s@__CAT__@'</span><span class="hljs-string">"<span class="hljs-variable">$CAT</span>"</span><span class="hljs-string">'@g'</span> -e <span class="hljs-string">'s@__DOCKER__@'</span><span class="hljs-string">"<span class="hljs-variable">$DOCKER</span>"</span><span class="hljs-string">'@g'</span> -e <span class="hljs-string">'s@__RM__@'</span><span class="hljs-string">"<span class="hljs-variable">$RM</span>"</span><span class="hljs-string">'@g'</span>  -e <span class="hljs-string">'s@__SH__@'</span><span class="hljs-string">"<span class="hljs-variable">$SH</span>"</span><span class="hljs-string">'@g'</span> &gt; iovns-tm.service
+cat &lt;&lt;<span class="hljs-string">'__EOF_IOVNS_TM_SERVICE__'</span> | sed -e <span class="hljs-string">'s@__DIR_IOVNS__@'</span><span class="hljs-string">"<span class="hljs-variable">$DIR_IOVNS</span>"</span><span class="hljs-string">'@g'</span> &gt; iovns-tm.service
 [Unit]
 Description=Tendermint <span class="hljs-keyword">for</span> IOV Name Service
 After=iovns.service
-Requires=docker.service
 
 [Service]
 Type=simple
 User=iov
 Group=iov
 EnvironmentFile=/etc/systemd/system/iovns.env
-ExecStart=__DOCKER__ run <span class="hljs-string">"<span class="hljs-variable">$DOCKER_TM_OPTS</span>"</span> \
-   --cidfile=<span class="hljs-variable">${DIR_WORK}</span>/<span class="hljs-variable">${FILE_CID_TM}</span> \
-   --<span class="hljs-built_in">read</span>-only \
-   --user=<span class="hljs-variable">${IOV_UID}</span>:<span class="hljs-variable">${IOV_GID}</span> \
-   --volume=<span class="hljs-variable">${DIR_WORK}</span>:<span class="hljs-variable">${DIR_TM}</span> \
-   <span class="hljs-variable">${IMAGE_TM}</span> node \
-      --proxy_app=<span class="hljs-string">"unix://<span class="hljs-variable">${DIR_TM}</span>/<span class="hljs-variable">${SOCK_TM}</span>"</span> \
-      <span class="hljs-variable">$IMAGE_TM_OPTS</span>
-ExecStop=__SH__ -c <span class="hljs-string">"__DOCKER__ stop <span class="hljs-variable">$(__CAT__ ${DIR_WORK}/${FILE_CID_TM})</span>"</span>
-ExecStopPost=__RM__ -fv <span class="hljs-variable">${DIR_WORK}</span>/<span class="hljs-variable">${FILE_CID_TM}</span>
+ExecStart=__DIR_IOVNS__/tendermint node \
+   --home=<span class="hljs-variable">${DIR_WORK}</span> \
+   --proxy_app=unix://<span class="hljs-variable">${DIR_WORK}</span>/<span class="hljs-variable">${SOCK_TM}</span> \
+   <span class="hljs-variable">$IMAGE_TM_OPTS</span>
+LimitNOFILE=4096
 <span class="hljs-comment">#Restart=on-failure</span>
 <span class="hljs-comment">#RestartSec=3</span>
 StandardError=journal
@@ -182,27 +157,35 @@ SyslogIdentifier=iovns-tm
 WantedBy=multi-user.target
 __EOF_IOVNS_TM_SERVICE__
 
+<span class="hljs-comment"># hack around ancient versions of systemd</span>
+expr $(systemctl --version | grep -m 1 -P -o <span class="hljs-string">"\d+"</span>) <span class="hljs-string">'&lt;'</span> 239 &amp;&amp; {
+   sed --<span class="hljs-keyword">in</span>-place <span class="hljs-string">'s!\$IMAGE_IOVNS_OPTS!'</span><span class="hljs-string">"<span class="hljs-variable">$IMAGE_IOVNS_OPTS</span>"</span><span class="hljs-string">'!'</span> /etc/systemd/system/iovns.service
+   sed --<span class="hljs-keyword">in</span>-place <span class="hljs-string">'s!\$IMAGE_TM_OPTS!\'</span><span class="hljs-string">"<span class="hljs-variable">$IMAGE_TM_OPTS</span>"</span><span class="hljs-string">'!'</span> /etc/systemd/system/iovns-tm.service
+}
+
 systemctl daemon-reload
+
+<span class="hljs-comment"># download gitian built binaries or gitian build your own; bnsd is the IOV Name Service daemon</span>
+mkdir -p <span class="hljs-variable">${DIR_IOVNS}</span> &amp;&amp; <span class="hljs-built_in">cd</span> <span class="hljs-variable">${DIR_IOVNS}</span>
+wget <span class="hljs-variable">${IMAGE_IOVNS}</span> &amp;&amp; sha256sum bnsd*.gz       | fgrep 5b4ac76b4c0a06afdcd36687cec0352f33f46e41a60f61cdf7802225ed5ba1e8 &amp;&amp; tar xvf bnsd*.gz || <span class="hljs-built_in">echo</span> <span class="hljs-string">"BAD BINARY!"</span>
+wget <span class="hljs-variable">${IMAGE_TM}</span>    &amp;&amp; sha256sum tendermint*.gz | fgrep 421548f02dadca48452375b5905fcb49a267981b537c143422dde0591e46dc93 &amp;&amp; tar xvf tendermint*.gz || <span class="hljs-built_in">echo</span> <span class="hljs-string">"BAD BINARY!"</span>
+
 <span class="hljs-built_in">exit</span> <span class="hljs-comment"># root</span>
 
 <span class="hljs-comment"># initialize the IOV Name Service</span>
 su - iov
 <span class="hljs-built_in">set</span> -o allexport ; <span class="hljs-built_in">source</span> /etc/systemd/system/iovns.env ; <span class="hljs-built_in">set</span> +o allexport <span class="hljs-comment"># pick-up env vars</span>
 
-docker pull <span class="hljs-variable">${IMAGE_TM}</span>
-docker pull <span class="hljs-variable">${IMAGE_IOVNS}</span>
-
-mkdir -p <span class="hljs-variable">${DIR_WORK}</span>
-<span class="hljs-built_in">cd</span> <span class="hljs-variable">${DIR_WORK}</span>
+mkdir -p <span class="hljs-variable">${DIR_WORK}</span> &amp;&amp; <span class="hljs-built_in">cd</span> <span class="hljs-variable">${DIR_WORK}</span>
 
 <span class="hljs-comment"># initialize tendermint</span>
-docker run --rm --user=<span class="hljs-variable">${IOV_UID}</span>:<span class="hljs-variable">${IOV_GID}</span> -v <span class="hljs-variable">${DIR_WORK}</span>:<span class="hljs-variable">${DIR_TM}</span> <span class="hljs-variable">${IMAGE_TM}</span> init
+<span class="hljs-variable">${DIR_IOVNS}</span>/tendermint init --home=<span class="hljs-variable">${DIR_WORK}</span>
 curl --fail https://rpc.lovenet.iov.one/genesis | jq <span class="hljs-string">'.result.genesis'</span> &gt; config/genesis.json
 [[ -f ~/node_key.json ]] &amp;&amp; cp -av ~/node_key.json config
 [[ -f ~/priv_validator_key.json ]] &amp;&amp; cp -av ~/priv_validator_key.json config
 
 <span class="hljs-comment"># initialize IOV Name Service (bnsd)</span>
-docker run --rm --user=<span class="hljs-variable">${IOV_UID}</span>:<span class="hljs-variable">${IOV_GID}</span> -v <span class="hljs-variable">${DIR_WORK}</span>:<span class="hljs-variable">${DIR_TM}</span> <span class="hljs-variable">${IMAGE_IOVNS}</span> -home=<span class="hljs-variable">${DIR_TM}</span> init -i | grep initialised
+<span class="hljs-variable">${DIR_IOVNS}</span>/bnsd -home=<span class="hljs-variable">${DIR_WORK}</span> init -i | grep initialised
 
 <span class="hljs-built_in">exit</span> <span class="hljs-comment"># iov</span>
 
@@ -214,7 +197,7 @@ systemctl start iovns-tm.service
 </code></pre>
 <p>At this point you're running a full-node that can be examined at <code>http://localhost:16657/status</code>.</p>
 <blockquote>
-<p>The most important file from the procedure above is <code>/etc/systemd/system/iovns.env</code>.  It defines docker image versions and options, directories that allow the <code>iovns.service</code> and <code>iovns-tm.service</code> to communicate with each other, and IOV Name Service and tendermint options.</p>
+<p>The most important file from the procedure above is <code>/etc/systemd/system/iovns.env</code>.  It defines binaries, the socket that allows <code>iovns.service</code> and <code>iovns-tm.service</code> to communicate with each other, and IOV Name Service and tendermint options.</p>
 </blockquote>
 <p>Using <code>/etc/systemd/system/iovns.env</code>, rather than specifying values directly in the service files, obviates the need to do <code>systemctl daemon-reload</code> on every option change.  Most values in <code>/etc/systemd/system/iovns.env</code> are self explanatory; however, there are a few of note:</p>
 <ul>
@@ -224,10 +207,12 @@ systemctl start iovns-tm.service
 </ul></li>
 <li>for Tendermint
 <ul>
-<li><code>DOCKER_TM_OPTS</code> is important because it exposes tendermint ports.</li>
 <li><code>IMAGE_TM_OPTS</code> allows you to customize the configuration of tendermint, including <code>priv_validator_laddr</code>, <code>p2p.pex</code>, <code>p2p.persistent_peers</code>, <code>p2p.private_peer_ids</code>, etc.  <strong>In other words, it's <code>/etc/systemd/system/iovns.env</code> that determines whether the node will act as a sentry or validator based on <code>priv_validator_laddr</code> and <code>p2p.*</code> options.</strong>  Please refer to the <a href="https://tendermint.com/docs/tendermint-core/configuration.html#options" target="blank_">tendermint documentation for the options</a>.</li>
 </ul></li>
 </ul>
+<blockquote>
+<p>Old versions of systemd (CentOs) cannot take advantage of the dynamism of <code>/etc/systemd/system/iovns.env</code> like modern versions can.  Consequently, the service files themselves are where <code>bnsd</code> (IOV Name Service) and <code>tendermint</code> options must be specified.</p>
+</blockquote>
 <h2><a class="anchor" aria-hidden="true" id="point-the-nodes-at-each-other"></a><a href="#point-the-nodes-at-each-other" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Point the nodes at each other</h2>
 <p>Now that you have sentry node(s) and a validator, they need to be made aware of their role and pointed at each other.</p>
 <h3><a class="anchor" aria-hidden="true" id="sentry-node-configuration"></a><a href="#sentry-node-configuration" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Sentry node configuration</h3>
@@ -253,7 +238,7 @@ systemctl start iovns-tm.service
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="light-up-the-validator"></a><a href="#light-up-the-validator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Light-up the validator</h2>
 <p>Once your sentry nodes and validator are sync'ed then the final step to becoming a validator is to submit your validator's pub_key to IOV.  <strong>On your validator node</strong>, execute <code>curl --silent --fail http://localhost:16657/status | jq -r .result.validator_info.pub_key.value</code> and reply with the resulting 44 character pub_key to the ticket that was issued to you when you applied for <a href="https://support.iov.one/hc/en-us/requests/new?ticket_form_id=360000417771" target="_blank">the validator program</a>.  (There's no <code>create-validator</code> command like in Cosmos; validators are added via governance, which is just IOV on the testnet, for the moment.)</p>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2019-8-14 by Dave Puchyr</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/iov-name-service/validator/rewards"><span class="arrow-prev">← </span><span>Rewards</span></a><a class="docs-next button" href="/docs/iov-name-service/validator/troubleshooter"><span>Troubleshooter</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#apply-to-the-validator-program">Apply to the validator program</a></li><li><a href="#use-systemd-for-running-a-sentry-node-or-validator">Use systemd for running a sentry node or validator</a></li><li><a href="#point-the-nodes-at-each-other">Point the nodes at each other</a><ul class="toc-headings"><li><a href="#sentry-node-configuration">Sentry node configuration</a></li><li><a href="#validator-configuration">Validator configuration</a></li></ul></li><li><a href="#light-up-the-validator">Light-up the validator</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/iov-name-service/validator/rewards">IOV Name Service</a><a href="/docs/weave/welcome">Weave</a></div><div><h5>Community</h5><a href="https://riot.im/app/#/room/#weave:matrix.org" target="_blank">Riot Chat</a><a href="https://t.me/internetofvalues" target="_blank">Telegram</a><a href="https://twitter.com/iov_official" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="https://github.com/iov-one" target="_blank">GitHub</a><a href="https://www.iov.one" target="_blank">Website</a></div></section><section class="copyright">Copyright © 2019 IOV</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2019-9-4 by Dave Puchyr</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/iov-name-service/validator/rewards"><span class="arrow-prev">← </span><span>Rewards</span></a><a class="docs-next button" href="/docs/iov-name-service/validator/troubleshooter"><span>Troubleshooter</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#apply-to-the-validator-program">Apply to the validator program</a></li><li><a href="#familiarize-yourself-with-gitian">Familiarize yourself with Gitian</a></li><li><a href="#use-systemd-for-running-a-sentry-node-or-validator">Use systemd for running a sentry node or validator</a></li><li><a href="#point-the-nodes-at-each-other">Point the nodes at each other</a><ul class="toc-headings"><li><a href="#sentry-node-configuration">Sentry node configuration</a></li><li><a href="#validator-configuration">Validator configuration</a></li></ul></li><li><a href="#light-up-the-validator">Light-up the validator</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/iov-name-service/validator/rewards">IOV Name Service</a><a href="/docs/weave/welcome">Weave</a></div><div><h5>Community</h5><a href="https://riot.im/app/#/room/#weave:matrix.org" target="_blank">Riot Chat</a><a href="https://t.me/internetofvalues" target="_blank">Telegram</a><a href="https://twitter.com/iov_official" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="https://github.com/iov-one" target="_blank">GitHub</a><a href="https://www.iov.one" target="_blank">Website</a></div></section><section class="copyright">Copyright © 2019 IOV</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;
