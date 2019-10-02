@@ -1,0 +1,499 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Handlers · IOV Documentations</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Message Handlers"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Handlers · IOV Documentations"/><meta property="og:type" content="website"/><meta property="og:url" content="http://docs.iov.one/"/><meta property="og:description" content="## Message Handlers"/><meta property="og:image" content="http://docs.iov.one/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="http://docs.iov.one/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo.png" alt="IOV Documentations"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="https://github.com/iov-one" target="_self">GitHub</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Weave Tutorial</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Introduction<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/intro">Welcome to IOV!</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">IOV Name Service<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Validator</h4><ul><li class="navListItem"><a class="navItem" href="/docs/iov-name-service/validator/rewards">Rewards</a></li><li class="navListItem"><a class="navItem" href="/docs/iov-name-service/validator/setup">Setup</a></li><li class="navListItem"><a class="navItem" href="/docs/iov-name-service/validator/troubleshooter">Troubleshooter</a></li><li class="navListItem"><a class="navItem" href="/docs/iov-name-service/validator/faq">FAQ</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Clients</h4><ul><li class="navListItem"><a class="navItem" href="/docs/iov-name-service/clients/iov-core">IOV-core</a></li><li class="navListItem"><a class="navItem" href="/docs/iov-name-service/clients/rest-api">REST API</a></li></ul></div></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Weave Overview<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/weave/welcome">Welcome</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Basics</h4><ul><li class="navListItem"><a class="navItem" href="/docs/weave/basics/blockchain">Blockchain</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/basics/consensus">Consensus</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/basics/authentication">Authentication</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/basics/state">State Machine</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Design</h4><ul><li class="navListItem"><a class="navItem" href="/docs/weave/design/overview">Guiding Design Principles</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/design/extension">Extension</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/design/transaction-flow">Flow of Transactions</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/design/permissions">Permissions</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/design/queries">Queries</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Configuration</h4><ul><li class="navListItem"><a class="navItem" href="/docs/weave/configuration/application">Application</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/configuration/tendermint">Tendermint</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/configuration/validators">Validators</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">API specifications</h4><ul><li class="navListItem"><a class="navItem" href="/docs/weave/weave-api-spec/address-derivation">Address Derivation</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/weave-api-spec/weave-transaction-spec">Weave Transactions</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/weave-api-spec/tx-sign-spec">Transaction Signatures</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/weave-api-spec/weave-query-spec">Querying Weave</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/weave-api-spec/modules">Modules</a></li></ul></div></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Weave Tutorial<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/weave-tutorial/domain">Domain</a></li><li class="navListItem"><a class="navItem" href="/docs/weave-tutorial/codec">Codec</a></li><li class="navListItem"><a class="navItem" href="/docs/weave-tutorial/models">Models</a></li><li class="navListItem"><a class="navItem" href="/docs/weave-tutorial/messages">Messages</a></li><li class="navListItem"><a class="navItem" href="/docs/weave-tutorial/buckets">Buckets</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/weave-tutorial/handlers">Handlers</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Handlers</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="message-handlers"></a><a href="#message-handlers" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Message Handlers</h2>
+<p>A message is a statement of intent, and wrapped in a transaction, which provides authorization to this intention. Once this message ends up in the ABCI application and is to be processed, we send it to a <a href="https://godoc.org/github.com/iov-one/weave#Handler">Handler</a> which we have registered for this application.</p>
+<h2><a class="anchor" aria-hidden="true" id="check-vs-deliver"></a><a href="#check-vs-deliver" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Check vs Deliver</h2>
+<p>If you look at the definition of a <em>Handler</em>, you will see it is responsible for <em>Check</em> and <em>Deliver</em>. These are similar logic, but there is an important distinction. <em>Check</em> is performed when a client proposes the transaction to the mempool, before it is added to a block. It is meant as a quick filter to weed out garbage transactions before writing them to the blockchain. The state it provides is a scratch buffer around the last committed state and will be discarded next block, so any writes here are never written to disk.</p>
+<p><em>Deliver</em> is performed after the transaction was written to the block. Upon consensus, every node will process the block by calling <em>BeginBlock</em>, <em>Deliver</em> for every transaction in the block, and finally <em>EndBlock</em> and <em>Commit</em>. <em>Deliver</em> will be called in the same order on every node and must make the <strong>exact same changes</strong> on every node, both now and in the future when the blocks are replayed. Even the slightest deviation will cause the merkle root of the store at the end of the block to differ with other nodes, and thus kick the deviating nodes out of consensus. Note that <em>Check</em> may actually vary between nodes without breaking consensus rules, although we generally keep this deterministic as well.</p>
+<p><strong>This is a very powerful concept and means that when modifying a given state, users need not worry about any concurrent access or writing collision since by definition, any write access is guaranteed to occur sequentially and in the same order on each node</strong></p>
+<h2><a class="anchor" aria-hidden="true" id="writing-a-handler"></a><a href="#writing-a-handler" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Writing a Handler</h2>
+<p>We usually can write a separate handler for each message type, although you can register multiple messages with the same handler if you reuse most of the code. Let's focus on the simplest cases, and the handlers for creating a Blog and adding a Post to an existing blog.</p>
+<p>Note that we can generally assume that <em>Handlers</em> are wrapped by a <code>Savepoint Decorator</code>, and that if <em>Deliver</em> returns an error after updating some objects, those update will be discarded. This means you can treat <em>Handlers</em> as atomic actions, all or none, and not worry too much about cleaning up partially finished state changes if a later portion fails.</p>
+<h2><a class="anchor" aria-hidden="true" id="validation"></a><a href="#validation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Validation</h2>
+<p>Remember that we have to fulfill both <em>Check</em> and <em>Deliver</em> methods, and they share most of the same validation logic. A typical approach is to define a <em>validate</em> method that parses the proper message out of the transaction, verify all authorization preconditions are fulfilled by the transaction, and possibly check the current state of the blockchain to see if the action is allowed. If the <em>validate</em> method doesn't return an error, then <em>Check</em> will return the expected cost of the transaction, while <em>Deliver</em> will actually perform the action and update the blockchain state accordingly.</p>
+<h2><a class="anchor" aria-hidden="true" id="examples"></a><a href="#examples" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Examples</h2>
+<pre><code class="hljs css language-go"><span class="hljs-comment">// CreateBlogHandler will handle CreateBlogMsg</span>
+<span class="hljs-keyword">type</span> CreateBlogHandler <span class="hljs-keyword">struct</span> {
+    auth x.Authenticator
+    b    *BlogBucket
+}
+
+<span class="hljs-keyword">var</span> _ weave.Handler = CreateBlogHandler{}
+
+<span class="hljs-comment">// NewCreateBlogHandler creates a blog message handler</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">NewCreateBlogHandler</span><span class="hljs-params">(auth x.Authenticator)</span> <span class="hljs-title">weave</span>.<span class="hljs-title">Handler</span></span> {
+    <span class="hljs-keyword">return</span> CreateBlogHandler{
+        auth: auth,
+        b:    NewBlogBucket(),
+    }
+}
+</code></pre>
+<p>First we define what the <code>CreateBlogHandler</code> components will contain:</p>
+<ol>
+<li><code>x.Authenticator</code> will handle the authentication</li>
+<li><code>BlogBucket</code> will be the gateway to the blog data</li>
+</ol>
+<p><code>CreateBlogHandler</code> is a struct to wrap the components that are required to make handler logic work, such as <strong>authentication</strong> and <strong>data access</strong>. Authentication is handled by <code>x.Authenticator</code> and blog data access is by <code>BlogBucket</code> that we defined in previous chapter. <code>var _ weave.Handler = CreateBlogHandler{}</code> is a helper to ensure <code>CreateBlogHandler</code> is a <code>weave.Handler</code>. <code>NewCreateBlogHandler</code> wraps the components and returns the struct.</p>
+<p>First of all, we implement the <code>validate</code> function that validates the message with static checks:</p>
+<pre><code class="hljs css language-go"><span class="hljs-comment">// validate does all common pre-processing between Check and Deliver</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(h CreateBlogHandler)</span> <span class="hljs-title">validate</span><span class="hljs-params">(ctx weave.Context, store weave.KVStore, tx weave.Tx)</span> <span class="hljs-params">(*CreateBlogMsg, *Blog, error)</span></span> {
+    <span class="hljs-keyword">var</span> msg CreateBlogMsg
+
+    <span class="hljs-keyword">if</span> err := weave.LoadMsg(tx, &amp;msg); err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, <span class="hljs-literal">nil</span>, errors.Wrap(err, <span class="hljs-string">"load msg"</span>)
+    }
+
+    blockTime, err := weave.BlockTime(ctx)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, <span class="hljs-literal">nil</span>, errors.Wrap(err, <span class="hljs-string">"no block time in header"</span>)
+    }
+    now := weave.AsUnixTime(blockTime)
+
+    blog := &amp;Blog{
+        Metadata:    msg.Metadata,
+        Owner:       x.MainSigner(ctx, h.auth).Address(),
+        Title:       msg.Title,
+        Description: msg.Description,
+        CreatedAt:   now,
+    }
+
+    <span class="hljs-keyword">return</span> &amp;msg, blog, <span class="hljs-literal">nil</span>
+}
+</code></pre>
+<p>Let's go over the <code>validate</code> method piece by piece:</p>
+<ol>
+<li>Message is validated with static checks, such as missing title check</li>
+<li>Execution time of the transaction, which will be used as creation time of the blog, is extracted from <code>BlockTime</code> info that lives in the <code>Context</code> of the handler.</li>
+<li><code>Blog</code> instance is created with the values taken from <code>msg</code></li>
+</ol>
+<p>I did not mention the error checks between these steps but they are obvious and intuitive, yet very important. Go does a good job with forcing developer to pay attention to errors.</p>
+<p>Then implement <code>Check</code> method that checks constraints scuah asif <strong>fee</strong> is sufficent to execute the transaction and if transactions is eligible to enter the mempool using validation:</p>
+<pre><code class="hljs css language-go"><span class="hljs-comment">// Check verifies it is properly formed and returns</span>
+<span class="hljs-comment">// the cost of executing it.</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(h CreateBlogHandler)</span> <span class="hljs-title">Check</span><span class="hljs-params">(ctx weave.Context, store weave.KVStore, tx weave.Tx)</span> <span class="hljs-params">(*weave.CheckResult, error)</span></span> {
+    _, err := h.validate(ctx, store, tx)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, err
+    }
+
+    <span class="hljs-keyword">return</span> &amp;weave.CheckResult{GasAllocated: newBlogCost}, <span class="hljs-literal">nil</span>
+}
+</code></pre>
+<p><code>newBlogCost</code> is defined as 10 tokens.</p>
+<pre><code class="hljs css language-go"><span class="hljs-comment">// Deliver creates an custom state and saves if all preconditions are met</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(h CreateBlogHandler)</span> <span class="hljs-title">Deliver</span><span class="hljs-params">(ctx weave.Context, store weave.KVStore, tx weave.Tx)</span> <span class="hljs-params">(*weave.DeliverResult, error)</span></span> {
+    _, blog, err := h.validate(ctx, store, tx)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, err
+    }
+
+    err = h.b.Put(store, blog)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, errors.Wrap(err, <span class="hljs-string">"cannot store blog"</span>)
+    }
+
+    <span class="hljs-comment">// Returns generated blog ID as response</span>
+    <span class="hljs-keyword">return</span> &amp;weave.DeliverResult{Data: blog.ID}, <span class="hljs-literal">nil</span>
+}
+</code></pre>
+<p>Noticed <code>validate</code> method is also used in the beginning of <code>Deliver</code> execution? Purpose of this is to prevent any message manipulation between <code>Check</code> and <code>Deliver</code> methods. We would not want to any malformed state changes to be applied in the blockchain.</p>
+<p>First given message is validated using <code>validate</code> method and then if valid, blog instance that is created by validate method is saved to the <code>BlogBucket</code>. If everything gone well, primary key of the blog will be returned as result.</p>
+<p>We have written a basic handler that just runs validations and saves to the database. Here is a more complicated and functional example:</p>
+<pre><code class="hljs css language-go"><span class="hljs-comment">// validate does all common pre-processing between Check and Deliver</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(h CreateCommentHandler)</span> <span class="hljs-title">validate</span><span class="hljs-params">(ctx weave.Context, store weave.KVStore, tx weave.Tx)</span> <span class="hljs-params">(*CreateCommentMsg, *Comment, error)</span></span> {
+    <span class="hljs-keyword">var</span> msg CreateCommentMsg
+
+    <span class="hljs-keyword">if</span> err := weave.LoadMsg(tx, &amp;msg); err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, <span class="hljs-literal">nil</span>, errors.Wrap(err, <span class="hljs-string">"load msg"</span>)
+    }
+
+    <span class="hljs-comment">// Check if article exists</span>
+    <span class="hljs-keyword">if</span> err := h.ab.Has(store, msg.ArticleID); err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, <span class="hljs-literal">nil</span>, errors.Wrapf(err, <span class="hljs-string">"article with id %s does not exist"</span>, msg.ArticleID)
+    }
+
+    signer := x.MainSigner(ctx, h.auth).Address()
+
+    blockTime, err := weave.BlockTime(ctx)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, <span class="hljs-literal">nil</span>, errors.Wrap(err, <span class="hljs-string">"no block time in header"</span>)
+    }
+    now := weave.AsUnixTime(blockTime)
+
+    comment := &amp;Comment{
+        Metadata:  msg.Metadata,
+        ArticleID: msg.ArticleID,
+        Owner:     signer,
+        Content:   msg.Content,
+        CreatedAt: now,
+    }
+
+    <span class="hljs-keyword">return</span> &amp;msg, comment, <span class="hljs-literal">nil</span>
+}
+</code></pre>
+<p><code>CreateCommentHandler</code> saves the a comment that is posted to an article if all conditions are met. <code>validation</code> method step by step:</p>
+<ol>
+<li>Message is validated with static checks such as missing title check.</li>
+<li><code>ArticleBucket</code> is queried if the article that is desired to be commented exists.</li>
+<li><code>Comment</code> instance is created with tx signers address and creation time. If you want to check if signer is eligible to executed a transaction, you can compare it with the owner data that is kept in bucket and if there is no match then tx will be aborted and the fee will be deduced from transaction sender as anti spam fee.</li>
+</ol>
+<pre><code class="hljs css language-go"><span class="hljs-comment">// Deliver creates a comment and saves if all preconditions are met</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(h CreateCommentHandler)</span> <span class="hljs-title">Deliver</span><span class="hljs-params">(ctx weave.Context, store weave.KVStore, tx weave.Tx)</span> <span class="hljs-params">(*weave.DeliverResult, error)</span></span> {
+    _, comment, err := h.validate(ctx, store, tx)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, err
+    }
+
+    err = h.cb.Put(store, comment)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, errors.Wrap(err, <span class="hljs-string">"cannot store comment"</span>)
+    }
+
+    <span class="hljs-comment">// Returns generated user ID as response</span>
+    <span class="hljs-keyword">return</span> &amp;weave.DeliverResult{Data: comment.ID}, <span class="hljs-literal">nil</span>
+}
+</code></pre>
+<p>As you noticed most of the hard work done in <code>validate</code> method and <code>Deliver</code> methods are used to handle database related work.</p>
+<p>Once <code>validate</code> is implemented, <code>Check</code> must ensure it is valid and then return a rough cost of the message, which may be based on the storage cost of the text of the post. This return value is similar to the concept of <em>gas</em> in ethereum, although it doesn't count to the fees yet, but rather is used by tendermint to prioritize the transactions to fit in a block.</p>
+<p>Here is an example of more dynamic fee deduction:</p>
+<pre><code class="hljs css language-go"><span class="hljs-comment">// Check just verifies it is properly formed and returns</span>
+<span class="hljs-comment">// the cost of executing it.</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(h CreateArticleHandler)</span> <span class="hljs-title">Check</span><span class="hljs-params">(ctx weave.Context, store weave.KVStore, tx weave.Tx)</span> <span class="hljs-params">(*weave.CheckResult, error)</span></span> {
+    msg, _, err := h.validate(ctx, store, tx)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, err
+    }
+
+    <span class="hljs-comment">// Calculate gas cost</span>
+    gasCost := <span class="hljs-keyword">int64</span>(<span class="hljs-built_in">len</span>(msg.Content)) * newArticleCost / articleCostUnit
+
+    <span class="hljs-keyword">return</span> &amp;weave.CheckResult{GasAllocated: gasCost}, <span class="hljs-literal">nil</span>
+}
+</code></pre>
+<p>In the case of an Article creation, we decided to charge the author 1 gas per mile characters with the first 1000 characters offered: <code>gasCost := int64(len(msg.Content)) * newArticleCost / articleCostUnit</code></p>
+<h2><a class="anchor" aria-hidden="true" id="testing-handlers"></a><a href="#testing-handlers" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Testing Handlers</h2>
+<p>In order to test a handler, we need four things :</p>
+<ul>
+<li>A storage</li>
+<li>A weave context</li>
+<li>An Authenticator associated with our context</li>
+<li>A Tx object to process (eg. to check or to deliver)</li>
+</ul>
+<p>There is a ready-to-use in memory storage available in the <a href="https://github.com/iov-one/weave/blob/master/store/btree.go#L31-L36">store package</a>. There are also util functions available that we can use to create a weave context with a list of signers (eg. authorized addresses) via an <a href="weave/design/permissions">Authenticator</a></p>
+<p>The function below shows how to use them:</p>
+<pre><code class="hljs css language-go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestCreateArticle</span><span class="hljs-params">(t *testing.T)</span></span> {
+    <span class="hljs-comment">// Blog owner address</span>
+    blogOwner := weavetest.NewCondition()
+    <span class="hljs-comment">// Signer address for negative testing</span>
+    signer := weavetest.NewCondition()
+
+    now := weave.AsUnixTime(time.Now())
+    past := now.Add(<span class="hljs-number">-1</span> * <span class="hljs-number">5</span> * time.Hour)
+    future := now.Add(time.Hour)
+
+    ownedBlog := &amp;Blog{
+        Metadata:    &amp;weave.Metadata{Schema: <span class="hljs-number">1</span>},
+        ID:          weavetest.SequenceID(<span class="hljs-number">1</span>),
+        Owner:       signer.Address(),
+        Title:       <span class="hljs-string">"Best hacker's blog"</span>,
+        Description: <span class="hljs-string">"Best description ever"</span>,
+        CreatedAt:   past,
+    }
+    notOwnedBlog := &amp;Blog{
+        Metadata:    &amp;weave.Metadata{Schema: <span class="hljs-number">1</span>},
+        ID:          weavetest.SequenceID(<span class="hljs-number">2</span>),
+        Owner:       blogOwner.Address(),
+        Title:       <span class="hljs-string">"Worst hacker's blog"</span>,
+        Description: <span class="hljs-string">"Worst description ever"</span>,
+        CreatedAt:   past,
+    }
+
+    cases := <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]<span class="hljs-keyword">struct</span> {
+        msg             weave.Msg
+        signer          weave.Condition
+        expected        *Article
+        wantCheckErrs   <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]*errors.Error
+        wantDeliverErrs <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]*errors.Error
+    }{
+        <span class="hljs-string">"success"</span>: {
+            msg: &amp;CreateArticleMsg{
+                Metadata: &amp;weave.Metadata{Schema: <span class="hljs-number">1</span>},
+                BlogID:   ownedBlog.ID,
+                Title:    <span class="hljs-string">"insanely good title"</span>,
+                Content:  <span class="hljs-string">"best content in the existence"</span>,
+                DeleteAt: future,
+            },
+            signer: signer,
+            expected: &amp;Article{
+                Metadata:     &amp;weave.Metadata{Schema: <span class="hljs-number">1</span>},
+                ID:           weavetest.SequenceID(<span class="hljs-number">1</span>),
+                BlogID:       ownedBlog.ID,
+                Owner:        signer.Address(),
+                Title:        <span class="hljs-string">"insanely good title"</span>,
+                Content:      <span class="hljs-string">"best content in the existence"</span>,
+                CommentCount: <span class="hljs-number">0</span>,
+                LikeCount:    <span class="hljs-number">0</span>,
+                CreatedAt:    now,
+                DeleteAt:     future,
+            },
+            wantCheckErrs: <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]*errors.Error{
+                <span class="hljs-string">"Metadata"</span>:     <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"ID"</span>:           <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"BlogID"</span>:       <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"Owner"</span>:        <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"Title"</span>:        <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"Content"</span>:      <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"CommentCount"</span>: <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"LikeCount"</span>:    <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"CreatedAt"</span>:    <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"DeleteAt"</span>:     <span class="hljs-literal">nil</span>,
+            },
+            wantDeliverErrs: <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]*errors.Error{
+                <span class="hljs-string">"Metadata"</span>:     <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"ID"</span>:           <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"BlogID"</span>:       <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"Owner"</span>:        <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"Title"</span>:        <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"Content"</span>:      <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"CommentCount"</span>: <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"LikeCount"</span>:    <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"CreatedAt"</span>:    <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"DeleteAt"</span>:     <span class="hljs-literal">nil</span>,
+            },
+        },
+        <span class="hljs-string">"success no delete at"</span>: {
+            msg: &amp;CreateArticleMsg{
+                Metadata: &amp;weave.Metadata{Schema: <span class="hljs-number">1</span>},
+                BlogID:   ownedBlog.ID,
+                Title:    <span class="hljs-string">"insanely good title"</span>,
+                Content:  <span class="hljs-string">"best content in the existence"</span>,
+            },
+            signer: signer,
+            expected: &amp;Article{
+                Metadata:     &amp;weave.Metadata{Schema: <span class="hljs-number">1</span>},
+                ID:           weavetest.SequenceID(<span class="hljs-number">1</span>),
+                BlogID:       ownedBlog.ID,
+                Owner:        signer.Address(),
+                Title:        <span class="hljs-string">"insanely good title"</span>,
+                Content:      <span class="hljs-string">"best content in the existence"</span>,
+                CommentCount: <span class="hljs-number">0</span>,
+                LikeCount:    <span class="hljs-number">0</span>,
+                CreatedAt:    now,
+            },
+            wantCheckErrs: <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]*errors.Error{
+                <span class="hljs-string">"Metadata"</span>:     <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"ID"</span>:           <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"BlogID"</span>:       <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"Owner"</span>:        <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"Title"</span>:        <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"Content"</span>:      <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"CommentCount"</span>: <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"LikeCount"</span>:    <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"CreatedAt"</span>:    <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"DeleteAt"</span>:     <span class="hljs-literal">nil</span>,
+            },
+            wantDeliverErrs: <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]*errors.Error{
+                <span class="hljs-string">"Metadata"</span>:     <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"ID"</span>:           <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"BlogID"</span>:       <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"Owner"</span>:        <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"Title"</span>:        <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"Content"</span>:      <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"CommentCount"</span>: <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"LikeCount"</span>:    <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"CreatedAt"</span>:    <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"DeleteAt"</span>:     <span class="hljs-literal">nil</span>,
+            },
+        },
+        <span class="hljs-string">"failure signer not authorized"</span>: {
+            msg: &amp;CreateArticleMsg{
+                Metadata: &amp;weave.Metadata{Schema: <span class="hljs-number">1</span>},
+                BlogID:   ownedBlog.ID,
+                Title:    <span class="hljs-string">"insanely good title"</span>,
+                Content:  <span class="hljs-string">"best content in the existence"</span>,
+                DeleteAt: future,
+            },
+            signer:   weavetest.NewCondition(),
+            expected: <span class="hljs-literal">nil</span>,
+            wantCheckErrs: <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]*errors.Error{
+                <span class="hljs-string">"Metadata"</span>:     <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"ID"</span>:           <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"BlogID"</span>:       <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"Owner"</span>:        <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"Title"</span>:        <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"Content"</span>:      <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"CommentCount"</span>: <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"LikeCount"</span>:    <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"CreatedAt"</span>:    <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"DeleteAt"</span>:     <span class="hljs-literal">nil</span>,
+            },
+            wantDeliverErrs: <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]*errors.Error{
+                <span class="hljs-string">"Metadata"</span>:     <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"ID"</span>:           <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"BlogID"</span>:       <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"Owner"</span>:        <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"Title"</span>:        <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"Content"</span>:      <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"CommentCount"</span>: <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"LikeCount"</span>:    <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"CreatedAt"</span>:    <span class="hljs-literal">nil</span>,
+                <span class="hljs-string">"DeleteAt"</span>:     <span class="hljs-literal">nil</span>,
+            },
+        },
+        <span class="hljs-comment">/* --------- *** -----------
+
+           CHECK OUT THE REPO FOR MORE TEST EXAMPLES
+
+           --------- *** -----------  */</span>
+    }
+    <span class="hljs-keyword">for</span> testName, tc := <span class="hljs-keyword">range</span> cases {
+        t.Run(testName, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(t *testing.T)</span></span> {
+            auth := &amp;weavetest.Auth{
+                Signer: tc.signer,
+            }
+
+            <span class="hljs-comment">// initalize environment</span>
+            rt := app.NewRouter()
+            RegisterRoutes(rt, auth)
+            kv := store.MemStore()
+
+            <span class="hljs-comment">// initalize blog bucket and save blogs</span>
+            blogBucket := NewBlogBucket()
+            err := blogBucket.Put(kv, ownedBlog)
+            assert.Nil(t, err)
+
+            err = blogBucket.Put(kv, notOwnedBlog)
+            assert.Nil(t, err)
+
+            <span class="hljs-comment">// initialize article bucket</span>
+            articleBucket := NewArticleBucket()
+
+            tx := &amp;weavetest.Tx{Msg: tc.msg}
+
+            <span class="hljs-comment">// Get current block time from context</span>
+            ctx := weave.WithBlockTime(context.Background(), time.Now().Round(time.Second))
+
+            <span class="hljs-keyword">if</span> _, err := rt.Check(ctx, kv, tx); err != <span class="hljs-literal">nil</span> {
+                <span class="hljs-keyword">for</span> field, wantErr := <span class="hljs-keyword">range</span> tc.wantCheckErrs {
+                    assert.FieldError(t, err, field, wantErr)
+                }
+            }
+
+            res, err := rt.Deliver(ctx, kv, tx)
+            <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+                <span class="hljs-keyword">for</span> field, wantErr := <span class="hljs-keyword">range</span> tc.wantDeliverErrs {
+                    assert.FieldError(t, err, field, wantErr)
+                }
+            }
+
+            <span class="hljs-keyword">if</span> tc.expected != <span class="hljs-literal">nil</span> {
+                <span class="hljs-keyword">var</span> stored Article
+                err := articleBucket.One(kv, res.Data, &amp;stored)
+                assert.Nil(t, err)
+
+                <span class="hljs-comment">// ensure createdAt is after test execution starting time</span>
+                createdAt := stored.CreatedAt
+                weave.InTheFuture(ctx, createdAt.Time())
+
+                <span class="hljs-comment">// avoid registered at missing error</span>
+                tc.expected.CreatedAt = createdAt
+
+                assert.Equal(t, tc.expected, &amp;stored)
+            }
+        })
+    }
+}
+</code></pre>
+<p>Test case above has quite an amount of necessary boiler plate. Every test case including cases that test missing message fields which depends on message validation.</p>
+<p>TheUsual test work flow is:</p>
+<ol>
+<li>Define variables and constants that would be used in state</li>
+<li>Create states</li>
+<li>Define case contents</li>
+<li>Write test for successful and failure cases</li>
+<li>Write expected errors for fields</li>
+<li>Write a repetitive method for running all tests
+<ol>
+<li>Configure blockchain context</li>
+<li>Configure authentication</li>
+<li>Configure router</li>
+<li>Wrap transaction</li>
+<li>Save the instances that test is dependent on to database</li>
+<li>Run <code>Check</code> method and check for errors</li>
+<li>Run <code>Deliver</code> method and check for errors</li>
+<li>Check if the response values are equal to expected values</li>
+</ol></li>
+</ol>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2019-10-2 by Orkun Külçe</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/weave-tutorial/buckets"><span class="arrow-prev">← </span><span>Buckets</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#message-handlers">Message Handlers</a></li><li><a href="#check-vs-deliver">Check vs Deliver</a></li><li><a href="#writing-a-handler">Writing a Handler</a></li><li><a href="#validation">Validation</a></li><li><a href="#examples">Examples</a></li><li><a href="#testing-handlers">Testing Handlers</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/iov-name-service/validator/rewards">IOV Name Service</a><a href="/docs/weave/welcome">Weave</a></div><div><h5>Community</h5><a href="https://riot.im/app/#/room/#weave:matrix.org" target="_blank">Riot Chat</a><a href="https://t.me/internetofvalues" target="_blank">Telegram</a><a href="https://twitter.com/iov_official" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="https://github.com/iov-one" target="_blank">GitHub</a><a href="https://www.iov.one" target="_blank">Website</a></div></section><section class="copyright">Copyright © 2019 IOV</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8dc8128a9091306e7bbd0effdaa5241a',
+                indexName: 'iov',
+                inputSelector: '#search_input_react'
+              });
+            </script></body></html>
