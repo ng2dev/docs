@@ -1,0 +1,278 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Wrapping up the Application · IOV Documentations</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Weave layered approach could be represented as a pyramid. On layer 2, which is the bottom layer, modules(`x/`) are connected to layer 1 which messages are routed. Layer 1 abstracts: Key-Value Database config, authentication mechanism, time-based operation scheduler, and a genesis file that will be fed into the database."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Wrapping up the Application · IOV Documentations"/><meta property="og:type" content="website"/><meta property="og:url" content="http://docs.iov.one/"/><meta property="og:description" content="Weave layered approach could be represented as a pyramid. On layer 2, which is the bottom layer, modules(`x/`) are connected to layer 1 which messages are routed. Layer 1 abstracts: Key-Value Database config, authentication mechanism, time-based operation scheduler, and a genesis file that will be fed into the database."/><meta property="og:image" content="http://docs.iov.one/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="http://docs.iov.one/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo.png" alt="IOV Documentations"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="https://github.com/iov-one" target="_self">GitHub</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Weave Tutorial</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Introduction<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/intro">Welcome to IOV!</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">IOV Name Service<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Validator</h4><ul><li class="navListItem"><a class="navItem" href="/docs/iov-name-service/validator/rewards">Rewards</a></li><li class="navListItem"><a class="navItem" href="/docs/iov-name-service/validator/setup">Setup</a></li><li class="navListItem"><a class="navItem" href="/docs/iov-name-service/validator/troubleshooter">Troubleshooter</a></li><li class="navListItem"><a class="navItem" href="/docs/iov-name-service/validator/faq">FAQ</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Clients</h4><ul><li class="navListItem"><a class="navItem" href="/docs/iov-name-service/clients/iov-core">IOV-core</a></li><li class="navListItem"><a class="navItem" href="/docs/iov-name-service/clients/rest-api">REST API</a></li></ul></div></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Weave Overview<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/weave/welcome">Welcome</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Basics</h4><ul><li class="navListItem"><a class="navItem" href="/docs/weave/basics/blockchain">Blockchain</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/basics/consensus">Consensus</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/basics/authentication">Authentication</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/basics/state">State Machine</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Design</h4><ul><li class="navListItem"><a class="navItem" href="/docs/weave/design/overview">Guiding Design Principles</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/design/extension">Extension</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/design/transaction-flow">Flow of Transactions</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/design/permissions">Permissions</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/design/queries">Queries</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Configuration</h4><ul><li class="navListItem"><a class="navItem" href="/docs/weave/configuration/application">Application</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/configuration/tendermint">Tendermint</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/configuration/validators">Validators</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">API specifications</h4><ul><li class="navListItem"><a class="navItem" href="/docs/weave/weave-api-spec/address-derivation">Address Derivation</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/weave-api-spec/weave-transaction-spec">Weave Transactions</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/weave-api-spec/tx-sign-spec">Transaction Signatures</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/weave-api-spec/weave-query-spec">Querying Weave</a></li><li class="navListItem"><a class="navItem" href="/docs/weave/weave-api-spec/modules">Modules</a></li></ul></div></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Weave Tutorial<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/weave-tutorial/domain">Domain</a></li><li class="navListItem"><a class="navItem" href="/docs/weave-tutorial/codec">Codec</a></li><li class="navListItem"><a class="navItem" href="/docs/weave-tutorial/models">Models</a></li><li class="navListItem"><a class="navItem" href="/docs/weave-tutorial/messages">Messages</a></li><li class="navListItem"><a class="navItem" href="/docs/weave-tutorial/buckets">Buckets</a></li><li class="navListItem"><a class="navItem" href="/docs/weave-tutorial/handlers">Handlers</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/weave-tutorial/application">Application</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Wrapping up the Application</h1></header><article><div><span><p>Weave layered approach could be represented as a pyramid. On layer 2, which is the bottom layer, modules(<code>x/</code>) are connected to layer 1 which messages are routed. Layer 1 abstracts: Key-Value Database config, authentication mechanism, time-based operation scheduler, and a genesis file that will be fed into the database.</p>
+<p>Previous sections are about building a module(<code>layer 2</code>), now we will proceed to wrapping the module with blockchain application(<code>layer 1</code>). In order to run blockchain application, you need to wrap the module with components, such as decorators, and bind the module's handlers to the underlying blockchain application.</p>
+<p><code>cmd</code> folder is where layer 2 lives:</p>
+<pre><code class="hljs css language-sh">./cmd
+├── blog
+│   ├── Dockerfile
+│   ├── Makefile
+│   ├── app
+│   │   ├── app.go
+│   │   ├── codec.pb.go
+│   │   ├── codec.proto
+│   │   ├── crontask.go
+│   │   ├── doc.go
+│   │   ├── examples.go
+│   │   ├── init.go
+│   │   ├── msg.go
+│   │   └── tx.go
+│   ├── client
+│   │   ├── client.go
+│   │   ├── client_test.go
+│   │   ├── conn.go
+│   │   ├── errors.go
+│   │   ├── helpers.go
+│   │   ├── keys.go
+│   │   ├── keys_test.go
+│   │   ├── main_test.go
+│   │   ├── testdata
+│   │   ├── tx.go
+│   │   ├── tx_test.go
+│   │   ├── wallet.go
+│   │   └── wallet_test.go
+│   └── main.go
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="infrastucture-folder"></a><a href="#infrastucture-folder" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Infrastucture folder</h2>
+<ul>
+<li><strong>main.go</strong>: main entry point for <code>cmd/blog</code> app. Contains command line tooling.</li>
+<li><strong>Makefile</strong>`: contains build scripting and tooling commands.</li>
+<li><strong>app</strong>: contains blockchain application components, such as <code>tx</code>, <code>crontask</code>, and <code>codec.proto</code>, of the main application.</li>
+</ul>
+<p>This section explains where Weave gets its charm, and thus the <em>extensibility</em> feature that we have been mentioning over and over in this tutorial. A blockchain application generally depends on authentication mechanisms, networking, database, and application logic. Generally in blockchain application codebases, the only thing you can do is write an application with the already existing spaghetti projects and see if the solution works out for you. I wish you good luck in modifying a broadly used and older blockchain project to fit the requirements <strong>¯\_(ツ)_/¯</strong></p>
+<h3><a class="anchor" aria-hidden="true" id="authenticator"></a><a href="#authenticator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Authenticator</h3>
+<p><code>Authentication()</code>  chains authentication methods together.</p>
+<pre><code class="hljs css language-go"><span class="hljs-comment">// Authenticator returns authentication with multisigs</span>
+<span class="hljs-comment">// and public key signatues</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Authenticator</span><span class="hljs-params">()</span> <span class="hljs-title">x</span>.<span class="hljs-title">Authenticator</span></span> {
+    <span class="hljs-keyword">return</span> x.ChainAuth(sigs.Authenticate{}, multisig.Authenticate{})
+}
+
+</code></pre>
+<p>If you develop your own custom authentication mechanism, you need to define it here in <code>x.ChainAuth</code> options.</p>
+<h3><a class="anchor" aria-hidden="true" id="router"></a><a href="#router" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Router</h3>
+<p><code>Router(authFn x.Authenticator, issuer weave.Address)</code> registers all the modules routers to the application high-level router.</p>
+<pre><code class="hljs css language-go"><span class="hljs-comment">// Router returns a default router</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Router</span><span class="hljs-params">(authFn x.Authenticator, issuer weave.Address)</span> *<span class="hljs-title">app</span>.<span class="hljs-title">Router</span></span> {
+    r := app.NewRouter()
+    scheduler := cron.NewScheduler(CronTaskMarshaler)
+
+    cash.RegisterRoutes(r, authFn, CashControl())
+    sigs.RegisterRoutes(r, authFn)
+    multisig.RegisterRoutes(r, authFn)
+    migration.RegisterRoutes(r, authFn)
+    validators.RegisterRoutes(r, authFn)
+    blog.RegisterRoutes(r, authFn, scheduler)
+    <span class="hljs-keyword">return</span> r
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="query-router"></a><a href="#query-router" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Query Router</h3>
+<p><code>QueryRouter()</code> registers all the modules query routers to the application level router. Modules that will be queried from outside the blockchain itself must be registered in this method.</p>
+<pre><code class="hljs css language-go"><span class="hljs-comment">// QueryRouter returns a default query router,</span>
+<span class="hljs-comment">// allowing access to "/blog", "/auth", "/contracts", "/wallets", "/validators" and "/"</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">QueryRouter</span><span class="hljs-params">()</span> <span class="hljs-title">weave</span>.<span class="hljs-title">QueryRouter</span></span> {
+    r := weave.NewQueryRouter()
+    r.RegisterAll(
+        cash.RegisterQuery,
+        sigs.RegisterQuery,
+        multisig.RegisterQuery,
+        migration.RegisterQuery,
+        orm.RegisterQuery,
+        validators.RegisterQuery,
+        blog.RegisterQuery,
+    )
+    <span class="hljs-keyword">return</span> r
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="chain"></a><a href="#chain" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Chain</h3>
+<p><code>Chain(authFn x.Authenticator, minFee coin.Coin)</code> method chains the decorators in an absolute <em>execution order</em>. This defines the production line of blockhain application starting from transactions entry to the blockchains endpoints and transaction saving.</p>
+<pre><code class="hljs css language-go"><span class="hljs-comment">// Chain returns a chain of decorators, to handle authentication,</span>
+<span class="hljs-comment">// fees, logging, and recovery</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Chain</span><span class="hljs-params">(authFn x.Authenticator, minFee coin.Coin)</span> <span class="hljs-title">app</span>.<span class="hljs-title">Decorators</span></span> {
+    <span class="hljs-keyword">return</span> app.ChainDecorators(
+        utils.NewLogging(),
+        utils.NewRecovery(),
+        utils.NewKeyTagger(),
+        <span class="hljs-comment">// on CheckTx, bad tx don't affect state</span>
+        utils.NewSavepoint().OnCheck(),
+        sigs.NewDecorator(),
+        multisig.NewDecorator(authFn),
+        cash.NewFeeDecorator(authFn, CashControl()),
+        batch.NewDecorator(),
+        utils.NewSavepoint().OnDeliver(),
+    )
+}
+</code></pre>
+<ul>
+<li><code>utils.NewKeyLogging</code> enables logging in application</li>
+<li><code>utils.NewRecovery</code>: Recovery is a decorator to recover from panics in transactions, so we can log them as errors</li>
+<li><code>utils.NewKeyTagger</code>:
+<ul>
+<li><strong>KeyTagger</strong> is a decorator that records all <em>Set/Delete</em> operations performed by its children and adds all those keys as DeliverTx tags</li>
+<li>Tags is the hex-encoded key, value is <strong>s</strong> (for set) or <em>d</em> (for delete)</li>
+<li>Desired behavior, impossible as tendermint will collapse multiple tags with same key: Tags are added as <code>Key=&lt;bucket name&gt;, Value=&lt;hex of remainder&gt;,</code> like <code>Key=cash, Value=00CAFE00</code></li>
+</ul></li>
+<li><code>utils.NewSavepoint</code>: explained in <a href="link"></a></li>
+<li><code>sigs.NewDecorator</code>: returns a default authentication decorator, which appends the chainID before checking the signature, and requires at least one signature to be present</li>
+<li><code>multisig.NewDecorator</code>: returns a default multisig decorator that manages multi-signature wallets</li>
+<li><code>cash.NewFeeDecorator</code>: returns a static fee decorator with the given minimum fee, and all collected fees going to a default address</li>
+<li><code>batch.NewDecorator</code>: returns a batch transanction decorator</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="cron-stack"></a><a href="#cron-stack" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Cron stack</h3>
+<p>Cron stack is minimal application that runs differently from the main decorators that runs scheduled jobs in the background.</p>
+<pre><code class="hljs css language-go"><span class="hljs-comment">// CronStack wires up a standard router with a cron specific decorator chain.</span>
+<span class="hljs-comment">// This can be passed into BaseApp.</span>
+<span class="hljs-comment">// Cron stack configuration is a subset of the main stack. It is using the same</span>
+<span class="hljs-comment">// components but not all functionalities are needed or expected (ie no message</span>
+<span class="hljs-comment">// fee).</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">CronStack</span><span class="hljs-params">()</span> <span class="hljs-title">weave</span>.<span class="hljs-title">Handler</span></span> {
+    rt := app.NewRouter()
+
+    authFn := cron.Authenticator{}
+
+    <span class="hljs-comment">// Cron is using custom router as not the same handlers are registered.</span>
+    blog.RegisterCronRoutes(rt, authFn)
+
+    decorators := app.ChainDecorators(
+        utils.NewLogging(),
+        utils.NewRecovery(),
+        utils.NewKeyTagger(),
+        utils.NewActionTagger(),
+        <span class="hljs-comment">// No fee decorators.</span>
+    )
+    <span class="hljs-keyword">return</span> decorators.WithHandler(rt)
+}
+</code></pre>
+<p>As you can see, decorator of the cron stack does not contain any fee.</p>
+<h3><a class="anchor" aria-hidden="true" id="stack"></a><a href="#stack" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Stack</h3>
+<p>Stack wires up a standard router with a standard decorator chain. This can be passed into BaseApp.</p>
+<pre><code class="hljs css language-go"><span class="hljs-comment">// chain. This can be passed into BaseApp.</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Stack</span><span class="hljs-params">(issuer weave.Address, minFee coin.Coin)</span> <span class="hljs-title">weave</span>.<span class="hljs-title">Handler</span></span> {
+    authFn := Authenticator()
+    <span class="hljs-keyword">return</span> Chain(authFn, minFee).WithHandler(Router(authFn, issuer))
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="key-value-store"></a><a href="#key-value-store" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Key Value Store</h3>
+<p>The application's database is provided by <code>CommitKvStore</code> method. <code>CommitKVStore</code> returns an initialized KVStore that persists the data to the named path.</p>
+<pre><code class="hljs css language-go"><span class="hljs-comment">// CommitKVStore returns an initialized KVStore that persists</span>
+<span class="hljs-comment">// the data to the named path.</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">CommitKVStore</span><span class="hljs-params">(dbPath <span class="hljs-keyword">string</span>)</span> <span class="hljs-params">(weave.CommitKVStore, error)</span></span> {
+    <span class="hljs-comment">// memory backed case, just for testing</span>
+    <span class="hljs-keyword">if</span> dbPath == <span class="hljs-string">""</span> {
+        <span class="hljs-keyword">return</span> iavl.MockCommitStore(), <span class="hljs-literal">nil</span>
+    }
+
+    <span class="hljs-comment">// Expand the path fully</span>
+    path, err := filepath.Abs(dbPath)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, errors.Wrapf(errors.ErrDatabase, <span class="hljs-string">"invalid database name: %s"</span>, path)
+    }
+
+    <span class="hljs-comment">// Some external calls accidentally add a ".db", which is now removed</span>
+    path = strings.TrimSuffix(path, filepath.Ext(path))
+
+    <span class="hljs-comment">// Split the database name into it's components (dir, name)</span>
+    dir := filepath.Dir(path)
+    name := filepath.Base(path)
+    <span class="hljs-keyword">return</span> iavl.NewCommitStore(dir, name), <span class="hljs-literal">nil</span>
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="application"></a><a href="#application" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Application</h2>
+<p><code>Application</code> method initializes the component with given application parameters.</p>
+<pre><code class="hljs css language-go"><span class="hljs-comment">// Application constructs a basic ABCI application with</span>
+<span class="hljs-comment">// the given arguments.</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Application</span><span class="hljs-params">(name <span class="hljs-keyword">string</span>, h weave.Handler, tx weave.TxDecoder, dbPath <span class="hljs-keyword">string</span>, debug <span class="hljs-keyword">bool</span>)</span> <span class="hljs-params">(app.BaseApp, error)</span></span> {
+
+    ctx := context.Background()
+    kv, err := CommitKVStore(dbPath)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> app.BaseApp{}, errors.Wrap(err, <span class="hljs-string">"cannot create database instance"</span>)
+    }
+    store := app.NewStoreApp(name, kv, QueryRouter(), ctx)
+    <span class="hljs-comment">// create a cron ticker for scheduled jobs</span>
+    ticker := cron.NewTicker(CronStack(), CronTaskMarshaler)
+    base := app.NewBaseApp(store, tx, h, ticker, debug)
+    <span class="hljs-keyword">return</span> base, <span class="hljs-literal">nil</span>
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="controller"></a><a href="#controller" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Controller</h2>
+<p><code>Controllers</code> are helpers that capsulates complex application logic to an API that is used around application. If your module requires complex logic, I recommend you implement one. You can find examples of a controller at <a href="https://github.com/iov-one/weave/blob/master/x/cash/controller.go">x/cash</a>.</p>
+<p>In <code>app.go</code> implement a method to create controllers. Here is the example from <a href="https://github.com/iov-one/blog-tutorial/blob/master/cmd/blog/app/app.go#L32-L35">app.go</a></p>
+<pre><code class="hljs css language-go"><span class="hljs-comment">// CashControl returns a controller for cash functions</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">CashControl</span><span class="hljs-params">()</span> <span class="hljs-title">cash</span>.<span class="hljs-title">Controller</span></span> {
+    <span class="hljs-keyword">return</span> cash.NewController(cash.NewBucket())
+}
+</code></pre>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated by Orkun Külçe</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/weave-tutorial/handlers"><span class="arrow-prev">← </span><span>Handlers</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#infrastucture-folder">Infrastucture folder</a><ul class="toc-headings"><li><a href="#authenticator">Authenticator</a></li><li><a href="#router">Router</a></li><li><a href="#query-router">Query Router</a></li><li><a href="#chain">Chain</a></li><li><a href="#cron-stack">Cron stack</a></li><li><a href="#stack">Stack</a></li><li><a href="#key-value-store">Key Value Store</a></li></ul></li><li><a href="#application">Application</a></li><li><a href="#controller">Controller</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/iov-name-service/validator/rewards">IOV Name Service</a><a href="/docs/weave/welcome">Weave</a></div><div><h5>Community</h5><a href="https://riot.im/app/#/room/#weave:matrix.org" target="_blank">Riot Chat</a><a href="https://t.me/internetofvalues" target="_blank">Telegram</a><a href="https://twitter.com/iov_official" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="https://github.com/iov-one" target="_blank">GitHub</a><a href="https://www.iov.one" target="_blank">Website</a></div></section><section class="copyright">Copyright © 2019 IOV</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8dc8128a9091306e7bbd0effdaa5241a',
+                indexName: 'iov',
+                inputSelector: '#search_input_react'
+              });
+            </script></body></html>
