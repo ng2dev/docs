@@ -100,6 +100,7 @@ First ensure our <code>User</code> fulfills morm.Model:</p>
 <p>Here is a sample username validation function:</p>
 <pre><code class="hljs css language-go"><span class="hljs-keyword">var</span> validUsername = regexp.MustCompile(<span class="hljs-string">`^[a-zA-Z0-9_.-]{4,16}$`</span>).MatchString
 </code></pre>
+<p>Note that model validation is run just before <a href="https://github.com/iov-one/weave/blob/v0.21.0/orm/model_bucket.go#L207-L209">saving</a> the model instance to data store.</p>
 <p>If you need more complex validation rules for models you can implement custom validation function which uses <code>github.com/iov-one/weave/errors</code> as error handling.</p>
 <p>We recommend using <code>errors.AppendField</code> as it enables multi-error validation so no information about the error's cause gets lost.</p>
 <h2><a class="anchor" aria-hidden="true" id="errors"></a><a href="#errors" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Errors</h2>
